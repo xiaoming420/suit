@@ -1,0 +1,48 @@
+@charset "utf-8";
+/* CSS Document */
+*{ font-family:"Microsoft YaHei";}
+body,div,p,form,ul,ol,li,img,dd,dt,dl,fieldset, h1, h2, h3, h4, h5, h6 {margin:0;padding:0;border:0;-webkit-text-size-adjust:none;-webkit-touch-callout:none;}
+table {border-collapse:collapse;border-spacing:0;}
+ul li{ list-style:none;}
+img {border:0px; max-width:100%; padding:0; margin:0px; }
+a,button,input{-webkit-tap-highlight-color:rgba(255,0,0,0);}
+a{text-decoration:none;outline: none; color:#2c2c2c;}
+
+em { font-style:normal;}
+body{ height:100%;min-width:320px;font:16px/1.5 'XinGothic-SinaWeibo','Microsoft Yahei','helvetica','arial';color:#333; background:#fff;}
+input,textarea { font-size:16px;font:16px/1.5 'XinGothic-SinaWeibo','Microsoft Yahei','helvetica','arial';}
+input[type="text"],input[type="submit"], input[type="reset"], input[type="button"], button { -webkit-appearance: none;}
+select {-webkit-appearance:menulist;-moz-appearance:menulist; appearance:menulist;}
+select { -o-text-overflow:ellipsis; text-overflow:ellipsis; white-space:nowrapoverflow:hidden; height:40px; } 
+select:after {content:"."; display:block; height:0; clear:both; visibility:hidden;} 
+input:focus,textarea:focus{ outline:none;}
+.clearfix:after {content: ".";display: block;height: 0;clear:both;visibility: hidden;}
+.clearfix {display: inline-table;}
+/* Hides from IE-mac \*/ *
+.clearfix {height: 1%;}
+.clearfix {display: block;}
+body { background:url(../images/bg.jpg) no-repeat center top; margin:0 auto; max-width:640px; background-size:100% 110%;}
+.fl { float:left;}
+.fr { float:right;}
+.titlepic { display:block;margin:25px auto; width:80%}
+.bottomsign {display:block;margin:-20px auto 23px;width:40%}
+.contitem { width:50%;margin-bottom:8px; }
+.cont01 .contitem img {width:110%;box-shadow: 0px 3px 20px #888888;}
+.cont01,.cont02 { margin:0 20px;margin-top:-25px;}
+.cont02 {margin-top:-40px; position:relative;}
+
+.cont02pic {}
+.cont02wechat { position:absolute; right:15.5%;top:19%; width:100%;width:27% }
+.cont02wechat img {width:100%;}
+
+
+
+
+
+
+
+
+
+
+
+
