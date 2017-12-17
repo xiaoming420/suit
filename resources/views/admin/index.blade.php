@@ -68,17 +68,7 @@
 				>
 					<a href="{{url('adm/goods/goodslist')}}">
 						<i class="iconfont icon-wenzhang1" ></i>
-						<span>商品管理</span>
-					</a>
-			</li>
-
-			<li class="layui-nav-item">
-				<dd class="
-					<?php if( in_array($current_url, ['/adm/user/group']) ){ echo 'layui-this';} ?>"
-				>
-					<a href="{{url('adm/user/group')}}">
-						<i class="iconfont icon-wenzhang1" ></i>
-						<span>群二维码</span>
+						<span>预约管理</span>
 					</a>
 			</li>
 		</ul>
