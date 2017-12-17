@@ -10,8 +10,9 @@ namespace App\Http\Controllers\Adm\Users;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\reserve;
 
-class reserve extends Controller
+class reserveController extends Controller
 {
     /**
      * 预约列表
@@ -19,7 +20,7 @@ class reserve extends Controller
      */
     public function reserveList()
     {
-        $list = reserve::where(['is_valid'=>1])->get();
-        return view('admin/user/reservelist', ['list'=>$list]);
+        $list = reserve::where([])->paginate(15);
+        return view('admin/reserve/reservelist', ['list'=>$list]);
     }
 }

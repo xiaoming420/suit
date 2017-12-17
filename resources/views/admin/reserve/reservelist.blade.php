@@ -2,16 +2,10 @@
 @section('content')
     <div class="layui-main">
         <fieldset class="layui-elem-field layui-field-title">
-            <legend>管理员列表</legend>
+            <legend>预约列表</legend>
         </fieldset>
         <form class="layui-form">
             <div class="layui-form-item">
-
-                <div class="layui-inline">
-                    <div class="layui-input-inline">
-                        <a class="layui-btn" href="{{ url('adm/user/adduser') }}" >添加管理员</a>
-                    </div>
-                </div>
             </div>
         </form>
         <table class="layui-table tab-ths">
@@ -24,8 +18,9 @@
                 <th>省市</th>
                 <th>地址</th>
                 <th>备注</th>
-                <th>标记</th>
+                <th>标记状态</th>
                 <th>时间</th>
+                <th>操作</th>
             </tr>
             </thead>
             <tbody>
