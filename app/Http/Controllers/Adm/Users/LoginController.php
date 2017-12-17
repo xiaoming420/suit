@@ -41,8 +41,8 @@ class LoginController extends Controller
             'phone' =>  $userinfo['phone'],
         ];
         $adm_token = Crypt::encrypt(json_encode($cook));
+
         setcookie('adm_token', $adm_token,time()+60*60*4,'/');
-        Redis::setex('adm_token_'.$adm_token, 60*60*4, 1);
         ajax_respon(1, '登陆成功');
     }
 

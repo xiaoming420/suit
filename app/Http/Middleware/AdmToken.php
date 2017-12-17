@@ -16,7 +16,7 @@ class AdmToken
      */
     public function handle($request, Closure $next)
     {
-        if (isset($_COOKIE['adm_token']) && $_COOKIE['adm_token'] && Redis::get('adm_token_'.$_COOKIE['adm_token'])) {
+        if (isset($_COOKIE['adm_token']) && $_COOKIE['adm_token']) {
             return $next($request);
         } else {
             return redirect('adm/login');

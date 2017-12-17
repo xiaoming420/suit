@@ -184,7 +184,7 @@ return [
          */
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Ixudra\Curl\CurlServiceProvider::class,
-        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+        /*SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,*/
 
     ],
 
@@ -237,7 +237,7 @@ return [
         'Curl' => Ixudra\Curl\Facades\Curl::class,
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
-        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+        /*'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,*/
         
     ],
 
