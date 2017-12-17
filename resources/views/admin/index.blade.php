@@ -64,9 +64,9 @@
 
 			<li class="layui-nav-item">
 				<dd class="
-					<?php if( in_array($current_url, ['/adm/goods/goodslist', '/adm/goods/addgoods']) || in_array( $sub_url, ['/adm/goods/editgoods']) ){ echo 'layui-this';} ?>"
+					<?php if( in_array($current_url, ['/adm/reserve/reserveList']) || in_array( $sub_url, ['/adm/goods/editgoods']) ){ echo 'layui-this';} ?>"
 				>
-					<a href="{{url('adm/goods/goodslist')}}">
+					<a href="{{url('adm/reserve/reserveList')}}">
 						<i class="iconfont icon-wenzhang1" ></i>
 						<span>预约管理</span>
 					</a>

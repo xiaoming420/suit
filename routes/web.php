@@ -39,6 +39,7 @@ Route::group(['prefix'=>'suit'], function(){
 Route::group(['prefix'=>'adm', 'middleware'=>['adm.token']], function(){
 
     Route::get('index', 'Adm\Users\UserController@index');
+
     Route::post('edituserpass', 'Adm\Users\UserController@edituserpass');
 
     // 后台管理员模块
@@ -52,11 +53,12 @@ Route::group(['prefix'=>'adm', 'middleware'=>['adm.token']], function(){
         Route::any('group', 'Adm\Users\UserController@group');
     });
 
-    Route::group(['prefix'=>'goods'], function(){
-        Route::get('goodslist', 'Adm\Goods\GoodsController@goodslist');
+    Route::group(['prefix'=>'reserve'], function(){
+        Route::get('reserveList', 'Adm\Users\ReserveController@reserveList');
         Route::any('addgoods', 'Adm\Goods\GoodsController@addgoods');
         Route::any('editgoods', 'Adm\Goods\GoodsController@editgoods');
         Route::any('delgoods', 'Adm\Goods\GoodsController@delgoods');
 
     });
+    
 });
