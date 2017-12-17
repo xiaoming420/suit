@@ -12,7 +12,7 @@ namespace App\Http\Controllers\Adm\Users;
 use App\Http\Controllers\Controller;
 use App\Models\reserve;
 
-class reserveController extends Controller
+class ReserveController extends Controller
 {
     /**
      * 预约列表
@@ -21,7 +21,7 @@ class reserveController extends Controller
     public function reserveList()
     {
         $list = reserve::where([])->paginate(15);
-        return view('admin/reserve/reservelist', ['list'=>$list]);
+        return view('admin/user/customerlist', ['list'=>$list]);
     }
 
     /**

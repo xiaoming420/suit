@@ -58,10 +58,18 @@
 				>
 					<a href="{{url('adm/user/userlist')}}">
 						<i class="iconfont icon-wenzhang1" ></i>
-						<span>用户管理</span>
+						<span>账户管理</span>
 					</a>
 			</li>
-
+			<li class="layui-nav-item">
+				<dd class="
+					<?php if( in_array($current_url, ['/adm/reserve/reserveList']) || in_array( $sub_url, ['/adm/goods/editgoods']) ){ echo 'layui-this';} ?>"
+				>
+					<a href="{{url('adm/reserve/reserveList')}}">
+						<i class="iconfont icon-wenzhang1" ></i>
+						<span>预约管理</span>
+					</a>
+			</li>
 			<li class="layui-nav-item">
 				<dd class="
 					<?php if( in_array($current_url, ['/adm/reserve/reserveList']) || in_array( $sub_url, ['/adm/goods/editgoods']) ){ echo 'layui-this';} ?>"
