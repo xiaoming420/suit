@@ -19,7 +19,7 @@ class reserve extends Controller
      */
     public function reserveList()
     {
-        $list = adm_user::getWhere(['is_valid'=>1]);
-        return view('admin/user/userlist', ['list'=>$list]);
+        $list = reserve::where(['is_valid'=>1])->get();
+        return view('admin/user/reservelist', ['list'=>$list]);
     }
 }
