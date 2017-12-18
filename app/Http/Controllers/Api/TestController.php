@@ -33,6 +33,7 @@ class TestController extends Controller
 
     }
 
+
     public function tests()
     {
         header('Location:'.env('APP_URL','https://pintuan.missfresh.cn').'/api/order/groupqrcode');
