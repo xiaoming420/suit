@@ -2,24 +2,17 @@
 @section('content')
     <div class="layui-main">
         <fieldset class="layui-elem-field layui-field-title">
-            <legend>管理员列表</legend>
+            <legend>用户列表</legend>
         </fieldset>
         <form class="layui-form">
             <div class="layui-form-item">
-
-                <div class="layui-inline">
-                    <div class="layui-input-inline">
-                        <a class="layui-btn" href="{{ url('adm/user/adduser') }}" >添加管理员</a>
-                    </div>
-                </div>
             </div>
         </form>
         <table class="layui-table tab-ths">
             <thead>
             <tr>
                 <th>编号</th>
-                <th>手机号</th>
-                <th>昵称</th>
+                <th>微信昵称</th>
                 <th>性别</th>
                 <th>头像</th>
                 <th>操作</th>
@@ -30,7 +23,6 @@
                 @foreach($list as $k=>$v)
                     <tr>
                         <td class="text-center">{{$v['id']}}</td>
-                        <td class="text-center">{{$v['phone']}}</td>
                         <td class="text-center">{{$v['nickname']}}</td>
                         <td class="text-center">{{$v['sex']}}</td>
                         <td class="text-center">{{$v['avatar_url']}}</td>
