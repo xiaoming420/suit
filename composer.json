@@ -11,7 +11,6 @@
         "tymon/jwt-auth": "0.5.*",
         "ixudra/curl": "6.*",
         "predis/predis": "1.0.*",
-        "simplesoftwareio/simple-qrcode": "~1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -22,10 +21,7 @@
     "autoload": {
         "classmap": [
             "database",
-            "app/Libs/SmsClient.php",
             "app/Libs/WeChat/WxSmallClient.php",
-            "app/Libs/WeBankClient.php",
-            "app/Libs/qCould/CosClient.php",
             "app/Libs/WeChat/WxSmsClient.php"
         ],
          "files":[
