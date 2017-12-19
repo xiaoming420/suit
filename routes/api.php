@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-// 小程序调用接口
+// 调用接口
 Route::group(['prefix'=>'user'], function() {
     Route::post('login', 'Api\UserController@login');
     Route::get('receivetype', 'Api\UserController@receivetype');
@@ -21,17 +21,9 @@ Route::group(['prefix'=>'user'], function() {
     Route::post('getgid', 'Api\UserController@getgid');
 });
 
-Route::group(['prefix'=>'order'], function() {
-    Route::post('addorder', 'Api\OrderController@addorder');
-    Route::get('qrcode', 'Api\OrderController@qrcode');
-    Route::post('orderlist', 'Api\OrderController@orderlist');
-    Route::post('sendcard', 'Api\OrderController@sendcard');
-    Route::get('checkauthor', 'Api\OrderController@checkauthor');
-    Route::get('groupqrcode', 'Api\OrderController@groupqrcode');
-});
-
-Route::group(['prefix'=>'goods'], function() {
-    Route::post('goodslist', 'Api\GoodsController@goodslist');
+Route::group(['prefix'=>'discount'], function() {
+    Route::post('doeditdiscount', 'Api\UserController@doEditDiscount');
+    Route::post('discountdetail', 'Api\UserController@discountDetail');
 });
 
 Route::group(['prefix'=>'address'], function() {
