@@ -22,6 +22,7 @@ class TestController extends Controller
     //测试获取token
     public function gettoken(Request $request)
     {
+
         $user = new UserController();
         $unionid = $request->input('unionid');
         if (empty($unionid)) fun_respon(0, '缺少参数');
