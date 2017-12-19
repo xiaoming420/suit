@@ -333,5 +333,28 @@ class UserController extends Controller
         fun_respon(0, '获取失败');
     }
 
-
+    /**
+     * [sendCode 发送短信验证码]
+     * @return
+     */
+    public function sendCode(){
+        $data = json_decode(file_get_contents('php://input'),true);
+        $phone = $data['phone'];
+        $rule  = "/^1[34578]{1}\d{9}$/";
+        $result = preg_match($rule,$phone);
+        if(!$result){
+            $this->respon(0,'手机号格式不正确！');
+        }
+        $type = isset($data['type'])?$data['type']:0;
+        if($type==1){
+            $channel = users::where(['phone'=>$data['phone']])->first();
+            if(isset($channel->id) && $channel->id){
+                $this->respon(0,'手机号已经注册！');
+            }
+        }
+        $num = rand(100000,999999);
+        $tpl_id = "55654";
+        send_message($phone,$tpl_id,$num);
+        
+    }
 }
