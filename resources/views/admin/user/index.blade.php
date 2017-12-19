@@ -9,31 +9,6 @@
             <span id="theClock" style="font-weight: bold; width: 300px;">
             {{(isset($datas['users']) && $datas['users']) ? $datas['users'] : 0}}
             </span>
-            <br>
-            开团总数：
-            <span id="theClock" style="font-weight: bold; width: 300px;">
-                {{(isset($datas['kai_group']) && $datas['kai_group']) ? $datas['kai_group'] : 0}}
-            </span>
-            <br>
-            开团人数：
-            <span id="theClock" style="font-weight: bold; width: 300px;">
-                {{(isset($datas['orders']) && $datas['orders']) ? $datas['orders'] : 0}}
-            </span>
-            <br>
-            拼团成功数：
-            <span id="theClock" style="font-weight: bold; width: 300px;">
-                {{(isset($datas['finash_order']) && $datas['finash_order']) ? $datas['finash_order'] : 0}}
-            </span>
-            <br>
-            助力总人数：
-            <span id="theClock" style="font-weight: bold; width: 300px;">
-                {{(isset($datas['help_users']) && $datas['help_users']) ? $datas['help_users'] : 0}}
-            </span>
-            <br>
-            群总数：
-            <span id="theClock" style="font-weight: bold; width: 300px;">
-                {{(isset($datas['groups']) && $datas['groups']) ? $datas['groups'] : 0}}
-            </span>
         </blockquote>
     </fieldset>
     <blockquote class="layui-elem-quote">修改密码</blockquote>

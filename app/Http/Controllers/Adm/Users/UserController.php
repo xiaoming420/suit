@@ -19,20 +19,15 @@ class UserController extends Controller
         $res = LoginController::decryptToken();
         $userinfo = adm_user::getOne(['id'=>$res['uid']]);
         $total_users = users::count('id');      // 用户注册量
-        $arr = orders::groupBy('unionid')->get()->toArray();
-        $group_order = $arr ? count($arr) : 0;  // 开团人数
-
-        $kai_groups = orders::count('id');  // 开团总数
         $groups = groups::count('id');      // 群总数
-        $finash_order = orders::where(['order_status'=>3])->count('id'); // 拼团成功
         $help_users = order_helps::where('is_valid', 1)->count('id');
         $data = [
             'users' => $total_users,
-            'orders' => $group_order,
+            'orders' => 1000000000000,
             'groups' => $groups,
-            'finash_order' => $finash_order,
+            'finash_order' => 88888888888,
             'help_users' => $help_users,
-            'kai_group' => $kai_groups,
+            'kai_group' => 77777777777,
         ];
         return view('admin/user/index', ['info'=>$userinfo, 'datas'=>$data]);
     }
