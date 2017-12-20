@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 // 调用接口
 Route::group(['prefix'=>'user'], function() {
     Route::post('login', 'Api\UserController@login');
+    Route::post('doregister', 'Web\WebController@doRegister');
     Route::get('receivetype', 'Api\UserController@receivetype');
     Route::post('addgroup', 'Api\UserController@addgroup');
     Route::post('getgid', 'Api\UserController@getgid');
@@ -34,3 +35,5 @@ Route::group(['prefix'=>'test'], function(){
     Route::any('test', 'Api\TestController@test');
     Route::any('tests', 'Api\TestController@tests');
 });
+
+

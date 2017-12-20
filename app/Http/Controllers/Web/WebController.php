@@ -37,11 +37,37 @@ class WebController extends Controller
             $info = users::create($arr);
              $info->save();
         }
-        //$jssdk = new JSSDK();
-        //$signPackage = $jssdk->getSignPackage(2);
-
         return view('web/register');
+    }
 
+    /**
+     * [doRegister 执行注册]
+     * @param Request $request
+     * @return
+     */
+    public function doRegister(Request $request){
+        $phone = trim($request->phone);
+        $nickname = trim($request->nickname);
+        $type = trim($request->type);
+        if(!$phone)fun_respon(0, '缺少手机号！');
+        if(!$nickname)fun_respon(0, '缺少姓名！');
+        $rule  = "/^1[34578]{1}\d{9}$/";
+        $result = preg_match($rule,$phone);
+        if(!$result){
+            fun_respon(0,'手机号格式不正确！');
+        }
+        $info = users::where(['phone'=>$phone])->first();
+        if($info){
+            fun_respon(0, '您已经注册啦！');
+        }
+        if(!isset($_SESSION['open_id']) || empty($_SESSION['open_id']) ){
+            return view('web/register');
+        }
+        $res = users::where(['openid'=>$_SESSION['open_id']])->update(['phone'=>$phone]);
+        if(!$res){
+            fun_respon(0, '注册失败！');
+        }
+        fun_respon(1, '注册成功！');
     }
 
     /**

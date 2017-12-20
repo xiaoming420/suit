@@ -24,7 +24,7 @@ class UserController extends Controller
             'login','getgid','add'
         ]]);
     }
-
+    
     /**
      * 小程序登陆
      */
