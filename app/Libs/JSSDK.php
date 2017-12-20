@@ -5,8 +5,8 @@ use Illuminate\Support\Facades\Redis;
 class JSSDK {
 
 
-    private $appid = 'wx04af487490fa1713';
-    private $secrect = '76164f6824c72e1269f784cb98a309f1';
+    private $appid = 'wx5dd4f5ae95592d61';
+    private $secrect = 'abd091a9ff677acbd84821dbe26725ff';
     private $accessToken;
 
     public $data = null;
