@@ -74,7 +74,7 @@
 				<dd class="
 					<?php if( in_array($current_url, ['/adm/discount/discountdetail']) ){ echo 'layui-this';} ?>"
 				>
-					<a href="{{url('adm/reserve/reserveList')}}">
+					<a href="{{url('/adm/discount/discountdetail')}}">
 						<i class="iconfont icon-wenzhang1" ></i>
 						<span>红包设置</span>
 					</a>

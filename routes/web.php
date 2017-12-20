@@ -36,6 +36,9 @@ Route::group(['prefix'=>'suit'], function(){
     Route::get('register', 'Adm\Users\LoginController@register');
 });
 
+
+
+
 Route::group(['prefix'=>'adm', 'middleware'=>['adm.token']], function(){
 
     Route::get('index', 'Adm\Users\UserController@index');
@@ -60,5 +63,12 @@ Route::group(['prefix'=>'adm', 'middleware'=>['adm.token']], function(){
         Route::any('delgoods', 'Adm\Goods\GoodsController@delgoods');
 
     });
+
+    Route::group(['prefix'=>'discount'], function(){
+        Route::get('discountdetail', 'Adm\Users\DiscountController@discountDetail');
+
+    });
+
+
 
 });

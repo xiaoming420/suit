@@ -21,11 +21,6 @@ Route::group(['prefix'=>'user'], function() {
     Route::post('getgid', 'Api\UserController@getgid');
 });
 
-Route::group(['prefix'=>'discount'], function() {
-    Route::post('doeditdiscount', 'Api\UserController@doEditDiscount');
-    Route::post('discountdetail', 'Api\UserController@discountDetail');
-});
-
 Route::group(['prefix'=>'address'], function() {
     Route::post('addresslist', 'Api\AddressController@addresslist');
     Route::post('address', 'Api\AddressController@address');
