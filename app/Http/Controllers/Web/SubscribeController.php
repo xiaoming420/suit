@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Models\city;
+use App\Models\reserve;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -42,7 +43,14 @@ class SubscribeController extends Controller
     // 申请预约
     public function suppy(Request $request)
     {
-        $data = $request->only(['name','sex','phone','cont','province','city','area','detail']);
-        var_dump($data);
+        $data = $request->only(['name','sex','phone','remark','province','city','area','address']);
+        $data['ct'] = date('Y-m-d H:i:s');
+        $data['ut'] = date('Y-m-d H:i:s');
+        $res = reserve::insert($data);
+        if ($res) {
+            fun_respon(1, '成功');
+        } else {
+            fun_respon(0, '预约失败');
+        }
     }
 }

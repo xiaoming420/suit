@@ -77,7 +77,7 @@
             var name = $('#name').val();
             var sex = $('input[name=sex]:checked').val();
             var phone = $('#phone').val();
-            var cont = $('#cont').html();
+            var cont = $('#cont').text();
             var province = $('#province :selected').text();
             var city = $('#city :selected').text();
             var area = $('#area :selected').text();
@@ -96,7 +96,7 @@
                 alert('请填写正确的手机号');
                 return false;
             }
-            var data = {name:name,sex:sex,phone:phone,cont:cont,province:province,city:city,area:area,detail:detail};
+            var data = {name:name,sex:sex,phone:phone,remark:cont,province:province,city:city,area:area,address:detail};
             $.ajax({
                 url : '/subscribe/suppy',
                 type : 'post',
@@ -105,16 +105,10 @@
                 success : function(msg){
                     console.log(msg)
                     if (msg.result == 1) {
-
+                        alert('我们已经收到您的预约，我们的工作人员会尽快联系您！')
                     }
                 }
             });
-
-
-            console.log(cont)
-            console.log(phone)
-            console.log(name)
-            console.log(sex)
 
 
 
