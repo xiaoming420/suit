@@ -32,8 +32,10 @@ Route::group(['prefix'=>'adm'], function(){
 });
 
 
+
+
 Route::group(['prefix'=>'suit'], function(){
-    Route::get('register', 'Adm\Users\LoginController@register');
+    Route::get('register', 'Web\WebController@index');
 });
 
 
