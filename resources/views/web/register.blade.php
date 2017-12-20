@@ -77,7 +77,6 @@
         var sex = $("input[name=sex]:checked").val();
         if(!phone){alert('手机号不能为空');return false;}
         if(!(/^1[0-9]{10}$/.test(phone))){alert('手机号格式不正确');return false;}
-        if(!code){alert('密码不能为空');return false;}
         $.ajax({
             url : '/api/user/doregister',
             type : 'post',
