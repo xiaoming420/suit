@@ -103,7 +103,7 @@
             alert(num);
             $.ajax({
                 url : '/subscribe/getcity',
-                type : 'get',
+                type : 'post',
                 data : {num:num},
                 dataType : 'json',
                 success : function(msg){
