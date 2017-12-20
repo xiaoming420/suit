@@ -179,5 +179,112 @@ class JSSDK {
             return $result;
         }
     }
+
+    /**
+     *
+     * @return 用户的openid
+     */
+    private function GetCode()
+    {
+        //通过code获得openid
+        if (!isset($_GET['code'])){
+            //触发微信返回code码
+            $baseUrl = urlencode('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+            $url = $this->__CreateOauthUrlForUserCode($baseUrl);
+            Header("Location: $url");
+            exit();
+        } else {
+            //获取code码，以获取openid
+            $code = $_GET['code'];
+            $user = $this->GetOpenidFromCode($code);
+            return $user;
+        }
+    }
+
+    /**
+     *
+     * 构造获取能获取用户信息的code的url连接
+     * @param string $redirectUrl 微信服务器回跳的url，需要url编码
+     *
+     * @return 返回构造好的url
+     */
+    private function __CreateOauthUrlForUserCode($redirectUrl)
+    {
+        $urlObj["appid"] = env('WX_APPID','wxca2ea145e9162427');//WxPayConfig::APPID;
+        $urlObj["redirect_uri"] = "$redirectUrl";
+        $urlObj["response_type"] = "code";
+        $urlObj["scope"] = "snsapi_userinfo";
+        $urlObj["state"] = "STATE"."#wechat_redirect";
+        $bizString = $this->ToUrlParams($urlObj);
+        //$str = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf0e81c3bee622d60&redirect_uri=http%3A%2F%2Fnba.bluewebgame.com%2Foauth_response.php&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
+        return "https://open.weixin.qq.com/connect/oauth2/authorize?".$bizString;
+    }
+
+    /**
+     *
+     * 通过code从公众平台获取openid机器access_token
+     * @param string $code 微信跳转回来带上的code
+     *
+     * @return openid
+     */
+    public function GetOpenidFromCode($code)
+    {
+        $url = $this->__CreateOauthUrlForOpenid($code);
+        //初始化curl
+        $ch = curl_init();
+        //设置超时
+        //curl_setopt($ch, CURLOPT_TIMEOUT, $this->curl_timeout);
+        //curl_setopt($ch, CURLOPT_TIMEOUT, 60);
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER,FALSE);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST,FALSE);
+        curl_setopt($ch, CURLOPT_HEADER, FALSE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        //运行curl，结果以jason形式返回
+        $res = curl_exec($ch);
+        curl_close($ch);
+        //取出openid
+        $data = json_decode($res,true);
+        $this->user = $data;
+        return $data;
+    }
+
+    /**
+     *
+     * 构造获取open和access_toke的url地址
+     * @param string $code，微信跳转带回的code
+     *
+     * @return 请求的url
+     */
+    private function __CreateOauthUrlForOpenid($code)
+    {
+        $urlObj["appid"] = env('WX_APPID','wx1985bd0909bbc1f9');//WxPayConfig::APPID;
+        $urlObj["secret"] = env('WX_APPSECRET','4e274ce907cf7cda0fa79876c3f2f911');//WxPayConfig::APPSECRET;
+        $urlObj["code"] = $code;
+        $urlObj["grant_type"] = "authorization_code";
+        $bizString = $this->ToUrlParams($urlObj);
+        return "https://api.weixin.qq.com/sns/oauth2/access_token?".$bizString;
+    }
+
+    /**
+     *
+     * 拼接签名字符串
+     * @param array $urlObj
+     *
+     * @return 返回已经拼接好的字符串
+     */
+    private function ToUrlParams($urlObj)
+    {
+        $buff = "";
+        foreach ($urlObj as $k => $v)
+        {
+            if($k != "sign"){
+                $buff .= $k . "=" . $v . "&";
+            }
+        }
+
+        $buff = trim($buff, "&");
+        return $buff;
+    }
 }
 

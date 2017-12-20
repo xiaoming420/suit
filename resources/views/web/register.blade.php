@@ -38,7 +38,7 @@
         <div class="itemput borderbot sexput">
             <span class="itempan">姓名</span>
             <div class="itemcont">
-                <input type="text" class="itemcontput"/>
+                <input type="text" name="user_name" class="itemcontput"/>
             </div>
         </div>
         <div class="itemput borderbot sexput">
@@ -51,7 +51,7 @@
         <div class="itemput sexput">
             <span class="itempan">手机号</span>
             <div class="itemcont">
-                <input type="text" class="itemcontput"/>
+                <input type="text" name="phone" class="itemcontput"/>
             </div>
         </div>
     </div>
@@ -65,4 +65,40 @@
     <p class="notepros">温馨提示：注册完成后会有硕兰专业量体师主动与您联系，请保持手机通常</p>
 </div>
 </body>
+
+
+<script>
+        $(function(){
+            $('#form_data').submit(function(){
+                var user_name = $('input[name=account]').val();
+                var pass_word = $('input[name=password]').val();
+                if(!user_name){
+                    layer.msg('请填写登陆账号', {icon: 5});
+                    return false;
+                }
+                if(!pass_word){
+                    layer.msg('请填写登陆密码', {icon: 5});
+                    return false;
+                }
+                $.ajax({
+                    url : '/channeladm/dologin',
+                    type : 'post',
+                    dateType : 'json',
+                    data : $(this).serialize(),
+                    success : function(msg){
+                        if(msg.success == 1){
+                            window.location.href = '{{url("channeladm/order/home")}}';
+                        } else {
+                            //alert(msg.error);
+                            layer.msg(msg.error, {icon: 5});
+                            return false;
+                        }
+                    },
+                    error : function(msg){
+                        console.log('error');
+                    }
+                })
+            });
+        });
+</script>
 </html>

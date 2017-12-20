@@ -3,6 +3,26 @@
  * 全局自定义函数
  */
 
+if (!function_exists('fun_aliorwechat')) {
+    /**
+     * 统一判断是微信还是者支付宝
+     */
+    function fun_aliorwechat()
+    {
+        if(  strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false  )//微信
+        {
+            return 1;
+        }elseif(  strpos($_SERVER['HTTP_USER_AGENT'], 'AlipayClient') !== false  )//支付宝
+        {
+            return 2;
+        }else
+        {
+            return 3;
+        }
+    }
+}
+
+
 if (! function_exists('send_message')) {
     /** 发送短信
      *  tpl_id 模板id
