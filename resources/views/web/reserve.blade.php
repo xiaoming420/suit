@@ -103,11 +103,11 @@
         });
 
         $('#province').change(function(){
-            $('#city').style('display', 'block');
+            $('#city').css('display', 'block');
         });
 
         $('#city').change(function(){
-            $('#area').style('display', 'block');
+            $('#area').css('display', 'block');
         });
     });
 </script>
