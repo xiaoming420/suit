@@ -26,6 +26,9 @@ class JSSDK {
         $this->GetCode();
         $open_id = $this->user['openid'];
         $access_token = $this->user['access_token'];
+
+        return $this->user;
+
         $url = "https://api.weixin.qq.com/sns/userinfo?access_token=$access_token&openid=$open_id&lang=zh_CN";
         $ch = curl_init();
         curl_setopt($ch,CURLOPT_URL,$url);
