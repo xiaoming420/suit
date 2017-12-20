@@ -10,7 +10,7 @@ class SubscribeController extends Controller
 {
     public function infopage(Request $request)
     {
-        $provines = city::getprovines();
+        //$provines = city::getprovines();
         return view('web.reserve');
     }
 }
