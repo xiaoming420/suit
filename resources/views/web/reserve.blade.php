@@ -66,6 +66,15 @@
             var phone = $('#phone').val();
             var name = $('#name').val();
             var sex = $('input[name=sex]:checked').val();
+            var rule = /^1[34578]{1}\d{9}$/;
+
+            if (!name) {
+                alert('请留下您的大名=.=');
+            }
+            if (!rule.test(phone)) {
+                alert('请填写正确的手机号');
+            }
+
 
             console.log(cont)
             console.log(phone)
