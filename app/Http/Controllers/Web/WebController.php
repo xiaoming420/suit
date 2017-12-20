@@ -31,7 +31,6 @@ class WebController extends Controller
                 return fun_error_page('网络错误，扫码重试');
             }
             $_SESSION['open_id'] = $userInfo['openid'];
-
             $info = users::where(['openid'=>$userInfo['openid']])->first();
             if(!$info) {
                 $arr['openid'] = $userInfo['openid'];
@@ -48,6 +47,7 @@ class WebController extends Controller
                 $info->save();
             }
         }
+        $info = users::where(['openid'=>$_SESSION['open_id']])->first();
         return view('web/register',['info'=>$info]);
     }
 
