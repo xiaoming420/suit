@@ -71,10 +71,9 @@
     var state = {url:'/suit/register'};
     history.replaceState(state,'','/suit/register');
 
-
-
     $(document).on("touchend","#submit",function(){
         var phone = $("input[name='phone']").val();
+        var code = $("input[name='code']").val();
         var code = $("input[name='code']").val();
         if(!phone){alert('手机号不能为空');return false;}
         if(!(/^1[0-9]{10}$/.test(phone))){alert('手机号格式不正确');return false;}
