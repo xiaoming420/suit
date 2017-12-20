@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Libs\JSSDK;
 use App\Models\adm_user;
+use App\Models\discount;
 use App\Models\group_qrcode;
 use App\Models\users;
 use Illuminate\Http\Request;
@@ -72,7 +73,14 @@ class WebController extends Controller
         if(!isset($_SESSION['open_id']) || empty($_SESSION['open_id']) ){
             return view('web/register');
         }
-        $res = users::where(['openid'=>$_SESSION['open_id']])->update(['phone'=>$phone]);
+        //查询红包
+        $disc = discount::orderBy('id','DESC')->first();
+        if($disc){
+            $discount = $disc['money'];
+        }else{
+            $discount = 0;
+        }
+        $res = users::where(['openid'=>$_SESSION['open_id']])->update(['phone'=>$phone,'discount_money'=>$discount]);
         if(!$res){
             fun_respon(0, '注册失败！');
         }

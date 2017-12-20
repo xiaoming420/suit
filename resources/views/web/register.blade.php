@@ -83,9 +83,9 @@
             data : {phone:phone,user_name:user_name,sex:sex},
             dateType : 'json',
             success : function(msg){
-                if (msg.success == '1')
+                if (msg.result == '1')
                 {
-                    window.location.href = '/supply/client';
+                    window.location.href = '/suit/reserve';
                 } else {
                     alert(msg.error);
                 }
