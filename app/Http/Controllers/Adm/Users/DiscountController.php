@@ -21,8 +21,8 @@ class DiscountController extends Controller
      */
     public function discountDetail()
     {
-        //$list = reserve::where([])->paginate(15);
-        return view('admin/discount/discountdetail');
+        $info = discount::orderBy('id','DESC')-first();
+        return view('admin/discount/discountdetail',['info'=>$info]);
     }
 
     /**
