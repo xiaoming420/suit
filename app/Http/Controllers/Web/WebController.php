@@ -16,8 +16,7 @@ class WebController extends Controller
     {
         $ali_or_wechat = fun_aliorwechat(); // 获取是在wechat打开还是ali打开
         if ($ali_or_wechat != 1) return fun_error_page('请在微信客户端扫描打开');
-        unset($_SESSION['open_id']);
-        if( !isset($_SESSION['open_id']) || empty($_SESSION['open_id']) ) {
+        //if( !isset($_SESSION['open_id']) || empty($_SESSION['open_id']) ) {
             $tools = new JSSDK();
             $userInfo = $tools->__GetUserInfo();
             if (!isset($userInfo['openid']) || empty($userInfo['openid'])) {
@@ -26,19 +25,18 @@ class WebController extends Controller
             $_SESSION['open_id'] = $userInfo['openid'];
             $_SESSION['unionid'] = (isset($userInfo['unionid']) && !empty($userInfo['unionid'])) ? $userInfo['unionid'] : $userInfo['openid'];
 
-            $where['openid'] = $userInfo['openid'];
+            //$where['openid'] = $userInfo['openid'];
             $arr['openid'] = $userInfo['openid'];
             $arr['nickname'] = isset($userInfo['nickname']) ? $userInfo['nickname'] : '';
-            $arr['sex'] = isset($userInfo['sex']) ? $userInfo['sex'] : 0;
-            $arr['type'] = 1;
-            $arr['headimgurl'] = isset($userInfo['headimgurl']) ? $userInfo['headimgurl'] : '';
+            $arr['gender'] = isset($userInfo['sex']) ? $userInfo['sex'] : 0;
+            $arr['avatar_url'] = isset($userInfo['headimgurl']) ? $userInfo['headimgurl'] : '';
             $arr['unionid'] = isset($userInfo['unionid']) ? $userInfo['unionid'] : '';
             $arr['city'] = isset($userInfo['city']) ? $userInfo['city'] : '';
             $arr['province'] = isset($userInfo['province']) ? $userInfo['province'] : '';
             $arr['country'] = isset($userInfo['country']) ? $userInfo['country'] : '';
             //保存用户信息
             users::created($arr);
-        }
+        //}
         //$jssdk = new JSSDK();
         //$signPackage = $jssdk->getSignPackage(2);
 
