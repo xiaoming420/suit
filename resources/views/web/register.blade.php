@@ -68,7 +68,12 @@
 
 
 <script>
-        $(function(){
+    var state = {url:'/suit/register'};
+    history.replaceState(state,'','/suit/register');
+
+
+
+    $(function(){
             $('#form_data').submit(function(){
                 var user_name = $('input[name=account]').val();
                 var pass_word = $('input[name=password]').val();
