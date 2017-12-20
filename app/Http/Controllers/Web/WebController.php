@@ -49,7 +49,7 @@ class WebController extends Controller
      */
     public function doRegister(Request $request){
         $phone = trim($request->phone);
-        $nickname = trim($request->nickname);
+        $nickname = trim($request->user_name);
         $type = trim($request->type);
         if(!$phone)fun_respon(0, '缺少手机号！');
         if(!$nickname)fun_respon(0, '缺少姓名！');
