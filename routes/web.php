@@ -46,6 +46,8 @@ Route::group(['prefix'=>'subscribe'], function(){
     Route::any('getcity', 'Web\SubscribeController@getcity');
     Route::any('suppy', 'Web\SubscribeController@suppy');
 });
+Route::get('yuyue', 'Web\SubscribeController@infopage');
+
 
 
 
