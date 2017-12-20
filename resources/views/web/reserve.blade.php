@@ -99,22 +99,33 @@
 
         $('#province').change(function(){
             var num = $(this).val();
-            $('#city').css('display', 'block');
-            alert(num);
             $.ajax({
                 url : '/subscribe/getcity',
                 type : 'post',
                 data : {num:num},
                 dataType : 'json',
                 success : function(msg){
-                    console.log(msg)
+                    if (msg.result == 1) {
+                        $('#city').css('display', 'block').html(msg.data);
+                    }
                 }
             })
         });
 
 
         $('#city').change(function(){
-            $('#area').css('display', 'block');
+            var num = $(this).val();
+            $.ajax({
+                url : '/subscribe/getcity',
+                type : 'post',
+                data : {num:num},
+                dataType : 'json',
+                success : function(msg){
+                    if (msg.result == 1) {
+                        $('#city').css('display', 'block').html(msg.data);
+                    }
+                }
+            })
         });
     });
 </script>
