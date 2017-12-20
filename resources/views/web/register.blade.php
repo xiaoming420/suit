@@ -83,11 +83,11 @@
             data : {phone:phone,user_name:user_name,sex:sex},
             dateType : 'json',
             success : function(msg){
-                if (msg.result == '1')
+                if (msg.result == 1)
                 {
                     window.location.href = '/suit/reserve';
                 } else {
-                    alert(msg.error);
+                    alert(123132);
                 }
             },
             error : function(msg){
