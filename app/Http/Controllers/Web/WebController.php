@@ -25,7 +25,6 @@ class WebController extends Controller
             $_SESSION['open_id'] = $userInfo['openid'];
             $_SESSION['unionid'] = (isset($userInfo['unionid']) && !empty($userInfo['unionid'])) ? $userInfo['unionid'] : $userInfo['openid'];
 
-            //$where['openid'] = $userInfo['openid'];
             $arr['openid'] = $userInfo['openid'];
             $arr['nickname'] = isset($userInfo['nickname']) ? base64_encode($userInfo['nickname']) : '';
             $arr['gender'] = isset($userInfo['sex']) ? $userInfo['sex'] : 0;
