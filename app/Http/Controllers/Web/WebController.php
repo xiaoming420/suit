@@ -33,7 +33,7 @@ class WebController extends Controller
             $_SESSION['open_id'] = $userInfo['openid'];
 
             $info = users::where(['openid'=>$userInfo['openid']])->first();
-            if(!$info){
+            if(!$info) {
                 $arr['openid'] = $userInfo['openid'];
                 //$arr['nickname'] = isset($userInfo['nickname']) ? base64_encode($userInfo['nickname']) : '';
                 /*$arr['nickname'] = isset($userInfo['nickname']) ? ($userInfo['nickname']) : '';
@@ -48,7 +48,7 @@ class WebController extends Controller
                 $info->save();
             }
         }
-        return view('web/register');
+        return view('web/register',['info'=>$info]);
     }
 
     /**
