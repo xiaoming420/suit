@@ -44,6 +44,7 @@ Route::group(['prefix'=>'suit'], function(){
 Route::group(['prefix'=>'subscribe'], function(){
     Route::get('infopage', 'Web\SubscribeController@infopage'); // 预约界面
     Route::any('getcity', 'Web\SubscribeController@getcity');
+    Route::any('suppy', 'Web\SubscribeController@suppy');
 });
 
 

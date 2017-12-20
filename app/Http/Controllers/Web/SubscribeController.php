@@ -38,4 +38,11 @@ class SubscribeController extends Controller
         }
         fun_respon(1, $str);
     }
+
+    // 申请预约
+    public function suppy(Request $request)
+    {
+        $data = $request->only(['name','sex','phone','cont','province','city','area','detail']);
+        var_dump($data);
+    }
 }

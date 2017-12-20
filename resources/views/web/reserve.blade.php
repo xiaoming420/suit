@@ -20,8 +20,6 @@
 </script>
 <body>
 <div class="banner"><img src="/web/images/bann002.jpg" /></div>
-
-<form action="javascript:;">
 <div class="contain containbot75">
     <p class="itemnav">基本信息</p>
     <div class="iteminfo">
@@ -68,17 +66,11 @@
     </div>
 </div>
 <div class="bottomfixed subtnbox">
-    {{--<p class="subtn">免费上门 量身定制</p>--}}
-    <input type="submit" value="免费上门 量身定制" class="subtn">
+    <p class="subtn">免费上门 量身定制</p>
 </div>
-</form>
 </body>
 <script>
     $(function(){
-        $('form').submit(function(){
-            console.log($(this).serialize());
-            return false;
-        });
 
         $('.subtn').click(function(){
 
@@ -89,6 +81,7 @@
             var province = $('#province :selected').text();
             var city = $('#city :selected').text();
             var area = $('#area :selected').text();
+            var detail = $('#detail').val();
             var rule = /^1[34578]{1}\d{9}$/;
 
             console.log(province)
@@ -103,15 +96,16 @@
                 alert('请填写正确的手机号');
                 return false;
             }
-
+            var data = {name:name,sex:sex,phone:phone,cont:cont,province:province,city:city,area:area,detail:detail};
             $.ajax({
                 url : '/subscribe/suppy',
                 type : 'post',
-                data : {num:num},
+                data : data,
                 dataType : 'json',
                 success : function(msg){
+                    console.log(msg)
                     if (msg.result == 1) {
-                        $('#city').css('display', 'block').html(msg.data);
+
                     }
                 }
             });
