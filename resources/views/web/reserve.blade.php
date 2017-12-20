@@ -47,8 +47,23 @@
     </div>
     <p class="itemnav">量体地址</p>
     <div class="iteminfo">
-        <input type="text" placeholder="省市区" class="itemput borderbot addressicon" disabled="disabled"/>
-        <input type="text" placeholder="请输入详细地址" class="itemput" />
+        <select name="province" id="province">
+            <option value="11">北京市</option>
+            <option value="12">天津市</option>
+            <option value="13">河北省</option>
+        </select>
+        <select name="city" id="city" style="display: none">
+            <option value="11">北京市</option>
+            <option value="12">天津市</option>
+            <option value="13">河北省</option>
+        </select>
+        <select name="area" id="area" style="display: none">
+            <option value="11">北京市</option>
+            <option value="12">天津市</option>
+            <option value="13">河北省</option>
+        </select>
+        {{--<input type="text" placeholder="省市区" class="itemput borderbot addressicon" disabled="disabled"/>--}}
+        <input type="text" id="detail" placeholder="请输入详细地址" class="itemput" />
     </div>
     <p class="itemnav">备注</p>
     <div class="iteminfo">
@@ -69,10 +84,12 @@
             var rule = /^1[34578]{1}\d{9}$/;
 
             if (!name) {
-                alert('请留下您的大名=.=');
+                alert('请留下您的姓名');
+                return false;
             }
             if (!rule.test(phone)) {
                 alert('请填写正确的手机号');
+                return false;
             }
 
 
@@ -83,6 +100,14 @@
 
 
 
+        });
+
+        $('#province').change(function(){
+            $('#city').style('display', 'block');
+        });
+
+        $('#city').change(function(){
+            $('#area').style('display', 'block');
         });
     });
 </script>
