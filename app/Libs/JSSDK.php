@@ -5,8 +5,8 @@ use Illuminate\Support\Facades\Redis;
 class JSSDK {
 
 
-    private $appid = 'wx5dd4f5ae95592d61';
-    private $secrect = 'abd091a9ff677acbd84821dbe26725ff';
+    private $appid = 'wx12274ac086391669';
+    private $secrect = 'd4624c36b6795d1d99dcf0547af5443d';
     private $accessToken;
 
     public $data = null;
@@ -233,7 +233,7 @@ class JSSDK {
      */
     private function __CreateOauthUrlForUserCode($redirectUrl)
     {
-        $urlObj["appid"] = env('WX_APPID','wxca2ea145e9162427');//WxPayConfig::APPID;
+        $urlObj["appid"] = env('WX_APPID','wx12274ac086391669');//WxPayConfig::APPID;
         $urlObj["redirect_uri"] = "$redirectUrl";
         $urlObj["response_type"] = "code";
         $urlObj["scope"] = "snsapi_userinfo";
@@ -281,8 +281,8 @@ class JSSDK {
      */
     private function __CreateOauthUrlForOpenid($code)
     {
-        $urlObj["appid"] = env('WX_APPID','wx1985bd0909bbc1f9');//WxPayConfig::APPID;
-        $urlObj["secret"] = env('WX_APPSECRET','4e274ce907cf7cda0fa79876c3f2f911');//WxPayConfig::APPSECRET;
+        $urlObj["appid"] = env('WX_APPID','wx12274ac086391669');//WxPayConfig::APPID;
+        $urlObj["secret"] = env('WX_APPSECRET','d4624c36b6795d1d99dcf0547af5443d');//WxPayConfig::APPSECRET;
         $urlObj["code"] = $code;
         $urlObj["grant_type"] = "authorization_code";
         $bizString = $this->ToUrlParams($urlObj);
