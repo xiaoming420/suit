@@ -32,7 +32,6 @@ class DiscountController extends Controller
      */
     public function doEditDiscount(Request $request)
     {
-        var_dump($request);exit;
         $money = (int)$request->money;
         if (empty($money)) {
             return fun_respon_head(0, '缺少参数', 0);
@@ -41,6 +40,6 @@ class DiscountController extends Controller
         if (!$res) {
             return fun_error_view(0, '添加数据失败', 0);
         }
-
+        return fun_error_view(1, '设置成功', 'discountdetail');
     }
 }

@@ -66,7 +66,7 @@ Route::group(['prefix'=>'adm', 'middleware'=>['adm.token']], function(){
 
     Route::group(['prefix'=>'discount'], function(){
         Route::get('discountdetail', 'Adm\Users\DiscountController@discountDetail');
-
+        Route::post('doeditdiscount', 'Adm\Users\DiscountController@doEditDiscount');
     });
 
 
