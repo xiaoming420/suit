@@ -52,12 +52,12 @@
             <option value="12">天津市</option>
             <option value="13">河北省</option>
         </select>
-        <select name="province" id="province" style="display: none">
+        <select name="city" id="city" style="display: none">
             <option value="11">北京市</option>
             <option value="12">天津市</option>
             <option value="13">河北省</option>
         </select>
-        <select name="province" id="province" style="display: none">
+        <select name="area" id="area" style="display: none">
             <option value="11">北京市</option>
             <option value="12">天津市</option>
             <option value="13">河北省</option>
@@ -100,6 +100,14 @@
 
 
 
+        });
+
+        $('#province').change(function(){
+            $('#city').style('display', 'block');
+        });
+
+        $('#city').change(function(){
+            $('#area').style('display', 'block');
         });
     });
 </script>
