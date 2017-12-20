@@ -59,12 +59,10 @@
         {{--<span class="checkicon active"><input type="checkbox" /></span>--}}
         <p class="">立即注册即可领取硕兰专属<span class="redfont">红包</span></p>
     </div>
-    <div class="loginitembtn">
-        <input type="submit" class="loginsumbit" id="submit"  value="登录"/>
-    </div>
+    <a class="regbtn" id="submit">立即注册</a>
 </div>
 <div class="bottomfixed">
-    <p class="notepros">温馨提示：注册完成后会有硕兰专业量体师主动与您联系，请保持手机通常</p>
+    <p class="notepros">温馨提示：注册完成后会有硕兰专业a 师主动与您联系，请保持手机通常</p>
 </div>
 </body>
 
