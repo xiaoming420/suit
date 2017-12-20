@@ -19,6 +19,7 @@ function msectime()
 
 class TestController extends Controller
 {
+
     //测试获取token
     public function gettoken(Request $request)
     {
@@ -32,6 +33,7 @@ class TestController extends Controller
         var_dump($res);
 
     }
+
 
     public function tests()
     {

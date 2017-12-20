@@ -40,6 +40,13 @@ Route::group(['prefix'=>'suit'], function(){
 });
 
 
+// 预约服务
+Route::group(['prefix'=>'subscribe'], function(){
+    Route::get('infopage', 'Web\SubscribeController@infopage'); // 预约界面
+    Route::any('test', 'Web\SubscribeController@test');
+});
+
+
 
 
 Route::group(['prefix'=>'adm', 'middleware'=>['adm.token']], function(){
@@ -71,7 +78,5 @@ Route::group(['prefix'=>'adm', 'middleware'=>['adm.token']], function(){
         Route::get('discountdetail', 'Adm\Users\DiscountController@discountDetail');
         Route::post('doeditdiscount', 'Adm\Users\DiscountController@doEditDiscount');
     });
-
-
 
 });
