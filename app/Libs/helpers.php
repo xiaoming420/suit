@@ -96,7 +96,7 @@ if (! function_exists('fun_respon')) {
             $result['msg'] = $res;
             $result['code'] = $code;
         }
-        //header("Content-Type: application/json; charset=UTF-8");
+        header("Content-Type: application/json; charset=UTF-8");
         exit(json_encode($result));
     }
 }

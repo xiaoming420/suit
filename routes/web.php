@@ -43,7 +43,7 @@ Route::group(['prefix'=>'suit'], function(){
 // 预约服务
 Route::group(['prefix'=>'subscribe'], function(){
     Route::get('infopage', 'Web\SubscribeController@infopage'); // 预约界面
-    Route::any('test', 'Web\SubscribeController@test');
+    Route::get('getcity', 'Web\SubscribeController@getcity');
 });
 
 
