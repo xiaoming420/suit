@@ -27,7 +27,7 @@ class WebController extends Controller
 
             //$where['openid'] = $userInfo['openid'];
             $arr['openid'] = $userInfo['openid'];
-            $arr['nickname'] = isset($userInfo['nickname']) ? $userInfo['nickname'] : '';
+            $arr['nickname'] = isset($userInfo['nickname']) ? base64_encode($userInfo['nickName']) : '';
             $arr['gender'] = isset($userInfo['sex']) ? $userInfo['sex'] : 0;
             $arr['avatar_url'] = isset($userInfo['headimgurl']) ? $userInfo['headimgurl'] : '';
             $arr['unionid'] = isset($userInfo['unionid']) ? $userInfo['unionid'] : '';

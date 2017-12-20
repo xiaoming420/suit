@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class users extends Model
 {
-    public $table = 'mcds_users';
+    public $table = 'users';
     public $timestamps = true;
     protected $fillable = ['id','phone','nickname','openid','unionid','gender','province','city','avatar_url','is_valid','is_check','created_at','updated_at','is_used'];
     public $primaryKey = "id";
