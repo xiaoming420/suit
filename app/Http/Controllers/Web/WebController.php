@@ -24,18 +24,20 @@ class WebController extends Controller
             }
             $_SESSION['open_id'] = $userInfo['openid'];
             $_SESSION['unionid'] = (isset($userInfo['unionid']) && !empty($userInfo['unionid'])) ? $userInfo['unionid'] : $userInfo['openid'];
-
-            $arr['openid'] = $userInfo['openid'];
-            $arr['nickname'] = isset($userInfo['nickname']) ? base64_encode($userInfo['nickname']) : '';
-            $arr['gender'] = isset($userInfo['sex']) ? $userInfo['sex'] : 0;
-            $arr['avatar_url'] = isset($userInfo['headimgurl']) ? $userInfo['headimgurl'] : '';
-            $arr['unionid'] = isset($userInfo['unionid']) ? $userInfo['unionid'] : '';
-            $arr['city'] = isset($userInfo['city']) ? $userInfo['city'] : '';
-            $arr['province'] = isset($userInfo['province']) ? $userInfo['province'] : '';
-            $arr['country'] = isset($userInfo['country']) ? $userInfo['country'] : '';
-            //保存用户信息
-            $info = users::create($arr);
-             $info->save();
+            $info = users::where(['openid'=>$userInfo['openid']])->first();
+            if(!$info){
+                $arr['openid'] = $userInfo['openid'];
+                $arr['nickname'] = isset($userInfo['nickname']) ? base64_encode($userInfo['nickname']) : '';
+                $arr['gender'] = isset($userInfo['sex']) ? $userInfo['sex'] : 0;
+                $arr['avatar_url'] = isset($userInfo['headimgurl']) ? $userInfo['headimgurl'] : '';
+                $arr['unionid'] = isset($userInfo['unionid']) ? $userInfo['unionid'] : '';
+                $arr['city'] = isset($userInfo['city']) ? $userInfo['city'] : '';
+                $arr['province'] = isset($userInfo['province']) ? $userInfo['province'] : '';
+                $arr['country'] = isset($userInfo['country']) ? $userInfo['country'] : '';
+                //保存用户信息
+                $info = users::create($arr);
+                $info->save();
+            }
         }
         return view('web/register');
     }
