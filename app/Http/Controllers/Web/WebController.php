@@ -27,7 +27,6 @@ class WebController extends Controller
         if( !isset($_SESSION['open_id']) || empty($_SESSION['open_id']) ) {
             $tools = new JSSDK();
             $userInfo = $tools->__GetUserInfo();
-            var_dump($userInfo);exit;
             if (!isset($userInfo['openid']) || empty($userInfo['openid'])) {
                 return fun_error_page('网络错误，扫码重试');
             }
@@ -37,13 +36,13 @@ class WebController extends Controller
             if(!$info){
                 $arr['openid'] = $userInfo['openid'];
                 //$arr['nickname'] = isset($userInfo['nickname']) ? base64_encode($userInfo['nickname']) : '';
-                $arr['nickname'] = isset($userInfo['nickname']) ? ($userInfo['nickname']) : '';
+                /*$arr['nickname'] = isset($userInfo['nickname']) ? ($userInfo['nickname']) : '';
                 $arr['gender'] = isset($userInfo['sex']) ? $userInfo['sex'] : 0;
                 $arr['avatar_url'] = isset($userInfo['headimgurl']) ? $userInfo['headimgurl'] : '';
                 $arr['unionid'] = isset($userInfo['unionid']) ? $userInfo['unionid'] : '';
                 $arr['city'] = isset($userInfo['city']) ? $userInfo['city'] : '';
                 $arr['province'] = isset($userInfo['province']) ? $userInfo['province'] : '';
-                $arr['country'] = isset($userInfo['country']) ? $userInfo['country'] : '';
+                $arr['country'] = isset($userInfo['country']) ? $userInfo['country'] : '';*/
                 //保存用户信息
                 $info = users::create($arr);
                 $info->save();
