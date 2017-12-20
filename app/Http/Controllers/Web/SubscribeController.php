@@ -13,4 +13,29 @@ class SubscribeController extends Controller
         //$provines = city::getprovines();
         return view('web.reserve');
     }
+
+    // 获取市区
+    public function getcity(Request $request)
+    {
+        $type = $request->input('type', 1);
+        $num = $request->input('num');
+        if (empty($num)) {
+            fun_respon(0, '缺少参数');
+        }
+        $str = "<option value='0'>请选择对应</option>";
+        if ($type == 1) { // 获取对应的市
+            $str = "<option value='0'>请选择市</option>";
+            $list = city::where('parent_id', $num)->get()->toArray();
+        } else {
+            // 获取对应的省
+            $str = "<option value='0'>请选择区</option>";
+            $list = city::where('parent_id', $num)->get()->toArray();
+        }
+        if ($list) {
+            foreach ($list as $v) {
+                $str .= "<option value='".$v['id']."'>".$v['name']."</option>";
+            }
+        }
+        fun_respon(1, $str);
+    }
 }

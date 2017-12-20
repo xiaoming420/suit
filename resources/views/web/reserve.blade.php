@@ -54,16 +54,8 @@
             <option value="13">河北省</option>
         </select>
         <select name="city" id="city" style="display: none;float:left;margin:5px 3px">
-            <option value="0">请选择市</option>
-            <option value="11">北京市</option>
-            <option value="12">天津市</option>
-            <option value="13">河北省</option>
         </select>
         <select name="area" id="area" style="display: none;float:left;margin:5px 3px">
-            <option value="0">请选择区</option>
-            <option value="11">北京市</option>
-            <option value="12">天津市</option>
-            <option value="13">河北省</option>
         </select>
         {{--<input type="text" placeholder="省市区" class="itemput borderbot addressicon" disabled="disabled"/>--}}
         <input type="text" id="detail" placeholder="请输入详细地址" class="itemput" />
@@ -106,8 +98,20 @@
         });
 
         $('#province').change(function(){
+            var num = $(this).val();
             $('#city').css('display', 'block');
+            alert(num);
+            $.ajax({
+                url : '/subscribe/getcity',
+                type : 'get',
+                data : {num:num},
+                dataType : 'json',
+                success : function(msg){
+                    console.log(msg)
+                }
+            })
         });
+
 
         $('#city').change(function(){
             $('#area').css('display', 'block');
