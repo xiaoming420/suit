@@ -72,6 +72,8 @@
             console.log(name)
             console.log(sex)
 
+
+
         });
     });
 </script>
