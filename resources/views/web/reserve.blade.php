@@ -122,7 +122,7 @@
                 dataType : 'json',
                 success : function(msg){
                     if (msg.result == 1) {
-                        $('#city').css('display', 'block').html(msg.data);
+                        $('#area').css('display', 'block').html(msg.data);
                     }
                 }
             })
