@@ -34,8 +34,8 @@ class WebController extends Controller
             $_SESSION['open_id'] = $userInfo['openid'];
             $_SESSION['unionid'] = (isset($userInfo['unionid']) && !empty($userInfo['unionid']))?$userInfo['unionid']:$userInfo['openid'];
         }
-        $jssdk = new JSSDK();
-        $signPackage = $jssdk->getSignPackage(2);
+        //$jssdk = new JSSDK();
+        //$signPackage = $jssdk->getSignPackage(2);
 
         return view('web/register');
     }

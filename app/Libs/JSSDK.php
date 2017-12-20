@@ -13,7 +13,7 @@ class JSSDK {
     public $user = null;
 
   public function __construct() {
-      $this->accessToken = $this->getToken();
+      //$this->accessToken = $this->getToken();
   }
 
     /*
@@ -24,6 +24,7 @@ class JSSDK {
     public function __GetUserInfo()
     {
         $this->GetCode();
+        
         $open_id = $this->user['openid'];
         $access_token = $this->user['access_token'];
         $url = "https://api.weixin.qq.com/sns/userinfo?access_token=$access_token&openid=$open_id&lang=zh_CN";
