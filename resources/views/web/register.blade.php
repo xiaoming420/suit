@@ -84,11 +84,9 @@
             dateType : 'json',
             success : function(msg){
                 if (msg.result == 1)
-                {
-                    console.log(111)
-                    window.location.href = '/suit/reserve';
+                {   alert('注册成功！');
+                    window.location.href = 'http://mp.weixin.qq.com/bizmall/mallshelf?id=&t=mall/list&biz=MzU3NTE0ODkyMg==&shelf_id=3&showwxpaytitle=1#wechat_redirect';
                 } else {
-                    console.log(222)
                     console.log(msg);
                 }
             },
