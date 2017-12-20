@@ -47,19 +47,19 @@
     </div>
     <p class="itemnav">量体地址</p>
     <div class="iteminfo">
-        <select name="province" id="province">
+        <select name="province" id="province" style="float:left;margin:5px 3px">
             <option value="0">请选择省</option>
             <option value="11">北京市</option>
             <option value="12">天津市</option>
             <option value="13">河北省</option>
         </select>
-        <select name="city" id="city" style="display: none">
+        <select name="city" id="city" style="display: none;float:left;margin:5px 3px">
             <option value="0">请选择市</option>
             <option value="11">北京市</option>
             <option value="12">天津市</option>
             <option value="13">河北省</option>
         </select>
-        <select name="area" id="area" style="display: none">
+        <select name="area" id="area" style="display: none;float:left;margin:5px 3px">
             <option value="0">请选择区</option>
             <option value="11">北京市</option>
             <option value="12">天津市</option>
