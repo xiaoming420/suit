@@ -9,11 +9,33 @@ class JSSDK {
     private $secrect = '76164f6824c72e1269f784cb98a309f1';
     private $accessToken;
 
-
+    public $data = null;
+    public $user = null;
 
   public function __construct() {
       $this->accessToken = $this->getToken();
   }
+
+    /*
+     *
+     * 获取用户详细信息
+     * @return 用户详细信息
+     */
+    public function __GetUserInfo()
+    {
+        $this->GetCode();
+        $open_id = $this->user['openid'];
+        $access_token = $this->user['access_token'];
+        $url = "https://api.weixin.qq.com/sns/userinfo?access_token=$access_token&openid=$open_id&lang=zh_CN";
+        $ch = curl_init();
+        curl_setopt($ch,CURLOPT_URL,$url);
+        curl_setopt($ch,CURLOPT_HEADER,0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1 );
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+        $res = curl_exec($ch);
+        curl_close($ch);
+        return json_decode($res,true);
+    }
 
     /**
      * @param $appid
