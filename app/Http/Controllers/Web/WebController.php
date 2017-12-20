@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Libs\JSSDK;
 use App\Models\adm_user;
+use App\Models\discount;
 use App\Models\group_qrcode;
 use App\Models\users;
 use Illuminate\Http\Request;
@@ -56,10 +57,10 @@ class WebController extends Controller
      */
     public function doRegister(Request $request){
         $phone = trim($request->phone);
-        $nickname = trim($request->user_name);
+        $name = trim($request->user_name);
         $type = trim($request->type);
         if(!$phone)fun_respon(0, '缺少手机号！');
-        if(!$nickname)fun_respon(0, '缺少姓名！');
+        if(!$name)fun_respon(0, '缺少姓名！');
         $rule  = "/^1[34578]{1}\d{9}$/";
         $result = preg_match($rule,$phone);
         if(!$result){
@@ -72,7 +73,14 @@ class WebController extends Controller
         if(!isset($_SESSION['open_id']) || empty($_SESSION['open_id']) ){
             return view('web/register');
         }
-        $res = users::where(['openid'=>$_SESSION['open_id']])->update(['phone'=>$phone]);
+        //查询红包
+        $disc = discount::orderBy('id','DESC')->first();
+        if($disc){
+            $discount = $disc['money'];
+        }else{
+            $discount = 0;
+        }
+        $res = users::where(['openid'=>$_SESSION['open_id']])->update(['phone'=>$phone,'discount_money'=>$discount,'name'=>$name]);
         if(!$res){
             fun_respon(0, '注册失败！');
         }
