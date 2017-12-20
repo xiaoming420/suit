@@ -35,7 +35,8 @@ class WebController extends Controller
             $info = users::where(['openid'=>$userInfo['openid']])->first();
             if(!$info){
                 $arr['openid'] = $userInfo['openid'];
-                $arr['nickname'] = isset($userInfo['nickname']) ? base64_encode($userInfo['nickname']) : '';
+                //$arr['nickname'] = isset($userInfo['nickname']) ? base64_encode($userInfo['nickname']) : '';
+                $arr['nickname'] = isset($userInfo['nickname']) ? ($userInfo['nickname']) : '';
                 $arr['gender'] = isset($userInfo['sex']) ? $userInfo['sex'] : 0;
                 $arr['avatar_url'] = isset($userInfo['headimgurl']) ? $userInfo['headimgurl'] : '';
                 $arr['unionid'] = isset($userInfo['unionid']) ? $userInfo['unionid'] : '';
