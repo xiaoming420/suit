@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Libs\JSSDK;
 use App\Models\adm_user;
 use App\Models\group_qrcode;
+use App\Models\users;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -15,29 +16,33 @@ class WebController extends Controller
     {
         $ali_or_wechat = fun_aliorwechat(); // 获取是在wechat打开还是ali打开
         if ($ali_or_wechat != 1) return fun_error_page('请在微信客户端扫描打开');
-
+        if( !isset($_SESSION['open_id']) || empty($_SESSION['open_id']) ) {
             $tools = new JSSDK();
             $userInfo = $tools->__GetUserInfo();
-            var_dump($userInfo);exit;
-            if(!isset($userInfo['openid']) || empty($userInfo['openid']))
-            {
-                return array();
-            }
-            $where['openid'] = $userInfo['openid'];
-            $_SESSION['open_id'] = $userInfo['openid'];
-            $_SESSION['unionid'] = isset($userInfo['unionid'])?$userInfo['unionid']:$userInfo['openid'];
-
-            if(!isset($userInfo['openid']) || empty($userInfo['openid']))
-            {
+            if (!isset($userInfo['openid']) || empty($userInfo['openid'])) {
                 return fun_error_page('网络错误，扫码重试');
             }
             $_SESSION['open_id'] = $userInfo['openid'];
-            $_SESSION['unionid'] = (isset($userInfo['unionid']) && !empty($userInfo['unionid']))?$userInfo['unionid']:$userInfo['openid'];
+            $_SESSION['unionid'] = (isset($userInfo['unionid']) && !empty($userInfo['unionid'])) ? $userInfo['unionid'] : $userInfo['openid'];
 
+            $where['openid'] = $userInfo['openid'];
+            $arr['openid'] = $userInfo['openid'];
+            $arr['nickname'] = isset($userInfo['nickname']) ? $userInfo['nickname'] : '';
+            $arr['sex'] = isset($userInfo['sex']) ? $userInfo['sex'] : 0;
+            $arr['type'] = 1;
+            $arr['headimgurl'] = isset($userInfo['headimgurl']) ? $userInfo['headimgurl'] : '';
+            $arr['unionid'] = isset($userInfo['unionid']) ? $userInfo['unionid'] : '';
+            $arr['city'] = isset($userInfo['city']) ? $userInfo['city'] : '';
+            $arr['province'] = isset($userInfo['province']) ? $userInfo['province'] : '';
+            $arr['country'] = isset($userInfo['country']) ? $userInfo['country'] : '';
+            //保存用户信息
+            users::created($arr);
+        }
         //$jssdk = new JSSDK();
         //$signPackage = $jssdk->getSignPackage(2);
 
         return view('web/register');
+
     }
 
     /**
