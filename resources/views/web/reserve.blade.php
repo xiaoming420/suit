@@ -28,20 +28,20 @@
         <div class="itemput borderbot sexput">
             <span class="itempan">姓名</span>
             <div class="itemcont">
-                <input type="text" class="itemcontput"/>
+                <input type="text" id="name" class="itemcontput"/>
             </div>
         </div>
         <div class="itemput borderbot sexput">
             <span class="itempan">性别</span>
             <div class="itemcont">
-                <p class="sexpro active"><span class="checkicon02"><input type="radio" name="sex" checked="checked"/></span><span class="">男</span></p>
-                <p class="sexpro"><span class="checkicon02"><input type="radio" name="sex"/></span><span class="">女</span></p>
+                <p class="sexpro active"><span class="checkicon02"><input type="radio" name="sex" value="1" checked="checked"/></span><span class="">男</span></p>
+                <p class="sexpro"><span class="checkicon02"><input type="radio" name="sex" value="2" /></span><span class="">女</span></p>
             </div>
         </div>
         <div class="itemput sexput">
             <span class="itempan">手机号</span>
             <div class="itemcont">
-                <input type="text" class="itemcontput"/>
+                <input type="text" id="phone" class="itemcontput"/>
             </div>
         </div>
     </div>
@@ -52,11 +52,29 @@
     </div>
     <p class="itemnav">备注</p>
     <div class="iteminfo">
-        <textarea placeholder="偏好样式或其他要求" class="itemarea"></textarea>
+        <textarea placeholder="偏好样式或其他要求" id="cont" class="itemarea"></textarea>
     </div>
 </div>
 <div class="bottomfixed subtnbox">
     <p class="subtn">免费上门 量身定制</p>
 </div>
 </body>
+<script>
+    $(function(){
+        $('.subtn').click(function(){
+            var cont = $('#cont').html();
+            var phone = $('#phone').val();
+            var name = $('#name').val();
+            var sex = $('input[name=sex]:checked').val();
+
+            console.log(cont)
+            console.log(phone)
+            console.log(name)
+            console.log(sex)
+
+
+
+        });
+    });
+</script>
 </html>
