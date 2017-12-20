@@ -8,7 +8,7 @@ class users extends Model
 {
     public $table = 'users';
     public $timestamps = false;
-    protected $fillable = ['id','phone','nickname','openid','unionid','gender','province','city','avatar_url','is_valid','is_check','created_at','updated_at'];
+    protected $fillable = ['id','phone','nickname','openid','unionid','gender','province','city','avatar_url','is_valid','is_check','created_at','updated_at','is_used'];
     public $primaryKey = "id";
 
     protected function userinfo($unionid)
