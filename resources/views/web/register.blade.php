@@ -85,8 +85,10 @@
             success : function(msg){
                 if (msg.result == 1)
                 {
+                    console.log(111)
                     window.location.href = '/suit/reserve';
                 } else {
+                    console.log(222)
                     console.log(msg);
                 }
             },
