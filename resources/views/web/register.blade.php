@@ -87,7 +87,7 @@
                 {   alert('注册成功！');
                     window.location.href = 'http://mp.weixin.qq.com/bizmall/mallshelf?id=&t=mall/list&biz=MzU3NTE0ODkyMg==&shelf_id=3&showwxpaytitle=1#wechat_redirect';
                 } else {
-                    console.log(msg);
+                    alert(msg);
                 }
             },
             error : function(msg){
