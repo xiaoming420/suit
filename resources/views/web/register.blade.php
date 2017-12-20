@@ -71,14 +71,12 @@
     var state = {url:'/suit/register'};
     history.replaceState(state,'','/suit/register');
 
-    $(function () {
         @if(isset($info['phone']) && !empty($info['phone']))
             alert('您已经注册过了！');
             setTimeout(function () {
                 window.location.href = 'http://mp.weixin.qq.com/bizmall/mallshelf?id=&t=mall/list&biz=MzU3NTE0ODkyMg==&shelf_id=3&showwxpaytitle=1#wechat_redirect';
             },2000)
         @endif
-    })
 
     $(document).on("touchend","#submit",function(){
         var phone = $("input[name='phone']").val();
