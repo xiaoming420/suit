@@ -57,10 +57,10 @@ class WebController extends Controller
      */
     public function doRegister(Request $request){
         $phone = trim($request->phone);
-        $nickname = trim($request->user_name);
+        $name = trim($request->user_name);
         $type = trim($request->type);
         if(!$phone)fun_respon(0, '缺少手机号！');
-        if(!$nickname)fun_respon(0, '缺少姓名！');
+        if(!$name)fun_respon(0, '缺少姓名！');
         $rule  = "/^1[34578]{1}\d{9}$/";
         $result = preg_match($rule,$phone);
         if(!$result){
@@ -80,7 +80,7 @@ class WebController extends Controller
         }else{
             $discount = 0;
         }
-        $res = users::where(['openid'=>$_SESSION['open_id']])->update(['phone'=>$phone,'discount_money'=>$discount]);
+        $res = users::where(['openid'=>$_SESSION['open_id']])->update(['phone'=>$phone,'discount_money'=>$discount,'name'=>$name]);
         if(!$res){
             fun_respon(0, '注册失败！');
         }

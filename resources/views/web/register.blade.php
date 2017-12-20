@@ -87,7 +87,7 @@
                 {
                     window.location.href = '/suit/reserve';
                 } else {
-                    alert(123132);
+                    console.log(msg);
                 }
             },
             error : function(msg){
