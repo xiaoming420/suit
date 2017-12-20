@@ -3,6 +3,45 @@
  * 全局自定义函数
  */
 
+if (!function_exists('fun_aliorwechat')) {
+    /**
+     * 统一判断是微信还是者支付宝
+     */
+    function fun_aliorwechat()
+    {
+        if(  strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false  )//微信
+        {
+            return 1;
+        }elseif(  strpos($_SERVER['HTTP_USER_AGENT'], 'AlipayClient') !== false  )//支付宝
+        {
+            return 2;
+        }else
+        {
+            return 3;
+        }
+    }
+}
+
+
+if (! function_exists('send_message')) {
+    /** 发送短信
+     *  tpl_id 模板id
+     *  content 内容
+     */
+    function send_message( $phone,$tpl_id,$content ) {
+        //发送短信通知
+        $url = 'http://v.juhe.cn/sms/send';
+        $smsConf = array(
+            'key'   => 'fe35e40dde51035179613b2b02d3de7c',
+            'mobile'    => $phone,
+            'tpl_id'    => $tpl_id,
+            'tpl_value' =>'#code#='.$content
+        );
+        fun_curl($url,$smsConf);
+    }
+}
+
+
  if (! function_exists('get_time')) {
     /**
      * Flatten a multi-dimensional array into a single level.
@@ -263,55 +302,4 @@ if (!function_exists('fun_error_view')) {
 
 }
 
-if (!function_exists('faces_data')) {
-    function faces_data($true)
-    {
-        $arr = [
-            [
-                'id' => 1,
-                'name' => '我要积分',
-                'value' => 0,
-                'is_register' => 1,
-            ],
-            [
-                'id' => 2,
-                'name' => '积分商城',
-                'value' => 0,
-            ],
-            [
-                'id' => 3,
-                'name' => '麦麦童乐会',
-                'value' => 0,
-                'is_register' => 1,
-            ],
-            [
-                'id' => 4,
-                'name' => '开心通告栏',
-                'value' => 0,
-            ],
-            [
-                'id' => 5,
-                'name' => '麦麦开心跳',
-                'value' => 0,
-            ],
-            [
-                'id' => 6,
-                'name' => '麦麦一起玩',
-                'value' => 0,
-            ],
-            [
-                'id' => 9,
-                'name' => '麦有礼',
-                'value' => 0,
-                'banner_url' => '',
-                'is_register' => 0,
-            ]
-        ];
-
-        /*if (!$true) {
-            $arr[] = ['id' => 3,'name' => '麦麦童乐会','value' => 1, 'is_register'=>1];
-        }*/
-        return $arr;
-    }
-}
 

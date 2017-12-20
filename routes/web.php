@@ -32,9 +32,15 @@ Route::group(['prefix'=>'adm'], function(){
 });
 
 
+
+
 Route::group(['prefix'=>'suit'], function(){
-    Route::get('register', 'Adm\Users\LoginController@register');
+    Route::get('register', 'Web\WebController@register');
+    Route::get('reserve', 'Web\WebController@reserve');
 });
+
+
+
 
 Route::group(['prefix'=>'adm', 'middleware'=>['adm.token']], function(){
 
@@ -60,5 +66,12 @@ Route::group(['prefix'=>'adm', 'middleware'=>['adm.token']], function(){
         Route::any('delgoods', 'Adm\Goods\GoodsController@delgoods');
 
     });
+
+    Route::group(['prefix'=>'discount'], function(){
+        Route::get('discountdetail', 'Adm\Users\DiscountController@discountDetail');
+        Route::post('doeditdiscount', 'Adm\Users\DiscountController@doEditDiscount');
+    });
+
+
 
 });

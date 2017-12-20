@@ -1,38 +1,56 @@
 <?php
 
-namespace App\Http\Controllers\Adm\Users;
+namespace App\Http\Controllers\Web;
 
+use App\Libs\JSSDK;
 use App\Models\adm_user;
 use App\Models\group_qrcode;
-use App\Models\groups;
-use App\Models\order_helps;
-use App\Models\orders;
 use App\Models\users;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
-class UserController extends Controller
+class WebController extends Controller
 {
-    public function index()
+    public function register()
     {
-        $res = LoginController::decryptToken();
-        $userinfo = adm_user::getOne(['id'=>$res['uid']]);
-        $total_users = users::count('id');      // 用户注册量
-        $data = [
-            'users' => $total_users,
-        ];
-        return view('admin/user/index', ['info'=>$userinfo, 'datas'=>$data]);
+        $ali_or_wechat = fun_aliorwechat(); // 获取是在wechat打开还是ali打开
+        if ($ali_or_wechat != 1) return fun_error_page('请在微信客户端扫描打开');
+        if( !isset($_SESSION['open_id']) || empty($_SESSION['open_id']) ) {
+            $tools = new JSSDK();
+            $userInfo = $tools->__GetUserInfo();
+            if (!isset($userInfo['openid']) || empty($userInfo['openid'])) {
+                return fun_error_page('网络错误，扫码重试');
+            }
+            $_SESSION['open_id'] = $userInfo['openid'];
+            $_SESSION['unionid'] = (isset($userInfo['unionid']) && !empty($userInfo['unionid'])) ? $userInfo['unionid'] : $userInfo['openid'];
+
+            $arr['openid'] = $userInfo['openid'];
+            $arr['nickname'] = isset($userInfo['nickname']) ? base64_encode($userInfo['nickname']) : '';
+            $arr['gender'] = isset($userInfo['sex']) ? $userInfo['sex'] : 0;
+            $arr['avatar_url'] = isset($userInfo['headimgurl']) ? $userInfo['headimgurl'] : '';
+            $arr['unionid'] = isset($userInfo['unionid']) ? $userInfo['unionid'] : '';
+            $arr['city'] = isset($userInfo['city']) ? $userInfo['city'] : '';
+            $arr['province'] = isset($userInfo['province']) ? $userInfo['province'] : '';
+            $arr['country'] = isset($userInfo['country']) ? $userInfo['country'] : '';
+            //保存用户信息
+            $info = users::create($arr);
+             $info->save();
+        }
+        //$jssdk = new JSSDK();
+        //$signPackage = $jssdk->getSignPackage(2);
+
+        return view('web/register');
+
     }
 
     /**
-     * 用户列表
+     * 预约
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function userlist()
+    public function reserve()
     {
-        $list = adm_user::getWhere(['is_valid'=>1]);
-        return view('admin/user/userlist', ['list'=>$list]);
+        return view('web/reserve');
     }
 
     /**
