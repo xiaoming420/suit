@@ -12,6 +12,13 @@ use Illuminate\Support\Facades\Storage;
 
 class WebController extends Controller
 {
+    public function __construct()
+    {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+    }
+
     public function register()
     {
         $ali_or_wechat = fun_aliorwechat(); // 获取是在wechat打开还是ali打开
