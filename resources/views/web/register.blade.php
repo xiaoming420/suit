@@ -59,7 +59,9 @@
         {{--<span class="checkicon active"><input type="checkbox" /></span>--}}
         <p class="">立即注册即可领取硕兰专属<span class="redfont">红包</span></p>
     </div>
-    <a class="regbtn">立即注册</a>
+    <div class="loginitembtn">
+        <input type="submit" class="loginsumbit" id="submit"  value="登录"/>
+    </div>
 </div>
 <div class="bottomfixed">
     <p class="notepros">温馨提示：注册完成后会有硕兰专业量体师主动与您联系，请保持手机通常</p>
@@ -73,37 +75,29 @@
 
 
 
-    $(function(){
-            $('#form_data').submit(function(){
-                var user_name = $('input[name=account]').val();
-                var pass_word = $('input[name=password]').val();
-                if(!user_name){
-                    layer.msg('请填写登陆账号', {icon: 5});
-                    return false;
+    $(document).on("touchend","#submit",function(){
+        var phone = $("input[name='phone']").val();
+        var code = $("input[name='code']").val();
+        if(!phone){alert('手机号不能为空');return false;}
+        if(!(/^1[0-9]{10}$/.test(phone))){alert('手机号格式不正确');return false;}
+        if(!code){alert('密码不能为空');return false;}
+        $.ajax({
+            url : '/supply/login',
+            type : 'post',
+            data : {phone:phone,code:code},
+            dateType : 'json',
+            success : function(msg){
+                if (msg.success == '1')
+                {
+                    window.location.href = '/supply/client';
+                } else {
+                    alert(msg.error);
                 }
-                if(!pass_word){
-                    layer.msg('请填写登陆密码', {icon: 5});
-                    return false;
-                }
-                $.ajax({
-                    url : '/channeladm/dologin',
-                    type : 'post',
-                    dateType : 'json',
-                    data : $(this).serialize(),
-                    success : function(msg){
-                        if(msg.success == 1){
-                            window.location.href = '{{url("channeladm/order/home")}}';
-                        } else {
-                            //alert(msg.error);
-                            layer.msg(msg.error, {icon: 5});
-                            return false;
-                        }
-                    },
-                    error : function(msg){
-                        console.log('error');
-                    }
-                })
-            });
+            },
+            error : function(msg){
+                console.log(msg);
+            }
         });
+    });
 </script>
 </html>
