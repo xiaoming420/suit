@@ -15,10 +15,10 @@ class WebController extends Controller
     {
         $ali_or_wechat = fun_aliorwechat(); // 获取是在wechat打开还是ali打开
         if ($ali_or_wechat != 1) return fun_error_page('请在微信客户端扫描打开');
-        if( !isset($_SESSION['open_id']) || empty($_SESSION['open_id']) )
-        {
+
             $tools = new JSSDK();
             $userInfo = $tools->__GetUserInfo();
+            var_dump($userInfo);exit;
             if(!isset($userInfo['openid']) || empty($userInfo['openid']))
             {
                 return array();
@@ -33,7 +33,7 @@ class WebController extends Controller
             }
             $_SESSION['open_id'] = $userInfo['openid'];
             $_SESSION['unionid'] = (isset($userInfo['unionid']) && !empty($userInfo['unionid']))?$userInfo['unionid']:$userInfo['openid'];
-        }
+
         //$jssdk = new JSSDK();
         //$signPackage = $jssdk->getSignPackage(2);
 
