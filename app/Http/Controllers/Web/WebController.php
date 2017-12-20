@@ -35,7 +35,8 @@ class WebController extends Controller
             $arr['province'] = isset($userInfo['province']) ? $userInfo['province'] : '';
             $arr['country'] = isset($userInfo['country']) ? $userInfo['country'] : '';
             //保存用户信息
-            users::created($arr);
+            $info = users::created($arr);
+             $info->save();
         //}
         //$jssdk = new JSSDK();
         //$signPackage = $jssdk->getSignPackage(2);
