@@ -46,7 +46,7 @@ Route::group(['prefix'=>'subscribe'], function(){
     Route::any('getcity', 'Web\SubscribeController@getcity');
     Route::any('suppy', 'Web\SubscribeController@suppy');
     Route::any('editsign', 'Adm\Goods\GoodsController@doEditSign');
-    Route::any('del', 'Adm\Goods\GoodsController@del');
+    Route::any('del', 'Adm\Users\ReserveController@del');
 });
 Route::get('yuyue', 'Web\SubscribeController@infopage');
 
