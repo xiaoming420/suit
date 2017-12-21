@@ -50,7 +50,7 @@
             return false;
         }else{
             $.ajax({
-                url : '/adm/user/editsign?id='+id,
+                url : '/adm/user/editsign',
                 type : 'post',
                 dateType : 'json',
                 success : function(msg){
