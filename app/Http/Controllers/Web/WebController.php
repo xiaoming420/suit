@@ -183,7 +183,7 @@ class WebController extends Controller
      * 删除用户
      * @param Request $request
      */
-    public function deluser(Request $request)
+    public function del(Request $request)
     {
         $id = (int) $request->id;
         if (empty($id)) {

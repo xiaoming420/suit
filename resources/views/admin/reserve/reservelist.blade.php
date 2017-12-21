@@ -46,7 +46,7 @@
                         <td class="text-center">{{$v['ct']}}</td>
                         <td class="text-center">
                             <button class="layui-btn" onClick='location.href="{{ url('/adm/user/edituser?id='.$v['id']) }}"'>编辑</button>
-                            <button class="layui-btn dels" uid="{{$v['id']}}">删除</button>
+                            <button class="layui-btn dels" id="{{$v['id']}}">删除</button>
                         </td>
                     </tr>
                 @endforeach
@@ -64,7 +64,7 @@
             return false;
         }else{
             $.ajax({
-                url : '/adm/user/deluser?id='+uid,
+                url : '/subscribe/del?id='+uid,
                 type : 'get',
                 dateType : 'json',
                 success : function(msg){

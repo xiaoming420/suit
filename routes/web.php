@@ -45,6 +45,8 @@ Route::group(['prefix'=>'subscribe'], function(){
     Route::get('infopage', 'Web\SubscribeController@infopage'); // 预约界面
     Route::any('getcity', 'Web\SubscribeController@getcity');
     Route::any('suppy', 'Web\SubscribeController@suppy');
+    Route::any('editsign', 'Adm\Goods\GoodsController@doEditSign');
+    Route::any('del', 'Adm\Goods\GoodsController@del');
 });
 Route::get('yuyue', 'Web\SubscribeController@infopage');
 

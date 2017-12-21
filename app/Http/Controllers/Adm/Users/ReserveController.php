@@ -43,6 +43,23 @@ class ReserveController extends Controller
         if (!$res) {
             return fun_error_view(0, '修改数据失败', 'edituser?id='.$id);
         }
+    }
 
+
+    /**
+     * 删除用户
+     * @param Request $request
+     */
+    public function del(Request $request)
+    {
+        $id = (int) $request->id;
+        if (empty($id)) {
+            ajax_respon(0, '缺少参数');
+        }
+        $info = reserve::edit(['id'=>$id], ['is_valid'=>0]);
+        if (empty($info)) {
+            ajax_respon(0, '删除失败');
+        }
+        ajax_respon(1, '删除成功');
     }
 }
