@@ -24,7 +24,7 @@ class DiscountController extends Controller
         $info = discount::orderBy('id','DESC')->get();
         $money = end($info);
         var_dump($money);
-        var_dump($money->money);exit;
+        var_dump($money[0]->money);exit;
         return view('admin/discount/discountdetail',['list'=>$info]);
     }
 
