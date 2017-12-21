@@ -12,6 +12,7 @@ namespace App\Http\Controllers\Adm\Users;
 use App\Http\Controllers\Controller;
 use App\Models\reserve;
 use App\Models\users;
+use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
