@@ -86,5 +86,9 @@ Route::group(['prefix'=>'adm', 'middleware'=>['adm.token']], function(){
         Route::post('doeditdiscount', 'Adm\Users\DiscountController@doEditDiscount');
     });
 
+    Route::group(['prefix'=>'push'], function(){
+        Route::get('pushmeslist', 'Adm\Users\CustomerController@pushMesList');
+        Route::post('doeditdiscount', 'Adm\Users\DiscountController@doEditDiscount');
+    });
 
 });

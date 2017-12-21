@@ -63,9 +63,9 @@
 			</li>
 			<li class="layui-nav-item">
 				<dd class="
-					<?php if( in_array($current_url, ['/adm/reserve/reserveList']) || in_array( $sub_url, ['/adm/goods/editgoods']) ){ echo 'layui-this';} ?>"
+					<?php if( in_array($current_url, ['/adm/push/pushmeslist'])){ echo 'layui-this';} ?>"
 				>
-					<a href="{{url('adm/reserve/reserveList')}}">
+					<a href="{{url('adm/push/pushmeslist')}}">
 						<i class="iconfont icon-wenzhang1" ></i>
 						<span>推送消息管理</span>
 					</a>
