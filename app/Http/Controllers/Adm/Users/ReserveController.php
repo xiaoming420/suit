@@ -45,6 +45,7 @@ class ReserveController extends Controller
         if (!$res) {
             return fun_error_view(0, '修改数据失败', '/adm/reserve/reserveList');
         }
+        ajax_respon(1, '编辑成功');
     }
 
 
