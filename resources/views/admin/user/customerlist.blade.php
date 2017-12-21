@@ -51,7 +51,7 @@
         }else{
             $.ajax({
                 url : '/adm/user/editsign?id='+id,
-                type : 'get',
+                type : 'post',
                 dateType : 'json',
                 success : function(msg){
                     if (msg.result == 1) {
