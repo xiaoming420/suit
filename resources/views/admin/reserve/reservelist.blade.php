@@ -59,12 +59,12 @@
     </div>
 <script>
     $('.dels').click(function(){
-        var uid = $(this).attr('uid');
+        var id = $(this).attr('id');
         if (confirm('确认删除么？') == false){
             return false;
         }else{
             $.ajax({
-                url : '/subscribe/del?id='+uid,
+                url : '/subscribe/del?id='+id,
                 type : 'get',
                 dateType : 'json',
                 success : function(msg){
