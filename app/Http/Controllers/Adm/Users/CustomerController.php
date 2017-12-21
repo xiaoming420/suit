@@ -19,7 +19,7 @@ class CustomerController extends Controller
      * 预约列表
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function reserveList()
+    public function customerList()
     {
         $list = users::where([])->paginate(15);
         return view('admin/user/customerlist', ['list'=>$list]);
