@@ -21,6 +21,7 @@
                 <th>地址</th>
                 <th>客户备注</th>
                 <th>是否回访</th>
+                <th>回访备注</th>
                 <th>时间</th>
                 <th>操作</th>
             </tr>
@@ -43,6 +44,7 @@
                         <td class="text-center">{{$v['address']}}</td>
                         <td class="text-center">{{$v['remark']}}</td>
                         <td class="text-center">{{$v['sign']==1?'已回访':'未回访'}}</td>
+                        <td class="text-center">{{$v['feedback']}}</td>
                         <td class="text-center">{{$v['ct']}}</td>
                         <td class="text-center">
                             <button class="layui-btn" onClick='location.href="{{ url('/adm/user/edituser?id='.$v['id']) }}"'>编辑</button>
