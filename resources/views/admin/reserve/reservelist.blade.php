@@ -88,7 +88,7 @@
                     type: 1
                     , title: '编辑回访记录'
                     , area: '450px;'
-                    , content: $('#showMessage')
+                    , content: $('#newplant')
                     , btnAlign: 'c' //按钮居中
                     , shade: 0 //不显示遮罩
                     , yes: function () {
