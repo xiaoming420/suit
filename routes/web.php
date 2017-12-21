@@ -70,6 +70,7 @@ Route::group(['prefix'=>'adm', 'middleware'=>['adm.token']], function(){
         Route::post('doedituser', 'Adm\Users\UserController@doedituser');
         Route::any('group', 'Adm\Users\UserController@group');
         Route::get('customerlist', 'Adm\Users\CustomerController@customerList');
+        Route::any('editsign', 'Adm\Goods\CustomerController@doEditSign');
     });
 
     Route::group(['prefix'=>'reserve'], function(){

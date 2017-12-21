@@ -32,7 +32,7 @@
                         <td class="text-center">{{$v['is_used']==0?'未使用':"已使用"}}</td>
                         <td class="text-center">{{$v['updated_at']}}</td>
                         <td class="text-center">
-                            <button class="layui-btn check" onClick='location.href="{{ url('/adm/user/edituser?id='.$v['id']) }}"'>编辑红包使用状态</button>
+                            <button class="layui-btn check" id="{{$v['id']}}">编辑红包使用状态</button>
                         </td>
                     </tr>
                 @endforeach
@@ -50,7 +50,7 @@
             return false;
         }else{
             $.ajax({
-                url : '/adm/user/deluser?id='+uid,
+                url : '/adm/user/editsign?id='+uid,
                 type : 'get',
                 dateType : 'json',
                 success : function(msg){
