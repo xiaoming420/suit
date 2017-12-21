@@ -26,6 +26,20 @@
             </div>
         </form>
     </div>
+    <table class="layui-table tab-ths">
+        <thead>
+        <tr>
+            <th>编号</th>
+            <th>管理员昵称</th>
+            <th>管理员账号</th>
+            <th>创建时间</th>
+            <th>修改时间</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
     <script>
         $(function () {
             $('#form_data').submit(function(){
