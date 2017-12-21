@@ -45,12 +45,12 @@
     </div>
 <script>
     $('.check').click(function(){
-        var uid = $(this).attr('uid');
+        var id = $(this).attr('id');
         if (confirm('确认红包已抵用么？') == false){
             return false;
         }else{
             $.ajax({
-                url : '/adm/user/editsign?id='+uid,
+                url : '/adm/user/editsign?id='+id,
                 type : 'get',
                 dateType : 'json',
                 success : function(msg){
