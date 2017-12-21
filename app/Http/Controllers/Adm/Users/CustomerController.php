@@ -37,11 +37,11 @@ class CustomerController extends Controller
         if (empty($id)) {
             return fun_error_view(0, '缺少参数', '/adm/user/customerlist');
         }
-        $info = reserve::where(['id'=>$id])->first();
+        $info = users::where(['id'=>$id])->first();
         if(!$info){
             return fun_error_view(0, '数据错误', '/adm/user/customerlist');
         }
-        $res = reserve::edit(['id'=>$id], ['sign'=>1]);
+        $res = users::where(['id'=>$id])->update(['sign'=>1]);
         if (!$res) {
             return fun_error_view(0, '修改数据失败', '/adm/user/customerlist');
         }

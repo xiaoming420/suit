@@ -53,6 +53,7 @@
                 url : '/adm/user/editsign',
                 type : 'post',
                 dateType : 'json',
+                data : {id:id},
                 success : function(msg){
                     if (msg.result == 1) {
                         layer.msg('删除成功', {'icon':6});
