@@ -61,39 +61,36 @@
     </div>
     <div id="showMessage" style="display:none;">showMessage</div>
     <script>
-        $(document).ready(
-                function(){
-                    $("#btn").click(
-                        function(){
-                            $("showMessage").show();
-                        });
-                });
-                    $('.dels').click(function () {
-                        var id = $(this).attr('id');
-                        if (confirm('确认删除么？') == false) {
-                            return false;
+        $("#btn").click(
+            function(){
+                $("showMessage").show();
+            });
+        $('.dels').click(function () {
+            var id = $(this).attr('id');
+            if (confirm('确认删除么？') == false) {
+                return false;
+            } else {
+                $.ajax({
+                    url: '/subscribe/del',
+                    type: 'post',
+                    dateType: 'json',
+                    data: {id: id},
+                    success: function (msg) {
+                        if (msg.result == 1) {
+                            layer.msg('删除成功', {'icon': 6});
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 1000);
                         } else {
-                            $.ajax({
-                                url: '/subscribe/del',
-                                type: 'post',
-                                dateType: 'json',
-                                data: {id: id},
-                                success: function (msg) {
-                                    if (msg.result == 1) {
-                                        layer.msg('删除成功', {'icon': 6});
-                                        setTimeout(function () {
-                                            window.location.reload();
-                                        }, 1000);
-                                    } else {
-                                        alert(msg.msg);
-                                        return false;
-                                    }
-                                },
-                                error: function (msg) {
-                                    console.log(msg);
-                                }
-                            })
+                            alert(msg.msg);
+                            return false;
                         }
-                    });
+                    },
+                    error: function (msg) {
+                        console.log(msg);
+                    }
+                })
+            }
+        });
     </script>
 @endsection
