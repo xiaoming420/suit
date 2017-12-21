@@ -63,7 +63,7 @@
     <script>
         $(document).ready(
                 function(){
-                    $("btn").click(
+                    $("#btn").click(
                         function(){
                             $("showMessage").show();
                         });
