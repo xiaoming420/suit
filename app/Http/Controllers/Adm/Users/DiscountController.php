@@ -21,8 +21,8 @@ class DiscountController extends Controller
      */
     public function discountDetail()
     {
-        $info = discount::orderBy('id','DESC')->first();
-        return view('admin/discount/discountdetail',['info'=>$info]);
+        $info = discount::orderBy('id','DESC')->get();
+        return view('admin/discount/discountdetail',['list'=>$info]);
     }
 
     /**

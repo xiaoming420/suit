@@ -6,7 +6,7 @@
         <fieldset class="layui-elem-field layui-field-title">
             <legend>注册红包</legend>
         </fieldset>
-        <blockquote class="layui-elem-quote">现注册红包金额：{{$info['money']?$info['money']:0}}</blockquote>
+        <blockquote class="layui-elem-quote">现注册红包金额：{{}}</blockquote>
         <blockquote class="layui-elem-quote">添加新的红包金额</blockquote>
         <form class="layui-form" method="post" action="{{url('/adm/discount/doeditdiscount')}}"  id="form_data">
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -26,18 +26,25 @@
             </div>
         </form>
     </div>
+    <blockquote class="layui-elem-quote">红包添加记录</blockquote>
     <table class="layui-table tab-ths">
         <thead>
         <tr>
             <th>编号</th>
-            <th>管理员昵称</th>
-            <th>管理员账号</th>
+            <th>金额</th>
             <th>创建时间</th>
-            <th>修改时间</th>
-            <th>操作</th>
         </tr>
         </thead>
         <tbody>
+            @if(isset($list) && $list)
+                @foreach($list as $k=>$v)
+                    <tr>
+                        <td class="text-center">{{$v['id']}}</td>
+                        <td class="text-center">{{$v['money']}}</td>
+                        <td class="text-center">{{$v['created_at']}}</td>
+                    </tr>
+                @endforeach
+            @endif
         </tbody>
     </table>
     <script>
