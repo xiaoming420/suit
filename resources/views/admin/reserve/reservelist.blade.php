@@ -62,8 +62,19 @@
     <div id="showMessage" style="display:none;">showMessage</div>
     <script>
         $("#btn").click(function(){
-                alert(123);
-                $("#showMessage").show();
+            layui.use('layer', function(){
+                var layer = layui.layer;
+                layer.open({
+                    type: 1
+                    ,title: '开通商户平台'
+                    ,area: '450px;'
+                    ,content: $('#showMessage')
+                    ,btnAlign: 'c' //按钮居中
+                    ,shade: 0 //不显示遮罩
+                    ,yes: function(){
+                        layer.closeAll();
+                    }
+                });
             });
         $('.dels').click(function () {
             var id = $(this).attr('id');
