@@ -63,6 +63,15 @@
 			</li>
 			<li class="layui-nav-item">
 				<dd class="
+					<?php if( in_array($current_url, ['/adm/user/customerlist']) ){ echo 'layui-this';} ?>"
+				>
+					<a href="{{url('/adm/user/customerlist')}}">
+						<i class="iconfont icon-wenzhang1" ></i>
+						<span>客户管理</span>
+					</a>
+			</li>
+			<li class="layui-nav-item">
+				<dd class="
 					<?php if( in_array($current_url, ['/adm/reserve/reserveList']) || in_array( $sub_url, ['/adm/goods/editgoods']) ){ echo 'layui-this';} ?>"
 				>
 					<a href="{{url('adm/reserve/reserveList')}}">

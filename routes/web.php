@@ -69,6 +69,7 @@ Route::group(['prefix'=>'adm', 'middleware'=>['adm.token']], function(){
         Route::get('edituser', 'Adm\Users\UserController@editUserView');
         Route::post('doedituser', 'Adm\Users\UserController@doedituser');
         Route::any('group', 'Adm\Users\UserController@group');
+        Route::get('customerlist', 'Adm\Users\CustomerController@customerList');
     });
 
     Route::group(['prefix'=>'reserve'], function(){
@@ -83,5 +84,6 @@ Route::group(['prefix'=>'adm', 'middleware'=>['adm.token']], function(){
         Route::get('discountdetail', 'Adm\Users\DiscountController@discountDetail');
         Route::post('doeditdiscount', 'Adm\Users\DiscountController@doEditDiscount');
     });
+
 
 });

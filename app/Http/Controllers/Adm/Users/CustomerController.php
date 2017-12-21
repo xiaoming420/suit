@@ -22,7 +22,7 @@ class CustomerController extends Controller
     public function reserveList()
     {
         $list = users::where([])->paginate(15);
-        return view('admin/reserve/reservelist', ['list'=>$list]);
+        return view('admin/user/customerlist', ['list'=>$list]);
     }
 
     /**
