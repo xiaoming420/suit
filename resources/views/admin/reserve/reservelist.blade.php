@@ -61,8 +61,8 @@
     </div>
     <div id="showMessage" style="display:none;">showMessage</div>
     <script>
-        $("#btn").click(
-            function(){
+        $("#btn").click(function(){
+                alert(123);
                 $("showMessage").show();
             });
         $('.dels').click(function () {
