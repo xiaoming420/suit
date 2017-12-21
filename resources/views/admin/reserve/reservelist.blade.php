@@ -47,7 +47,7 @@
                         <td class="text-center">{{$v['feedback']}}</td>
                         <td class="text-center">{{$v['ct']}}</td>
                         <td class="text-center">
-                            <button class="layui-btn"  id="btn" ids="{{$v['id']}}">编辑</button>
+                            <button class="layui-btn edit"  ids="{{$v['id']}}">编辑</button>
                             <button class="layui-btn dels" id="{{$v['id']}}">删除</button>
                         </td>
                     </tr>
@@ -72,7 +72,7 @@
         </div>
     </div>
     <script>
-        $("#btn").click(function() {
+        $(".edit").click(function() {
             var ids = $(this).attr('ids');
             layui.use('layer', function () {
                 var layer = layui.layer;
