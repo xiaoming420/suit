@@ -66,7 +66,7 @@
             return false;
         }else{
             $.ajax({
-                url : '/subscribe/del?id='+id,
+                url : '/subscribe/del',
                 type : 'post',
                 dateType : 'json',
                 success : function(msg){
