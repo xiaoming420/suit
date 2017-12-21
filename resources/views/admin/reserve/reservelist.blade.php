@@ -97,7 +97,7 @@
                             dataType : 'json',
                             success : function(msg){
                                 console.log(msg);
-                                if (msg.success == 1) {
+                                if (msg.result == 1) {
                                     layer.msg(msg.data, {icon: 6,time:1000});
                                     setTimeout(function(){
                                         window.location.reload();
