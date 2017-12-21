@@ -14,7 +14,9 @@
                 <th>编号</th>
                 <th>姓名</th>
                 <th>手机号</th>
-                <th>头像</th>
+                <th>性别</th>
+                <th>红包金额</th>
+                <th>红包是否使用</th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -25,7 +27,9 @@
                         <td class="text-center">{{$v['id']}}</td>
                         <td class="text-center">{{$v['name']}}</td>
                         <td class="text-center">{{$v['phone']}}</td>
-                        <td class="text-center">{{$v['avatar_url']}}</td>
+                        <td class="text-center">{{$v['sex']==1?'男':'女'}}</td>
+                        <td class="text-center">{{$v['discount_money']}}</td>
+                        <td class="text-center">{{$v['is_used']==0?'未使用':"已使用"}}</td>
                         <td class="text-center">{{$v['updated_at']}}</td>
                         <td class="text-center">
                             <button class="layui-btn" onClick='location.href="{{ url('/adm/user/edituser?id='.$v['id']) }}"'>编辑</button>
