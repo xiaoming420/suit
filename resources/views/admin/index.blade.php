@@ -52,15 +52,6 @@
 					<span>后台管理</span>
 				</a>
 			</li>
-			{{--<li class="layui-nav-item">
-				<dd class="
-					<?php if( in_array($current_url, ['/adm/user/userlist','/adm/user/adduser']) || in_array( $sub_url, ['/adm/user/userlist','/adm/user/edituser']) ){ echo 'layui-this';} ?>"
-				>
-					<a href="{{url('adm/user/userlist')}}">
-						<i class="iconfont icon-wenzhang1" ></i>
-						<span>账户管理</span>
-					</a>
-			</li>--}}
 			<li class="layui-nav-item">
 				<dd class="
 					<?php if( in_array($current_url, ['/adm/user/customerlist']) ){ echo 'layui-this';} ?>"
