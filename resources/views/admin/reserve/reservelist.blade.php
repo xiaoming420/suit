@@ -42,8 +42,8 @@
                         <td class="text-center">{{$v['area']}}</td>
                         <td class="text-center">{{$v['address']}}</td>
                         <td class="text-center">{{$v['remark']}}</td>
-                        <td class="text-center">{{$v['sign']}}</td>
-                        <td class="text-center">{{$v['created_at']}}</td>
+                        <td class="text-center">{{$v['sign']==1?'已回访':'未回访'}}</td>
+                        <td class="text-center">{{$v['ct']}}</td>
                         <td class="text-center">
                             <button class="layui-btn" onClick='location.href="{{ url('/adm/user/edituser?id='.$v['id']) }}"'>编辑</button>
                             <button class="layui-btn dels" uid="{{$v['id']}}">删除</button>

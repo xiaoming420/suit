@@ -28,7 +28,6 @@
     </div>
     <script>
         $(function () {
-
             $('#form_data').submit(function(){
                 var money = $('input[name=money]').val();
                 if (!money) {
