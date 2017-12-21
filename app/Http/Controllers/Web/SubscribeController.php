@@ -46,6 +46,15 @@ class SubscribeController extends Controller
         $data = $request->only(['name','sex','phone','remark','province','city','area','address']);
         $data['ct'] = date('Y-m-d H:i:s');
         $data['ut'] = date('Y-m-d H:i:s');
+        if (in_array($data['province'], ['请选择市','请选择区'])) {
+            $data['province'] = '';
+        }
+        if (in_array($data['city'], ['请选择市','请选择区'])) {
+            $data['city'] = '';
+        }
+        if (in_array($data['area'], ['请选择市','请选择区'])) {
+            $data['area'] = '';
+        }
         $res = reserve::insert($data);
         if ($res) {
             fun_respon(1, '成功');
