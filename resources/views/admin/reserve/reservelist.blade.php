@@ -63,7 +63,7 @@
     <script>
         $("#btn").click(function(){
                 alert(123);
-                $("showMessage").show();
+                $("#showMessage").show();
             });
         $('.dels').click(function () {
             var id = $(this).attr('id');
