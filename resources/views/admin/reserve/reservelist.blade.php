@@ -31,7 +31,7 @@
                     <tr>
                         <td class="text-center">{{$v['id']}}</td>
                         <td class="text-center">{{$v['name']}}</td>
-                        @if($sex == 1)
+                        @if($v['sex'] == 1)
                             <td class="text-center">男</td>
                         @else
                             <td class="text-center">女</td>
