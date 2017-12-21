@@ -47,7 +47,7 @@
                         <td class="text-center">{{$v['feedback']}}</td>
                         <td class="text-center">{{$v['ct']}}</td>
                         <td class="text-center">
-                            <button class="layui-btn"  id="btn">编辑</button>
+                            <button class="layui-btn"  id="btn" ids="{{$v['id']}}">编辑</button>
                             <button class="layui-btn dels" id="{{$v['id']}}">删除</button>
                         </td>
                     </tr>
@@ -65,17 +65,15 @@
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">回访备注</label>
                     <div class="layui-input-block">
-                        <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                        <textarea placeholder="请输入内容" class="layui-textarea" name="remarks"></textarea>
                     </div>
-                </div>
-                <div class="layui-layer-btn layui-layer-btn-c" >
-                    <button class="layui-btn layui-layer-btn0" type="submit">提交</button>
                 </div>
             </form>
         </div>
     </div>
     <script>
         $("#btn").click(function() {
+            var ids = $(this).attr('ids');
             layui.use('layer', function () {
                 var layer = layui.layer;
                 layer.open({
@@ -86,8 +84,30 @@
                     ,btn: ['确认', '取消']
                     , btnAlign: 'c' //按钮居中
                     , shade: 0 //不显示遮罩
-                    , yes: function () {
-                        layer.closeAll();
+                    , yes: function (index, layero) {
+                        var remarks = $('input[name=remarks]').val();
+                        if (!remarks) {
+                            layer.msg('还未填写备注', {icon: 5});
+                            return false;
+                        }
+                        $.ajax({
+                            url : '/merchantadm/order/refunds',
+                            type : 'post',
+                            data : {ids:ids,remarks:remarks},
+                            dataType : 'json',
+                            success : function(msg){
+                                console.log(msg);
+                                if (msg.success == 1) {
+                                    layer.msg(msg.data, {icon: 6,time:1000});
+                                    setTimeout(function(){
+                                        window.location.reload();
+                                    }, 1000);
+                                } else {
+                                    layer.msg(msg.error, {icon: 5});
+                                    return false;
+                                }
+                            }
+                        });
                     }
                 });
             });
