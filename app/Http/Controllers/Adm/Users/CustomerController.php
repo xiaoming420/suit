@@ -41,7 +41,7 @@ class CustomerController extends Controller
         if(!$info){
             return fun_error_view(0, '数据错误', '/adm/user/customerlist');
         }
-        $res = users::where(['id'=>$id])->update(['sign'=>1]);
+        $res = users::where(['id'=>$id])->update(['is_used'=>1]);
         if (!$res) {
             return fun_error_view(0, '修改数据失败', '/adm/user/customerlist');
         }
