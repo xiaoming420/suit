@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Adm\Users;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\push_msg;
 use App\Models\reserve;
 use App\Models\users;
 use Illuminate\Http\Request;
@@ -55,7 +56,7 @@ class CustomerController extends Controller
      */
     public function pushMesList()
     {
-        $list = users::where([])->paginate(15);
-        return view('admin/user/customerlist', ['list'=>$list]);
+        $list = push_msg::where([])->paginate(15);
+        return view('admin/user/pushmsgdetail', ['list'=>$list]);
     }
 }
