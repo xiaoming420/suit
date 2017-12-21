@@ -33,15 +33,15 @@ class ReserveController extends Controller
     public function doEditSign(Request $request)
     {
         $id = (int)$request->id;
-        $remark = $request->remark;
-        if (empty($id) || empty($remark)) {
+        $remarks = $request->remarks;
+        if (empty($id) || empty($remarks)) {
             return fun_error_view(0, '缺少参数','/adm/reserve/reserveList');
         }
         $info = reserve::where(['id'=>$id])->first();
         if(!$info){
             return fun_error_view(0, '数据错误','/adm/reserve/reserveList');
         }
-        $res = reserve::where(['id'=>$id])->update(['feedback'=>$remark,'sign'=>1]);
+        $res = reserve::where(['id'=>$id])->update(['feedback'=>$remarks,'sign'=>1]);
         if (!$res) {
             return fun_error_view(0, '修改数据失败', '/adm/reserve/reserveList');
         }
