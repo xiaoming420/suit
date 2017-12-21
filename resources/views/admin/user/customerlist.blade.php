@@ -25,15 +25,14 @@
                 @foreach($list as $k=>$v)
                     <tr>
                         <td class="text-center">{{$v['id']}}</td>
-                        <td class="text-center">{{$v['name']?$v['name']:'暂无'}}</td>
-                        <td class="text-center">{{$v['phone']?$v['phone']:'暂无'}}</td>
+                        <td class="text-center">{{$v['name']?$v['name']:'未绑定'}}</td>
+                        <td class="text-center">{{$v['phone']?$v['phone']:'未绑定'}}</td>
                         <td class="text-center">{{$v['sex']==1?'男':'女'}}</td>
                         <td class="text-center">{{$v['discount_money']}}</td>
                         <td class="text-center">{{$v['is_used']==0?'未使用':"已使用"}}</td>
                         <td class="text-center">{{$v['updated_at']}}</td>
                         <td class="text-center">
-                            <button class="layui-btn" onClick='location.href="{{ url('/adm/user/edituser?id='.$v['id']) }}"'>编辑</button>
-                            <button class="layui-btn dels" uid="{{$v['id']}}">删除</button>
+                            <button class="layui-btn check" onClick='location.href="{{ url('/adm/user/edituser?id='.$v['id']) }}"'>编辑红包使用状态</button>
                         </td>
                     </tr>
                 @endforeach
@@ -45,9 +44,9 @@
         </div>
     </div>
 <script>
-    $('.dels').click(function(){
+    $('.check').click(function(){
         var uid = $(this).attr('uid');
-        if (confirm('确认删除么？') == false){
+        if (confirm('确认红包已抵用么？') == false){
             return false;
         }else{
             $.ajax({
