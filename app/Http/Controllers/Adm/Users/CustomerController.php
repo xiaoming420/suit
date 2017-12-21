@@ -47,4 +47,15 @@ class CustomerController extends Controller
         }
         ajax_respon(1, '编辑成功');
     }
+
+
+    /**
+     * 推送消息列表
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function pushMesList()
+    {
+        $list = users::where([])->paginate(15);
+        return view('admin/user/customerlist', ['list'=>$list]);
+    }
 }
