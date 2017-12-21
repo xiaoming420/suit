@@ -21,7 +21,7 @@ class ReserveController extends Controller
     public function reserveList()
     {
         $list = reserve::where([])->paginate(15);
-        return view('admin/user/customerlist', ['list'=>$list]);
+        return view('admin/reserve/reservelist', ['list'=>$list]);
     }
 
     /**

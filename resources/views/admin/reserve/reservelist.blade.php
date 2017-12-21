@@ -15,7 +15,9 @@
                 <th>姓名</th>
                 <th>性别</th>
                 <th>手机号</th>
-                <th>省市</th>
+                <th>省</th>
+                <th>市</th>
+                <th>区</th>
                 <th>地址</th>
                 <th>备注</th>
                 <th>是否回访</th>
@@ -35,7 +37,9 @@
                             <td class="text-center">女</td>
                         @endif
                         <td class="text-center">{{$v['phone']}}</td>
+                        <td class="text-center">{{$v['province']}}</td>
                         <td class="text-center">{{$v['city']}}</td>
+                        <td class="text-center">{{$v['area']}}</td>
                         <td class="text-center">{{$v['address']}}</td>
                         <td class="text-center">{{$v['remark']}}</td>
                         <td class="text-center">{{$v['sign']}}</td>
