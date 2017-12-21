@@ -85,7 +85,7 @@
                     , btnAlign: 'c' //按钮居中
                     , shade: 0 //不显示遮罩
                     , yes: function (index, layero) {
-                        var remarks = $('input[name=remarks]').val();
+                        var remarks = $('textarea[name=remarks]').val();
                         if (!remarks) {
                             layer.msg('还未填写备注', {icon: 5});
                             return false;
