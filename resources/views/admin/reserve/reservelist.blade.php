@@ -62,12 +62,10 @@
     <div id="newplant" style="display:none">
         <div class="winareabox">
             <form class="form-horizontal" id = "ajaxform" role="form" method="post"  action="javascript:;">
-                <div class="form-group">
-                    <div class="addlayerli">
-                        <span class="addlayerlipan">备注：</span>
-                        <div class="addlayerlidiv">
-                            <input type="text" name="remarks" class="addlayerliput" placeholder="" />
-                        </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">普通文本域</label>
+                    <div class="layui-input-block">
+                        <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
                     </div>
                 </div>
                 <div class="layui-layer-btn layui-layer-btn-c" >
