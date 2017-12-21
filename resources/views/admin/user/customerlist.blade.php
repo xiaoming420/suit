@@ -25,8 +25,8 @@
                 @foreach($list as $k=>$v)
                     <tr>
                         <td class="text-center">{{$v['id']}}</td>
-                        <td class="text-center">{{$v['name']}}</td>
-                        <td class="text-center">{{$v['phone']}}</td>
+                        <td class="text-center">{{$v['name']?$v['name']:'暂无'}}</td>
+                        <td class="text-center">{{$v['phone']?$v['phone']:'暂无'}}</td>
                         <td class="text-center">{{$v['sex']==1?'男':'女'}}</td>
                         <td class="text-center">{{$v['discount_money']}}</td>
                         <td class="text-center">{{$v['is_used']==0?'未使用':"已使用"}}</td>
