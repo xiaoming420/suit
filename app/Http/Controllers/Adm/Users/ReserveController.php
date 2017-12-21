@@ -57,7 +57,7 @@ class ReserveController extends Controller
         if (empty($id)) {
             ajax_respon(0, '缺少参数');
         }
-        $info = reserve::where(['id'=>$id])->update(['sign'=>0]);
+        $info = reserve::where(['id'=>$id])->update(['is_valid'=>0]);
         if (empty($info)) {
             ajax_respon(0, '删除失败');
         }
