@@ -47,7 +47,7 @@
                         <td class="text-center">{{$v['feedback']}}</td>
                         <td class="text-center">{{$v['ct']}}</td>
                         <td class="text-center">
-                            <button class="layui-btn">编辑</button>
+                            <button class="layui-btn"  id="btn">编辑</button>
                             <button class="layui-btn dels" id="{{$v['id']}}">删除</button>
                         </td>
                     </tr>
