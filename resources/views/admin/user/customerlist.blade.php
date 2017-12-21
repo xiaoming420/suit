@@ -12,8 +12,8 @@
             <thead>
             <tr>
                 <th>编号</th>
-                <th>微信昵称</th>
-                <th>性别</th>
+                <th>姓名</th>
+                <th>手机号</th>
                 <th>头像</th>
                 <th>操作</th>
             </tr>
@@ -23,8 +23,8 @@
                 @foreach($list as $k=>$v)
                     <tr>
                         <td class="text-center">{{$v['id']}}</td>
-                        <td class="text-center">{{$v['nickname']}}</td>
-                        <td class="text-center">{{$v['sex']}}</td>
+                        <td class="text-center">{{$v['name']}}</td>
+                        <td class="text-center">{{$v['phone']}}</td>
                         <td class="text-center">{{$v['avatar_url']}}</td>
                         <td class="text-center">{{$v['updated_at']}}</td>
                         <td class="text-center">
