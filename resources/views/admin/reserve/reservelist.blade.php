@@ -91,9 +91,9 @@
                             return false;
                         }
                         $.ajax({
-                            url : '/merchantadm/order/refunds',
+                            url : '/subscribe/editsign',
                             type : 'post',
-                            data : {ids:ids,remarks:remarks},
+                            data : {id:ids,remarks:remarks},
                             dataType : 'json',
                             success : function(msg){
                                 console.log(msg);
