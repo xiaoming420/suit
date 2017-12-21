@@ -63,7 +63,7 @@
         <div class="winareabox">
             <form class="form-horizontal" id = "ajaxform" role="form" method="post"  action="javascript:;">
                 <div class="layui-form-item layui-form-text">
-                    <label class="layui-form-label">普通文本域</label>
+                    <label class="layui-form-label">回访备注</label>
                     <div class="layui-input-block">
                         <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
                     </div>
@@ -83,6 +83,7 @@
                     , title: '编辑回访记录'
                     , area: '450px;'
                     , content: $('#newplant')
+                    ,btn: ['确认', '取消']
                     , btnAlign: 'c' //按钮居中
                     , shade: 0 //不显示遮罩
                     , yes: function () {
