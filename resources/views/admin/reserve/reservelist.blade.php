@@ -47,7 +47,7 @@
                         <td class="text-center">{{$v['feedback']}}</td>
                         <td class="text-center">{{$v['ct']}}</td>
                         <td class="text-center">
-                            <button class="layui-btn" onClick='location.href="{{ url('/adm/user/edituser?id='.$v['id']) }}"'>编辑</button>
+                            <button class="layui-btn">编辑</button>
                             <button class="layui-btn dels" id="{{$v['id']}}">删除</button>
                         </td>
                     </tr>
@@ -59,33 +59,41 @@
             {{ $list->render() }}
         </div>
     </div>
-<script>
-    $('.dels').click(function(){
-        var id = $(this).attr('id');
-        if (confirm('确认删除么？') == false){
-            return false;
-        }else{
-            $.ajax({
-                url : '/subscribe/del',
-                type : 'post',
-                dateType : 'json',
-                data : {id:id},
-                success : function(msg){
-                    if (msg.result == 1) {
-                        layer.msg('删除成功', {'icon':6});
-                        setTimeout(function(){
-                            window.location.reload();
-                        }, 1000);
-                    } else {
-                        alert(msg.msg);
-                        return false;
-                    }
-                },
-                error : function(msg){
-                    console.log(msg);
-                }
-            })
-        }
-    });
-</script>
+    <div id="showMessage" style="display:none;">showMessage</div>
+    <script>
+        $(document).ready(
+                function(){
+                    $("btn").click(
+                        function(){
+                            $("showMessage").show();
+                        });
+                });
+                    $('.dels').click(function () {
+                        var id = $(this).attr('id');
+                        if (confirm('确认删除么？') == false) {
+                            return false;
+                        } else {
+                            $.ajax({
+                                url: '/subscribe/del',
+                                type: 'post',
+                                dateType: 'json',
+                                data: {id: id},
+                                success: function (msg) {
+                                    if (msg.result == 1) {
+                                        layer.msg('删除成功', {'icon': 6});
+                                        setTimeout(function () {
+                                            window.location.reload();
+                                        }, 1000);
+                                    } else {
+                                        alert(msg.msg);
+                                        return false;
+                                    }
+                                },
+                                error: function (msg) {
+                                    console.log(msg);
+                                }
+                            })
+                        }
+                    });
+    </script>
 @endsection
