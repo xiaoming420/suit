@@ -63,15 +63,11 @@
         <div class="winareabox">
             <form class="form-horizontal" id = "ajaxform" role="form" method="post"  action="javascript:;">
                 <div class="form-group">
-                    <label class="col-sm-4 control-label" for="proid">商家名称：</label>
-                    <div class="col-sm-7">
-                        <input class="form-control" type="text" id="shopname"  name="shopname" placeholder="请输入商家名称">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-4 control-label" for="proid">商家url：</label>
-                    <div class="col-sm-7">
-                        <input class="form-control" type="text" id="shopurl"  name="shopurl" placeholder="请输入商家url">
+                    <div class="addlayerli">
+                        <span class="addlayerlipan">备注：</span>
+                        <div class="addlayerlidiv">
+                            <input type="text" name="remarks" class="addlayerliput" placeholder="" />
+                        </div>
                     </div>
                 </div>
                 <div class="layui-layer-btn layui-layer-btn-c" >
