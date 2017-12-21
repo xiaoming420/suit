@@ -6,7 +6,6 @@
         <fieldset class="layui-elem-field layui-field-title">
             <legend>注册红包</legend>
         </fieldset>
-        <blockquote class="layui-elem-quote">现注册红包金额：{{!empty($list)?end($list)[0]->money:0}}</blockquote>
         <blockquote class="layui-elem-quote">添加新的红包金额</blockquote>
         <form class="layui-form" method="post" action="{{url('/adm/discount/doeditdiscount')}}"  id="form_data">
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
