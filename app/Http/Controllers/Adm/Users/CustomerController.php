@@ -80,7 +80,7 @@ class CustomerController extends Controller
         if($push_info){
             return fun_error_view(0, '该成员已经添加过啦！', '/adm/push/pushmeslist');
         }
-        $res = push_msg::create(['phone'=>$info['phone'],'openid'=>$info['openid']]);
+        $res = push_msg::create(['phone'=>$info['phone'],'openid'=>$info['openid'],'ts'=>date('Y-m-d H:i:s',time())]);
         if (!$res) {
             return fun_error_view(0, '添加数据失败', '/adm/push/pushmeslist');
         }
