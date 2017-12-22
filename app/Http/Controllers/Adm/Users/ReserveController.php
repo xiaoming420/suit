@@ -29,7 +29,7 @@ class ReserveController extends Controller
                     $query->orwhere("name",'like',"%$keyword%");
                 }
             })->orderBy('id','DESC')->paginate(10);
-        return view('admin/reserve/reservelist', ['list'=>$list]);
+        return view('admin/reserve/reservelist', ['list'=>$list,'keyword'=>$keyword]);
     }
 
     /**
