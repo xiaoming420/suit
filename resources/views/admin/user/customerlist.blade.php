@@ -4,10 +4,20 @@
         <fieldset class="layui-elem-field layui-field-title">
             <legend>用户列表</legend>
         </fieldset>
-        <form class="layui-form">
-            <div class="layui-form-item">
+        <div class="clearfix">
+            <p class="capitalnav capitalnav02">渠道商列表</p>
+            <div class="customerdetail">
+                <form class="layui-form" action="">
+                    <div class="layui-form-item marbot0">
+                        <label class="layui-form-label">顾客昵称：</label>
+                        <div class="layui-input-inline" style="width:250px;">
+                            <input type="text" name="nickname" placeholder="请输入顾客的昵称" class="layui-input">
+                        </div>
+                        <span class="layui-btn" data-type="reload">搜索</span>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
         <table class="layui-table tab-ths">
             <thead>
             <tr>
