@@ -37,7 +37,7 @@ if (! function_exists('send_message')) {
             'tpl_id'    => $tpl_id,
             //'tpl_value' =>'#code#='.$content
         );
-        fun_curl($url,$smsConf);
+        return fun_curl($url,$smsConf);
     }
 }
 
