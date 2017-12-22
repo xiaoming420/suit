@@ -141,7 +141,7 @@ class JSSDK
         $resp = Curl::to($url)
             ->withContentType('application/json')
             ->withData($content)
-            ->asJsonRequest()
+//            ->asJsonRequest()
             ->post();
         $resp = json_decode($resp, true);
         return $resp;
