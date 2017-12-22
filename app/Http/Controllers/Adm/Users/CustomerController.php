@@ -76,7 +76,7 @@ class CustomerController extends Controller
         if(!$info){
             return ajax_respon(0, '数据错误');
         }
-        $push_info = push_msg::where(['phone'=>$phone])->first();
+        $push_info = push_msg::where(['phone'=>$phone,'is_valid'=>1])->first();
         if($push_info){
             return ajax_respon(0, '该成员已经添加过啦！');
         }
