@@ -7,8 +7,7 @@
             <legend>推送消息管理</legend>
         </fieldset>
         <blockquote class="layui-elem-quote">添加新的推送人</blockquote>
-        <form class="layui-form" method="post" action="{{url('/adm/push/addpush')}}"  id="form_data">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+        <form class="layui-form" id="form_data">
             <fieldset class="layui-elem-field">
                 <legend>填写信息</legend>
                 <div class="layui-field-box">
@@ -87,21 +86,21 @@
                     layer.msg('手机号不能为空', {icon: 5, time:1500});
                     return false;
                 }
-                /*$.ajax({
-                    url : '/adm/video/doaddbanner',
+                $.ajax({
+                    url : '/adm/push/addpush',
                     type : 'post',
                     dateType : 'json',
                     data : $('#form_data').serialize(),
                     success : function(msg){
                         layer.msg(msg.msg, {icon: 6});
-                        console.log(msg);
-                        return false;
-                        window.location.href = '{{url("adm/video/bannerlist")}}';
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 1000);
                     },
                     error : function(msg){
                         console.log(msg);
                     }
-                });*/
+                });
 
             })
         })
