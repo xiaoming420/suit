@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>优鲜拼团小程序后台管理</title>
+	<title>后台管理</title>
 	<meta name="renderer" content="webkit">	
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">	
@@ -44,7 +44,7 @@
 <body class="entrancebody">
 	<div class="entrancebox">
 		<img src="/images/adm_logo.png" class="enterpic" style="width:200px;" /><br><br>
-		<h1 class="text-center entranceh1">优鲜拼团小程序后台管理</h1>
+		<h1 class="text-center entranceh1">后台管理</h1>
 		<a href="/adm/login" class="entranbtn">进入管理员后台</a>
 	</div>
 </div>
