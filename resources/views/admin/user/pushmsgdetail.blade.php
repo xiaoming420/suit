@@ -8,7 +8,6 @@
         </fieldset>
         <blockquote class="layui-elem-quote">添加新的推送人</blockquote>
         <form class="layui-form" id="form_data">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
             <fieldset class="layui-elem-field">
                 <legend>填写信息</legend>
                 <div class="layui-field-box">
