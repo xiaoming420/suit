@@ -73,6 +73,11 @@ class SubscribeController extends Controller
                     'content'=> mb_convert_encoding ($txt,'UTF-8')
                 )
             );
+            if ($this->is_utf8($txt)) {
+                $content['text']['content'] = $txt;
+            } else {
+                $content['text']['content'] = iconv('gb2312', 'UTF-8//IGNORE', $txt);
+            }
 
 
             $user_list = push_msg::where('is_valid', 1)->get()->toArray();
@@ -88,6 +93,11 @@ class SubscribeController extends Controller
         } else {
             fun_respon(0, '预约失败');
         }
+    }
+
+    private function is_utf8($str)
+    {
+        return preg_match('//u', $str);
     }
 
     public function toMessage()
