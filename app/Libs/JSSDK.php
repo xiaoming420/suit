@@ -56,7 +56,7 @@ class JSSDK {
             $access_token = $res->access_token;
             if ($access_token) {
                 echo $access_token;
-                file_put_contents('access_token.txt',$res);
+                file_put_contents('access_token.txt',$access_token);
                 //Redis::setex('xcx_access_token', 7000, $access_token);
             }
         } else {
