@@ -32,6 +32,7 @@ Route::group(['prefix'=>'adm'], function(){
 Route::group(['prefix'=>'suit'], function(){
     Route::get('register', 'Web\WebController@register');
     Route::get('reserve', 'Web\WebController@reserve');
+    Route::post('addpush', 'Adm\Users\CustomerController@addPush');
 });
 
 
@@ -84,7 +85,7 @@ Route::group(['prefix'=>'adm', 'middleware'=>['adm.token']], function(){
 
     Route::group(['prefix'=>'push'], function(){
         Route::get('pushmeslist', 'Adm\Users\CustomerController@pushMesList');
-        Route::post('addpush', 'Adm\Users\CustomerController@addPush');
+
         Route::post('del', 'Adm\Users\CustomerController@del');
     });
 
