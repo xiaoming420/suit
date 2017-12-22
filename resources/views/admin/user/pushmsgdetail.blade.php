@@ -7,7 +7,7 @@
             <legend>推送消息管理</legend>
         </fieldset>
         <blockquote class="layui-elem-quote">添加新的推送人</blockquote>
-        <form class="layui-form" method="post" action="{{url('/adm/discount/doeditdiscount')}}"  id="form_data">
+        <form class="layui-form" method="post" action="{{url('/adm/push/addpush')}}"  id="form_data">
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
             <fieldset class="layui-elem-field">
                 <legend>填写信息</legend>

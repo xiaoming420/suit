@@ -59,4 +59,31 @@ class CustomerController extends Controller
         $list = push_msg::where([])->paginate(15);
         return view('admin/user/pushmsgdetail', ['list'=>$list]);
     }
+
+
+    /**
+     * 执行修改标记状态
+     * @param Request $request
+     * @return mixed
+     */
+    public function addPush(Request $request)
+    {
+        $phone = (int)$request->phone;
+        if (empty($phone)) {
+            return fun_error_view(0, '缺少参数', '/adm/push/pushmeslist');
+        }
+        $info = users::where(['phone'=>$phone])->first();
+        if(!$info){
+            return fun_error_view(0, '数据错误', '/adm/push/pushmeslist');
+        }
+        $push_info = push_msg::where(['phone'=>$phone])->first();
+        if($push_info){
+            return fun_error_view(0, '该成员已经添加过啦！', '/adm/push/pushmeslist');
+        }
+        $res = push_msg::create(['phone'=>$info['phone'],'openid'=>$info['openid']]);
+        if (!$res) {
+            return fun_error_view(0, '添加数据失败', '/adm/push/pushmeslist');
+        }
+        ajax_respon(1, '添加成功');
+    }
 }
