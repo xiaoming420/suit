@@ -13,7 +13,7 @@ class JSSDK {
     public $user = null;
 
   public function __construct() {
-      //$this->accessToken = $this->getToken();
+      $this->accessToken = $this->getToken();
   }
 
     /*
@@ -48,6 +48,7 @@ class JSSDK {
      */
     public function getToken() {
         $access_token = Redis::get('xcx_access_token');
+
         if (!$access_token) {
             // 如果是企业号用以下URL获取access_token
             //$url = "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=$this->appId&corpsecret=$this->appSecret";
@@ -55,7 +56,9 @@ class JSSDK {
             $res = json_decode($this->httpGet($url));
             $access_token = $res->access_token;
             if ($access_token) {
-                Redis::setex('xcx_access_token', 7000, $access_token);
+                echo $access_token;
+                file_put_contents('access_token.txt',$res);
+                //Redis::setex('xcx_access_token', 7000, $access_token);
             }
         } else {
             return $access_token;
@@ -87,6 +90,32 @@ class JSSDK {
         $dataRes = Curl::to($url)
             ->withData(urldecode($json_template))
             ->post();
+        $dataRes = json_decode($dataRes,true);
+        return $dataRes;
+    }
+
+
+    /**
+     * [doSend 公众号发送消息]
+     * @param $touser
+     * @param $template_id
+     * @param $url
+     * @param $data
+     * @param string $topcolor
+     * @return
+     */
+    public function doSend($touser, $template_id,$url, $data, $topcolor = '#173177')
+    {
+        $template = array(
+            'touser' => $touser,
+            'template_id' => $template_id,
+            'url' => $url,
+            'topcolor' => $topcolor,
+            'data' => $data
+        );
+        $json_template = json_encode($template);
+        $url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token= ".$this->LMaccessToken;
+        $dataRes = $this->httpRequest($url, urldecode($json_template));
         $dataRes = json_decode($dataRes,true);
         return $dataRes;
     }
