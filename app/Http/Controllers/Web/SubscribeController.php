@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Libs\JSSDK;
 use App\Models\city;
 use App\Models\reserve;
 use Illuminate\Http\Request;
@@ -12,6 +13,9 @@ class SubscribeController extends Controller
     public function infopage(Request $request)
     {
         //$provines = city::getprovines();
+        $signPage = new JSSDK();
+        $getSignPackage = $signPage->getSignPackage();
+        var_dump($getSignPackage);die;
         return view('web.reserve');
     }
 
