@@ -69,6 +69,8 @@ class CustomerController extends Controller
     public function addPush(Request $request)
     {
         $phone = (int)$request->phone;
+        echo 123;
+        var_dump($request);exit;
         if (empty($phone)) {
             return fun_error_view(0, '缺少参数', '/adm/push/pushmeslist');
         }
