@@ -8,6 +8,7 @@ use App\Models\push_msg;
 use App\Models\reserve;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class SubscribeController extends Controller
 {
@@ -87,6 +88,7 @@ class SubscribeController extends Controller
                     }
                     $content['touser'] = $v['openid'];
                     $res = $jssdk->servicemsg(json_encode($content, 320));
+                    Storage::disk('local')->append('sendmsg.log', json_encode($res));
                 }
             }
 
