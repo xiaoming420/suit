@@ -89,7 +89,7 @@ class WebController extends Controller
         //发送短信
         $tpl_id = "56993";
         $res = send_message($phone,$tpl_id,$num='');
-        sms_log::create(['phone'=>$phone,'content'=>$res]);
+        sms_log::create(['phone'=>$phone,'content'=>$res,'ts'=>date('Y-m-d H:s:i',time())]);
         fun_respon(1, '注册成功！');
     }
 
