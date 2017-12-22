@@ -23,13 +23,17 @@ class CustomerController extends Controller
      */
     public function customerList(Request $request)
     {
-        $where =[];
-        $phone = $request->phone;
-        if($phone){
-            $where['users.phone'] =$phone;
-        }
-        $list = users::select('users.*','sms_log.id as sl.id','sms_log.content')->leftJoin('sms_log','users.phone','=','sms_log.phone')->where($where)->orderBy('id','DESC')->paginate(10);
-        return view('admin/user/customerlist', ['list'=>$list,'where'=>$where]);
+        $keyword = $request->keyword;
+        $list = users::select('users.*','sms_log.id as sl.id','sms_log.content')
+            ->leftJoin('sms_log','users.phone','=','sms_log.phone')
+            ->where(function ($query)use($keyword){
+                if($keyword){
+                    $query->where("users.phone",'like',"%$keyword%");
+                    $query->orwhere("users.name",'like',"%$keyword%");
+                }
+            })
+            ->orderBy('id','DESC')->paginate(10);
+        return view('admin/user/customerlist', ['list'=>$list,'where'=>$keyword]);
     }
 
     /**
