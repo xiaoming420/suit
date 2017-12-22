@@ -36,15 +36,15 @@ class CustomerController extends Controller
     {
         $id = (int)$request->id;
         if (empty($id)) {
-            return fun_error_view(0, '缺少参数', '/adm/user/customerlist');
+            return ajax_respon(0, '缺少参数');
         }
         $info = users::where(['id'=>$id])->first();
         if(!$info){
-            return fun_error_view(0, '数据错误', '/adm/user/customerlist');
+            return ajax_respon(0, '数据错误');
         }
         $res = users::where(['id'=>$id])->update(['is_used'=>1]);
         if (!$res) {
-            return fun_error_view(0, '修改数据失败', '/adm/user/customerlist');
+            return ajax_respon(0, '修改数据失败');
         }
         ajax_respon(1, '编辑成功');
     }
