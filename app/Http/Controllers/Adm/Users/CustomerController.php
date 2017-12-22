@@ -23,7 +23,7 @@ class CustomerController extends Controller
      */
     public function customerList()
     {
-        $list = users::select('users.*','sms_log.id as sl.id','sms_log.content')->leftJoin('sms_log','users.phone','=','sms_log.phone')->paginate(15);
+        $list = users::select('users.*','sms_log.id as sl.id','sms_log.content')->leftJoin('sms_log','users.phone','=','sms_log.phone')->paginate(1);
         return view('admin/user/customerlist', ['list'=>$list]);
     }
 
