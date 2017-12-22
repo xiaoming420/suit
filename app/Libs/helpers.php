@@ -37,8 +37,7 @@ if (! function_exists('send_message')) {
             'tpl_id'    => $tpl_id,
             //'tpl_value' =>'#code#='.$content
         );
-        echo 123;
-        var_dump(fun_curl($url,$smsConf));exit;
+        return fun_curl($url,$smsConf);
     }
 }
 
