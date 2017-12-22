@@ -15,7 +15,6 @@ class SubscribeController extends Controller
         //$provines = city::getprovines();
         $signPage = new JSSDK();
         $getSignPackage = $signPage->getSignPackage();
-        var_dump($getSignPackage);die;
         return view('web.reserve');
     }
 
