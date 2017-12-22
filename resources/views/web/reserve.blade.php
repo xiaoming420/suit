@@ -69,7 +69,9 @@
     <p class="subtn">免费上门 量身定制</p>
 </div>
 </body>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
+
     $(function(){
 
         $('.subtn').click(function(){
@@ -105,7 +107,12 @@
                 success : function(msg){
                     console.log(msg)
                     if (msg.result == 1) {
-                        alert('我们已经收到您的预约，我们的工作人员会尽快联系您！')
+                        alert('我们已经收到您的预约，我们的工作人员会尽快联系您！');
+                        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+                            // 通过下面这个API显示右上角按钮
+                            //WeixinJSBridge.call('showOptionMenu');
+                            WeixinJSBridge.call('closeWindow');
+                        });
                     }
                 }
             });
