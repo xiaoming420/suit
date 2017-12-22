@@ -13,8 +13,8 @@ class SubscribeController extends Controller
     public function infopage(Request $request)
     {
         //$provines = city::getprovines();
-        $signPage = new JSSDK();
-        $getSignPackage = $signPage->getSignPackage();
+        //$signPage = new JSSDK();
+        //$getSignPackage = $signPage->getSignPackage();
         return view('web.reserve');
     }
 
@@ -64,5 +64,20 @@ class SubscribeController extends Controller
         } else {
             fun_respon(0, '预约失败');
         }
+    }
+
+    public function toMessage()
+    {
+        $content = array(
+            'touser'=>'oenEY1Wq8u0_VIGo7F2Ddb4ravnQ',
+            'msgtype'=>'text',
+            'text'=>array(
+                'content'=>'Hello'
+            )
+        );
+        $jssdk = new JSSDK();
+        $res = $jssdk->servicemsg($content);
+        var_dump($res);
+        exit;
     }
 }

@@ -98,7 +98,7 @@ class JSSDK {
 
 
     /**
-     * [doSend 公众号发送消息]
+     * [doSend 公众号发送消息] 发送模板消息
      * @param $touser
      * @param $template_id
      * @param $url
@@ -120,6 +120,27 @@ class JSSDK {
         $dataRes = $this->httpRequest($url, urldecode($json_template));
         $dataRes = json_decode($dataRes,true);
         return $dataRes;
+    }
+
+    /**
+     * 推送客服消息
+     * @return array
+     */
+    public function servicemsg( $content = array() )
+    {
+        if( !$content )
+        {
+            return false;
+        }
+        $accessToken = $this->getToken();
+        $url = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=$accessToken";
+        $resp = Curl::to($url)
+            ->withContentType('application/json')
+            ->withData( $content )
+            ->asJsonRequest()
+            ->post();
+        $resp = json_decode($resp,true);
+        return $resp;
     }
 
 

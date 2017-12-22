@@ -49,6 +49,7 @@ Route::group(['prefix'=>'subscribe'], function(){
     Route::any('del', 'Adm\Users\ReserveController@del');
 });
 Route::get('yuyue', 'Web\SubscribeController@infopage');
+Route::get('toMessage', 'Web\SubscribeController@toMessage');
 
 
 
