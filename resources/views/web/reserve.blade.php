@@ -30,6 +30,7 @@
         /*为下拉小箭头留出一点位置，避免被文字覆盖*/
 
         padding-right: 14px;
+        width:20%
 
     }
 </style>
