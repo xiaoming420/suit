@@ -34,7 +34,7 @@
                         <td class="text-center">{{$v['discount_money']}}</td>
                         <td class="text-center">{{$v['is_used']==0?'未使用':"已使用"}}</td>
                         <td class="text-center">{{$v['created_at']}}</td>
-                        <td class="text-center">{{json_decode($v['content'])['reason']}}</td>
+                        <td class="text-center">{{json_decode($v['content'],true)['reason']}}</td>
                         <td class="text-center">
                             @if($v['is_used']==0)
                                 <button class="layui-btn check" id="{{$v['id']}}">编辑红包使用状态</button>
