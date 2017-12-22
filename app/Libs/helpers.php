@@ -178,24 +178,33 @@ if (!function_exists('fun_curl')) {
      * @param $token
      * @return mixed
      */
-    function fun_curl($url,$data){
-        $ch = curl_init();
-        //print_r($ch);
-        curl_setopt( $ch, CURLOPT_URL,$url);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 60); //设置超时
-
-        if(0 === strpos(strtolower($url), 'https'))
+    function fun_curl($url, $para, $json = false){
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        // curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);    //SSL证书认证
+        // curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);       //严格认证
+        // curl_setopt($curl, CURLOPT_CAINFO, $cacert_url);     //证书地址
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);          //显示输出结果
+        if ( !empty($para) )
         {
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0); //对认证证书来源的检查
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0); //从证书中检查SSL加密算法是否存在
+            if ($json && is_array($para))
+            {
+                $para = json_encode( $para );
+            }
+            curl_setopt($curl, CURLOPT_POST, true);             //post传输数据
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $para);      //post传输数据
+//            if ($json)
+//            {
+//               //发送JSON数据
+//        　　　　curl_setopt($curl, CURLOPT_HEADER, 0 );          //过滤HTTP头
+//        　　　　//curl_setopt($curl, CURLOPT_HTTPHEADER, ['Content-Type: application/json; charset=utf-8', 'Content-Length:' . strlen($para)]);
+//            }
         }
-        curl_setopt( $ch, CURLOPT_POST, 1 );
-        curl_setopt( $ch, CURLOPT_POSTFIELDS, $data );
-        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
-        curl_setopt( $ch, CURLOPT_HTTPHEADER, ['Content-Type:text/xml'] );
-        $return = curl_exec ( $ch );
-        curl_close ( $ch );
-        return $return;
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $responseText = curl_exec($curl);
+        //var_dump( curl_error($curl) );//如果执行curl过程中出现异常，可打开此开关，以便查看异常内容
+        curl_close($curl);
+        return $responseText;
     }
 
 }
