@@ -90,7 +90,7 @@
     </div>
     <p class="itemnav">备注</p>
     <div class="iteminfo">
-        <textarea style="font-size: 14px" placeholder="偏好样式或其他要求" id="cont" class="itemarea"></textarea>
+        <textarea style="font-size: 14px" placeholder="偏好样式或其他要求" id="cont_bak" class="itemarea"></textarea>
     </div>
 </div>
 <div class="bottomfixed subtnbox">
@@ -107,7 +107,7 @@
             var name = $('#name').val();
             var sex = $('input[name=sex]:checked').val();
             var phone = $.trim($('#phone').val());
-            var cont = $('#cont').html();
+            var cont = $('#cont_bak').val();
             var province = $('#province :selected').text();
             var city = $('#city :selected').text();
             var area = $('#area :selected').text();
