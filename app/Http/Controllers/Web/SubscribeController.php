@@ -67,8 +67,8 @@ class SubscribeController extends Controller
                 'touser'=>'oenEY1Wq8u0_VIGo7F2Ddb4ravnQ',
                 'msgtype'=>'text',
                 'text'=>array(
-                    'content'=>"亲，有人申请了预约哦，尽快联系他吧！\n
-                    预约人手机号：".$data['phone']."\n".
+                    'content'=>"亲，有人申请了预约哦，尽快联系他吧!"."\n".
+                    "预约人手机号：".$data['phone']."\n".
                     '预约人姓名：'.$data['name']
                 )
             );
