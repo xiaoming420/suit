@@ -85,7 +85,7 @@
                     return false;
                 }
                 $.ajax({
-                    url : '/push/addpush',
+                    url : '/suit/addpush',
                     type : 'post',
                     dateType : 'json',
                     data : {phone:phone},
