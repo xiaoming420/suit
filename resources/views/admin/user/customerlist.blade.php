@@ -26,7 +26,7 @@
             @if(isset($list) && $list)
                 @foreach($list as $k=>$v)
                     <tr>
-                        <td class="text-center">{{$v['id']}}</td>
+                        <td class="text-center">{{$v['users.id']}}</td>
                         <td class="text-center">{{$v['name']?$v['name']:'未绑定'}}</td>
                         <td class="text-center">{{$v['phone']?$v['phone']:'未绑定'}}</td>
                         <td class="text-center">{{$v['gender']==1?'男':($v['sex']==2)?'女':'未知'}}</td>
