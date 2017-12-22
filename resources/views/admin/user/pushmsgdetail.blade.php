@@ -81,6 +81,7 @@
 
         $(function () {
             $('#form_data').submit(function(){
+                alert(123);
                 var phone = $('input[name=phone]').val();
                 if (!phone) {
                     layer.msg('手机号不能为空', {icon: 5, time:1500});
