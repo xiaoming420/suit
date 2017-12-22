@@ -47,6 +47,7 @@ class JSSDK {
      * 获取token
      */
     public function getToken() {
+
         $data = json_decode(file_get_contents("access_token.json"));
         if ($data->expire_time < time()) {
             // 如果是企业号用以下URL获取access_token
