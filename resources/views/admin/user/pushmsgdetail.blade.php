@@ -58,7 +58,7 @@
                 return false;
             } else {
                 $.ajax({
-                    url: '/push/del',
+                    url: '/adm/push/del',
                     type: 'post',
                     dateType: 'json',
                     data: {id: id},
