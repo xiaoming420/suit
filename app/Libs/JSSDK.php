@@ -1,8 +1,11 @@
 <?php
 namespace App\Libs;
+
 use Ixudra\Curl\Facades\Curl;
 use Illuminate\Support\Facades\Redis;
-class JSSDK {
+
+class JSSDK
+{
 
 
     private $appid = 'wx5dd4f5ae95592d61';
@@ -12,9 +15,10 @@ class JSSDK {
     public $data = null;
     public $user = null;
 
-  public function __construct() {
-      $this->accessToken = $this->getToken();
-  }
+    public function __construct()
+    {
+        $this->accessToken = $this->getToken();
+    }
 
     /*
      *
@@ -31,13 +35,13 @@ class JSSDK {
 
         $url = "https://api.weixin.qq.com/sns/userinfo?access_token=$access_token&openid=$open_id&lang=zh_CN";
         $ch = curl_init();
-        curl_setopt($ch,CURLOPT_URL,$url);
-        curl_setopt($ch,CURLOPT_HEADER,0);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1 );
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
         $res = curl_exec($ch);
         curl_close($ch);
-        return json_decode($res,true);
+        return json_decode($res, true);
     }
 
     /**
@@ -46,7 +50,8 @@ class JSSDK {
      * @return mixed
      * 获取token
      */
-    public function getToken() {
+    public function getToken()
+    {
 
         $data = json_decode(file_get_contents("access_token.json"));
         if ($data->expire_time < time()) {
@@ -72,13 +77,13 @@ class JSSDK {
      * 推送消息
      * @param $touser  openid
      * @param $template_id  模板id
-     * @param string $page  点击模板跳转地址
+     * @param string $page 点击模板跳转地址
      * @param $data         模板数据
      * @param $formId
      * @param string $color 字体颜色
      * @return mixed
      */
-    public function sendTemplate($touser,$template_id,$page = 'pages/index/index',$data,$formId,$color = '#173177')
+    public function sendTemplate($touser, $template_id, $page = 'pages/index/index', $data, $formId, $color = '#173177')
     {
         $template = array(
             'touser' => $touser,
@@ -92,7 +97,7 @@ class JSSDK {
         $dataRes = Curl::to($url)
             ->withData(urldecode($json_template))
             ->post();
-        $dataRes = json_decode($dataRes,true);
+        $dataRes = json_decode($dataRes, true);
         return $dataRes;
     }
 
@@ -106,7 +111,7 @@ class JSSDK {
      * @param string $topcolor
      * @return
      */
-    public function doSend($touser, $template_id,$url, $data, $topcolor = '#173177')
+    public function doSend($touser, $template_id, $url, $data, $topcolor = '#173177')
     {
         $template = array(
             'touser' => $touser,
@@ -116,9 +121,9 @@ class JSSDK {
             'data' => $data
         );
         $json_template = json_encode($template);
-        $url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token= ".$this->LMaccessToken;
+        $url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token= " . $this->LMaccessToken;
         $dataRes = $this->httpRequest($url, urldecode($json_template));
-        $dataRes = json_decode($dataRes,true);
+        $dataRes = json_decode($dataRes, true);
         return $dataRes;
     }
 
@@ -126,25 +131,25 @@ class JSSDK {
      * 推送客服消息
      * @return array
      */
-    public function servicemsg( $content = array() )
+    public function servicemsg($content = array())
     {
-        if( !$content )
-        {
+        if (!$content) {
             return false;
         }
         $accessToken = $this->getToken();
         $url = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=$accessToken";
         $resp = Curl::to($url)
             ->withContentType('application/json')
-            ->withData( $content )
+            ->withData($content)
             ->asJsonRequest()
             ->post();
-        $resp = json_decode($resp,true);
+        $resp = json_decode($resp, true);
         return $resp;
     }
 
 
-    public function getSignPackage() {
+    public function getSignPackage()
+    {
         $jsapiTicket = $this->getJsApiTicket();
 
         // 注意 URL 一定要动态获取，不能 hardcode.
@@ -160,10 +165,10 @@ class JSSDK {
         $signature = sha1($string);
 
         $signPackage = array(
-            "appId"     => $this->appid,
-            "nonceStr"  => $nonceStr,
+            "appId" => $this->appid,
+            "nonceStr" => $nonceStr,
             "timestamp" => $timestamp,
-            "url"       => $url,
+            "url" => $url,
             "signature" => $signature,
             "rawString" => $string
         );
@@ -171,7 +176,8 @@ class JSSDK {
     }
 
 
-    private function createNonceStr($length = 16) {
+    private function createNonceStr($length = 16)
+    {
         $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         $str = "";
         for ($i = 0; $i < $length; $i++) {
@@ -180,7 +186,8 @@ class JSSDK {
         return $str;
     }
 
-    private function getJsApiTicket() {
+    private function getJsApiTicket()
+    {
         // jsapi_ticket 应该全局存储与更新，以下代码以写入到文件中做示例
         $data = json_decode(file_get_contents("jsapi_ticket.json"));
         if ($data->expire_time < time()) {
@@ -217,11 +224,12 @@ class JSSDK {
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($curl, CURLOPT_URL, $url);
-    
+
         $res = curl_exec($curl);
         curl_close($curl);
         return $res;
     }
+
     /**
      * 发送post请求
      * @param string $url
@@ -233,7 +241,7 @@ class JSSDK {
         if (function_exists('curl_init')) {
             $timeout = $connectTimeout + $readTimeout;
             $ch = curl_init();
-            if (strpos($url, 'https://') !== false) {	// HTTPS
+            if (strpos($url, 'https://') !== false) {    // HTTPS
                 //curl_setopt($ch, CURLOPT_SSLVERSION, 1);
                 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
                 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
@@ -245,8 +253,8 @@ class JSSDK {
             curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             if ($post == 'get') {
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true) ; // 获取数据返回
-                curl_setopt($ch, CURLOPT_BINARYTRANSFER, true) ; // 在启用 CURLOPT_RETURNTRANSFER 时候将获取数据返回
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // 获取数据返回
+                curl_setopt($ch, CURLOPT_BINARYTRANSFER, true); // 在启用 CURLOPT_RETURNTRANSFER 时候将获取数据返回
             } else {
                 curl_setopt($ch, CURLOPT_POST, true);
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
@@ -264,9 +272,9 @@ class JSSDK {
     private function GetCode()
     {
         //通过code获得openid
-        if (!isset($_GET['code'])){
+        if (!isset($_GET['code'])) {
             //触发微信返回code码
-            $baseUrl = urlencode('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+            $baseUrl = urlencode('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
             $url = $this->__CreateOauthUrlForUserCode($baseUrl);
             Header("Location: $url");
             exit();
@@ -287,14 +295,14 @@ class JSSDK {
      */
     private function __CreateOauthUrlForUserCode($redirectUrl)
     {
-        $urlObj["appid"] = env('WX_APPID','wx5dd4f5ae95592d61');//WxPayConfig::APPID;
+        $urlObj["appid"] = env('WX_APPID', 'wx5dd4f5ae95592d61');//WxPayConfig::APPID;
         $urlObj["redirect_uri"] = "$redirectUrl";
         $urlObj["response_type"] = "code";
         $urlObj["scope"] = "snsapi_base";
-        $urlObj["state"] = "STATE"."#wechat_redirect";
+        $urlObj["state"] = "STATE" . "#wechat_redirect";
         $bizString = $this->ToUrlParams($urlObj);
         //$str = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf0e81c3bee622d60&redirect_uri=http%3A%2F%2Fnba.bluewebgame.com%2Foauth_response.php&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
-        return "https://open.weixin.qq.com/connect/oauth2/authorize?".$bizString;
+        return "https://open.weixin.qq.com/connect/oauth2/authorize?" . $bizString;
     }
 
     /**
@@ -313,15 +321,15 @@ class JSSDK {
         //curl_setopt($ch, CURLOPT_TIMEOUT, $this->curl_timeout);
         //curl_setopt($ch, CURLOPT_TIMEOUT, 60);
         curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER,FALSE);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST,FALSE);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
         curl_setopt($ch, CURLOPT_HEADER, FALSE);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
         //运行curl，结果以jason形式返回
         $res = curl_exec($ch);
         curl_close($ch);
         //取出openid
-        $data = json_decode($res,true);
+        $data = json_decode($res, true);
         $this->user = $data;
         return $data;
     }
@@ -329,18 +337,18 @@ class JSSDK {
     /**
      *
      * 构造获取open和access_toke的url地址
-     * @param string $code，微信跳转带回的code
+     * @param string $code ，微信跳转带回的code
      *
      * @return 请求的url
      */
     private function __CreateOauthUrlForOpenid($code)
     {
-        $urlObj["appid"] = env('WX_APPID','wx5dd4f5ae95592d61');//WxPayConfig::APPID;
-        $urlObj["secret"] = env('WX_APPSECRET','abd091a9ff677acbd84821dbe26725ff');//WxPayConfig::APPSECRET;
+        $urlObj["appid"] = env('WX_APPID', 'wx5dd4f5ae95592d61');//WxPayConfig::APPID;
+        $urlObj["secret"] = env('WX_APPSECRET', 'abd091a9ff677acbd84821dbe26725ff');//WxPayConfig::APPSECRET;
         $urlObj["code"] = $code;
         $urlObj["grant_type"] = "authorization_code";
         $bizString = $this->ToUrlParams($urlObj);
-        return "https://api.weixin.qq.com/sns/oauth2/access_token?".$bizString;
+        return "https://api.weixin.qq.com/sns/oauth2/access_token?" . $bizString;
     }
 
     /**
@@ -353,9 +361,8 @@ class JSSDK {
     private function ToUrlParams($urlObj)
     {
         $buff = "";
-        foreach ($urlObj as $k => $v)
-        {
-            if($k != "sign"){
+        foreach ($urlObj as $k => $v) {
+            if ($k != "sign") {
                 $buff .= $k . "=" . $v . "&";
             }
         }
