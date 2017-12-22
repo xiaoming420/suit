@@ -39,7 +39,7 @@
                 @foreach($list as $k=>$v)
                     <tr>
                         <td class="text-center">{{$v['id']}}</td>
-                        <td class="text-center">{{$v['money']}}</td>
+                        <td class="text-center">{{$v['phone']}}</td>
                         <td class="text-center">{{$v['created_at']}}</td>
                     </tr>
                 @endforeach
