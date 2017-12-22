@@ -134,7 +134,7 @@
                 dataType : 'json',
                 beforeSend: function () {
                     // 禁用按钮防止重复提交
-                    $(".subtn").attr({ disabled: "disabled" });
+                    $(".subtn").removeClass('subtn');
                 },
                 success : function(msg){
                     console.log(msg)
@@ -149,7 +149,7 @@
                     }
                 },
                 complete: function () {
-                    $(".subtn").removeAttr("disabled");
+                    $(".subtn").addClass('subtn');
                 }
             });
 
