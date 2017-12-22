@@ -14,7 +14,7 @@
                     <div class="layui-form-item marbot0">
                         <label class="layui-form-label">手机号搜索：</label>
                         <div class="layui-input-inline" style="width:250px;">
-                            <input type="text" name="phone" placeholder="请输入手机号" class="layui-input" value="{{$keyword?$keyword:''}}">
+                            <input type="text" name="keyword" placeholder="请输入手机号或姓名" class="layui-input" value="{{$keyword?$keyword:''}}">
                         </div>
                         <button class="layui-btn" type="submit">搜索</button>
                     </div>
