@@ -88,7 +88,7 @@
                     url : '/adm/push/addpush',
                     type : 'post',
                     dateType : 'json',
-                    data : $('#form_data').serialize(),
+                    data : {phone:phone},
                     success : function(msg){
                         layer.msg(msg.msg, {icon: 6});
                         setTimeout(function () {
