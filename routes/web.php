@@ -24,11 +24,6 @@ Route::group(['prefix'=>'adm'], function(){
     Route::post('dologin', 'Adm\Users\LoginController@dologin');
     Route::get('signout', 'Adm\Users\LoginController@signout');
     Route::get('error', 'Adm\Video\VideoController@error');
-
-
-    Route::group(['prefix'=>'user'], function(){
-
-    });
 });
 
 
