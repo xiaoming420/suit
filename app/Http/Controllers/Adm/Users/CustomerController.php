@@ -84,6 +84,6 @@ class CustomerController extends Controller
         if (!$res) {
             return fun_error_view(0, '添加数据失败', '/adm/push/pushmeslist');
         }
-        ajax_respon(1, '添加成功');
+        return fun_error_view(1, '添加数据成功', '/adm/push/pushmeslist');
     }
 }
