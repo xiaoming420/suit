@@ -63,13 +63,14 @@ class SubscribeController extends Controller
         if ($res) {
 
             // 预约成功，推送消息给客服人员
+            $txt = "亲，有人申请了预约哦，尽快联系他吧!"."\n".
+                "预约人手机号：".$data['phone']."\n".
+                '预约人姓名：'.$data['name'];
             $content = array(
                 'touser'=>'oenEY1Wq8u0_VIGo7F2Ddb4ravnQ',
                 'msgtype'=>'text',
                 'text'=>array(
-                    'content'=>"亲，有人申请了预约哦，尽快联系他吧!"."\n".
-                    "预约人手机号：".$data['phone']."\n".
-                    '预约人姓名：'.$data['name']
+                    'content'=> urlencode($txt)
                 )
             );
             $user_list = push_msg::where('is_valid', 1)->get()->toArray();
