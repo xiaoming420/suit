@@ -7,7 +7,7 @@
         <div class="clearfix">
             <p class="capitalnav capitalnav02">渠道商列表</p>
             <div class="customerdetail">
-                <form class="layui-form" action="">
+                <form class="layui-form" method="get" action="{{url('/adm/user/customerlist')}}">
                     <div class="layui-form-item marbot0">
                         <label class="layui-form-label">顾客昵称：</label>
                         <div class="layui-input-inline" style="width:250px;">
