@@ -81,9 +81,9 @@
             <option value="12">天津市</option>
             <option value="13">河北省</option>
         </select>
-        <select name="city" id="city" style="display: none;float:left;margin:5px 3px">
+        <select name="city" id="city" style="display: none;float:left;margin:5px 3px;font-size: 14px">
         </select>
-        <select name="area" id="area" style="display: none;float:left;margin:5px 3px">
+        <select name="area" id="area" style="display: none;float:left;margin:5px 3px;font-size: 14px">
         </select>
         {{--<input type="text" placeholder="省市区" class="itemput borderbot addressicon" disabled="disabled"/>--}}
         <input style="font-size: 14px" type="text" id="detail" placeholder="请输入详细地址" class="itemput" />
