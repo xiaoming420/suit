@@ -19,9 +19,16 @@ class ReserveController extends Controller
      * 预约列表
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function reserveList()
+    public function reserveList(Request $request)
     {
-        $list = reserve::where(['is_valid'=>1])->orderBy('id','DESC')->paginate(15);
+        $keyword = $request->keyword;
+        $list = reserve::where(['is_valid'=>1])
+            ->where(function ($query)use($keyword){
+                if($keyword){
+                    $query->where("phone",'like',"%$keyword%");
+                    $query->orwhere("name",'like',"%$keyword%");
+                }
+            })->orderBy('id','DESC')->paginate(10);
         return view('admin/reserve/reservelist', ['list'=>$list]);
     }
 

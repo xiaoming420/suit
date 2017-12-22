@@ -8,7 +8,6 @@
             <legend>用户列表</legend>
         </fieldset>
         <div class="clearfix">
-            <p class="capitalnav capitalnav02">渠道商列表</p>
             <div class="customerdetail">
                 <form class="layui-form" method="get" action="{{url('/adm/user/customerlist')}}">
                     <div class="layui-form-item marbot0">
