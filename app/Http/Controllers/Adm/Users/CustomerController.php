@@ -56,7 +56,7 @@ class CustomerController extends Controller
      */
     public function pushMesList()
     {
-        $list = push_msg::where([])->paginate(15);
+        $list = push_msg::where(['is_valid'=>1])->paginate(15);
         return view('admin/user/pushmsgdetail', ['list'=>$list]);
     }
 
