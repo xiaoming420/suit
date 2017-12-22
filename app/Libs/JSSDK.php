@@ -47,21 +47,22 @@ class JSSDK {
      * 获取token
      */
     public function getToken() {
-        $access_token = Redis::get('xcx_access_token');
-
-        if (!$access_token) {
+        $data = json_decode(file_get_contents("access_token.json"));
+        if ($data->expire_time < time()) {
             // 如果是企业号用以下URL获取access_token
             //$url = "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=$this->appId&corpsecret=$this->appSecret";
             $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$this->appid&secret=$this->secrect";
             $res = json_decode($this->httpGet($url));
             $access_token = $res->access_token;
             if ($access_token) {
-                echo $access_token;
-                file_put_contents('access_token.txt',$res);
-                //Redis::setex('xcx_access_token', 7000, $access_token);
+                $data->expire_time = time() + 7000;
+                $data->access_token = $access_token;
+                $fp = fopen("access_token.json", "w");
+                fwrite($fp, json_encode($data));
+                fclose($fp);
             }
         } else {
-            return $access_token;
+            $access_token = $data->access_token;
         }
         return $access_token;
     }
