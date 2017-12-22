@@ -70,7 +70,7 @@ class SubscribeController extends Controller
                 'touser'=>'oenEY1Wq8u0_VIGo7F2Ddb4ravnQ',
                 'msgtype'=>'text',
                 'text'=>array(
-                    'content'=> urldecode(json_encode(urlencode($txt)))
+                    'content'=> json_encode($txt, 320)
                 )
             );
             $user_list = push_msg::where('is_valid', 1)->get()->toArray();
