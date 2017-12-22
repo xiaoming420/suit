@@ -63,7 +63,7 @@
                 data : {id:id},
                 success : function(msg){
                     if (msg.result == 1) {
-                        layer.msg('删除成功', {'icon':6});
+                        layer.msg('操作成功', {'icon':6});
                         setTimeout(function(){
                             window.location.reload();
                         }, 1000);
