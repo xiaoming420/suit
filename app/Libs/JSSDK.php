@@ -138,11 +138,13 @@ class JSSDK
         }
         $accessToken = $this->getToken();
         $url = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=$accessToken";
-        $resp = Curl::to($url)
+        $resp = fun_curl_header($url, $content);
+
+        /*$resp = Curl::to($url)
             ->withContentType('application/json')
             ->withData($content)
 //            ->asJsonRequest()
-            ->post();
+            ->post();*/
         $resp = json_decode($resp, true);
         return $resp;
     }
