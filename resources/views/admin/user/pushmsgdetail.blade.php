@@ -7,7 +7,6 @@
             <legend>推送消息管理</legend>
         </fieldset>
         <blockquote class="layui-elem-quote">添加新的推送人</blockquote>
-        <form class="layui-form" id="form_data">
             <fieldset class="layui-elem-field">
                 <legend>填写信息</legend>
                 <div class="layui-field-box">
@@ -22,7 +21,6 @@
             <div class="layui-form-item text-center" >
                 <button class="layui-btn">确认添加</button>
             </div>
-        </form>
     </div>
     <blockquote class="layui-elem-quote">推送人员列表</blockquote>
     <table class="layui-table tab-ths">
@@ -80,7 +78,7 @@
         });
 
         $(function () {
-            $('#form_data').submit(function(){
+            $('.layui-btn').submit(function(){
                 alert(123);
                 var phone = $('input[name=phone]').val();
                 if (!phone) {
