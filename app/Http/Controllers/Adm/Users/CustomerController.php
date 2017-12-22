@@ -29,7 +29,7 @@ class CustomerController extends Controller
             $where['users.phone'] =$phone;
         }
         $list = users::select('users.*','sms_log.id as sl.id','sms_log.content')->leftJoin('sms_log','users.phone','=','sms_log.phone')->where($where)->paginate(1);
-        return view('admin/user/customerlist', ['list'=>$list]);
+        return view('admin/user/customerlist', ['list'=>$list,'where'=>$where]);
     }
 
     /**
