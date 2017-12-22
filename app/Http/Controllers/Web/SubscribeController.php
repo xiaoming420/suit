@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Libs\JSSDK;
 use App\Models\city;
+use App\Models\push_msg;
 use App\Models\reserve;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -60,6 +61,26 @@ class SubscribeController extends Controller
         }
         $res = reserve::insert($data);
         if ($res) {
+
+            // 预约成功，推送消息给客服人员
+            $content = array(
+                'touser'=>'oenEY1Wq8u0_VIGo7F2Ddb4ravnQ',
+                'msgtype'=>'text',
+                'text'=>array(
+                    'content'=>"亲，有人申请了预约哦，尽快联系他吧!"."\n".
+                    "预约人手机号：".$data['phone']."\n".
+                    '预约人姓名：'.$data['name']
+                )
+            );
+            $user_list = push_msg::where('is_valid', 1)->get()->toArray();
+            if ($user_list) {
+                $jssdk = new JSSDK();
+                foreach ($user_list as $v) {
+                    $content['touser'] = $v['openid'];
+                    $res = $jssdk->servicemsg($content);
+                }
+            }
+
             fun_respon(1, '成功');
         } else {
             fun_respon(0, '预约失败');
