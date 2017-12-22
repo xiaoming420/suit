@@ -32,7 +32,7 @@
 
         padding-right: 14px;
         font-size: 14px
-        width:30%
+        width:33%
 
     }
 </style>
