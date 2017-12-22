@@ -63,9 +63,12 @@ class SubscribeController extends Controller
         if ($res) {
 
             // 预约成功，推送消息给客服人员
-            $txt = "亲，有人申请了预约哦，尽快联系他吧! \n".
+            $txt = "亲，有人预约了哦，赶快联系他吧! \n".
                 "预约人手机号：".$data['phone']." \n".
-                '预约人姓名：'.$data['name'];
+                '预约人姓名：'.$data['name']."\n".
+                '预约认地址：'.$data['province'].' '.$data['city'].' '.$data['area']." \n".
+                '详细地址：'.$data['address']." \n".
+                '备注：'.$data['remark'];
             $content = array(
                 'touser'=>'oenEY1Wq8u0_VIGo7F2Ddb4ravnQ',
                 'msgtype'=>'text',
@@ -79,6 +82,9 @@ class SubscribeController extends Controller
             if ($user_list) {
                 $jssdk = new JSSDK();
                 foreach ($user_list as $v) {
+                    if (empty($v['openid'])) {
+                        continue;
+                    }
                     $content['touser'] = $v['openid'];
                     $res = $jssdk->servicemsg(json_encode($content, 320));
                 }
