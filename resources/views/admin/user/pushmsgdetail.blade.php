@@ -19,7 +19,7 @@
                 </div>
             </fieldset>
             <div class="layui-form-item text-center" >
-                <button class="layui-btn">确认添加</button>
+                <button class="layui-btn add">确认添加</button>
             </div>
     </div>
     <blockquote class="layui-elem-quote">推送人员列表</blockquote>
@@ -78,7 +78,7 @@
         });
 
         $(function () {
-            $('.layui-btn').submit(function(){
+            $('.add').submit(function(){
                 alert(123);
                 var phone = $('input[name=phone]').val();
                 if (!phone) {
