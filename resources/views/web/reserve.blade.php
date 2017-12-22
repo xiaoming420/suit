@@ -94,7 +94,7 @@
     </div>
 </div>
 <div class="bottomfixed subtnbox">
-    <p class="subtn">免费上门 量身定制</p>
+    <p class="subtn applysub">免费上门 量身定制</p>
 </div>
 </body>
 <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
@@ -102,7 +102,7 @@
 
     $(function(){
 
-        $('.subtn').click(function(){
+        $('.applysub').click(function(){
 
             var name = $('#name').val();
             var sex = $('input[name=sex]:checked').val();
@@ -134,7 +134,7 @@
                 dataType : 'json',
                 beforeSend: function () {
                     // 禁用按钮防止重复提交
-                    $(".subtn").removeClass('subtn');
+                    $(".subtn").removeClass('applysub');
                 },
                 success : function(msg){
                     console.log(msg)
@@ -149,7 +149,7 @@
                     }
                 },
                 complete: function () {
-                    $(".subtn").addClass('subtn');
+                    $(".subtn").addClass('applysub');
                 }
             });
 
