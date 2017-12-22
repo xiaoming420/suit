@@ -44,8 +44,8 @@
         <div class="itemput borderbot sexput">
             <span class="itempan">性别</span>
             <div class="itemcont">
-                <p class="sexpro active"><span class="checkicon02"><input type="radio" name="sex" checked="checked" /></span><span class="">男</span></p>
-                <p class="sexpro"><span class="checkicon02"><input type="radio" name="sex"/></span><span class="">女</span></p>
+                <p class="sexpro active"><span class="checkicon02"><input type="radio" name="sex" checked="checked" value="1"/></span><span class="">男</span></p>
+                <p class="sexpro"><span class="checkicon02"><input type="radio" name="sex" value="2"/></span><span class="">女</span></p>
             </div>
         </div>
         <div class="itemput sexput">
