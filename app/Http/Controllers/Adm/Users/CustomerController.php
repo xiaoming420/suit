@@ -23,7 +23,7 @@ class CustomerController extends Controller
      */
     public function customerList()
     {
-        $list = users::where([])->paginate(15);
+        $list = users::where([])->leftJoin('sms_log','users.phone','=','sms_log.phone')->paginate(15);
         return view('admin/user/customerlist', ['list'=>$list]);
     }
 
