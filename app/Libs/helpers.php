@@ -35,7 +35,7 @@ if (! function_exists('send_message')) {
             'key'   => 'fe35e40dde51035179613b2b02d3de7c',
             'mobile'    => $phone,
             'tpl_id'    => $tpl_id,
-            'tpl_value' =>'#code#='.$content
+            //'tpl_value' =>'#code#='.$content
         );
         fun_curl($url,$smsConf);
     }
