@@ -47,8 +47,7 @@ class JSSDK {
      * 获取token
      */
     public function getToken() {
-        $access_token = Redis::get('xcx_access_token');
-
+        $access_token = '';
         if (!$access_token) {
             // 如果是企业号用以下URL获取access_token
             //$url = "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=$this->appId&corpsecret=$this->appSecret";
