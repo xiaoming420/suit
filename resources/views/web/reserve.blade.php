@@ -132,6 +132,10 @@
                 type : 'post',
                 data : data,
                 dataType : 'json',
+                beforeSend: function () {
+                    // 禁用按钮防止重复提交
+                    $(".subtn").attr({ disabled: "disabled" });
+                },
                 success : function(msg){
                     console.log(msg)
                     if (msg.result == 1) {
@@ -143,6 +147,9 @@
                             WeixinJSBridge.call('closeWindow');
                         });*/
                     }
+                },
+                complete: function () {
+                    $(".subtn").removeAttr("disabled");
                 }
             });
 
