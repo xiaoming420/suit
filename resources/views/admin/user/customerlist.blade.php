@@ -17,7 +17,8 @@
                 <th>性别</th>
                 <th>红包金额</th>
                 <th>红包是否使用</th>
-                <th>时间</th>
+                <th>红包使用时间</th>
+                <th>注册时间</th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -31,10 +32,12 @@
                         <td class="text-center">{{$v['gender']==1?'男':($v['sex']==2)?'女':'未知'}}</td>
                         <td class="text-center">{{$v['discount_money']}}</td>
                         <td class="text-center">{{$v['is_used']==0?'未使用':"已使用"}}</td>
-                        <td class="text-center">{{$v['updated_at']}}</td>
+                        <td class="text-center">{{$v['created_at']}}</td>
                         <td class="text-center">
                             @if($v['is_used']==0)
-                            <button class="layui-btn check" id="{{$v['id']}}">编辑红包使用状态</button>
+                                <button class="layui-btn check" id="{{$v['id']}}">编辑红包使用状态</button>
+                            @else
+                                {{$v['updated_at']}}
                             @endif
                         </td>
                     </tr>
