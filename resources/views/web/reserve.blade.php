@@ -107,7 +107,7 @@
             var name = $('#name').val();
             var sex = $('input[name=sex]:checked').val();
             var phone = $.trim($('#phone').val());
-            var cont = $('#cont').text();
+            var cont = $('#cont').html();
             var province = $('#province :selected').text();
             var city = $('#city :selected').text();
             var area = $('#area :selected').text();
@@ -116,7 +116,7 @@
 
             console.log(province)
             console.log(city)
-            console.log(area)
+            console.log(cont)
 
             if (!name) {
                 alert('请留下您的姓名');
