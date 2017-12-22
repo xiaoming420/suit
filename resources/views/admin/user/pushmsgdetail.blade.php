@@ -32,6 +32,7 @@
             <th>编号</th>
             <th>手机号</th>
             <th>创建时间</th>
+            <th>操作</th>
         </tr>
         </thead>
         <tbody>
@@ -41,12 +42,44 @@
                         <td class="text-center">{{$v['id']}}</td>
                         <td class="text-center">{{$v['phone']}}</td>
                         <td class="text-center">{{$v['created_at']}}</td>
+                        <td class="text-center">
+                            <button class="layui-btn dels" id="{{$v['id']}}">删除</button>
+                        </td>
                     </tr>
                 @endforeach
             @endif
         </tbody>
     </table>
     <script>
+
+        $('.dels').click(function () {
+            var id = $(this).attr('id');
+            if (confirm('确认删除么？') == false) {
+                return false;
+            } else {
+                $.ajax({
+                    url: '/push/del',
+                    type: 'post',
+                    dateType: 'json',
+                    data: {id: id},
+                    success: function (msg) {
+                        if (msg.result == 1) {
+                            layer.msg('删除成功', {'icon': 6});
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 1000);
+                        } else {
+                            alert(msg.msg);
+                            return false;
+                        }
+                    },
+                    error: function (msg) {
+                        console.log(msg);
+                    }
+                })
+            }
+        });
+
         $(function () {
             $('#form_data').submit(function(){
                 var phone = $('input[name=phone]').val();

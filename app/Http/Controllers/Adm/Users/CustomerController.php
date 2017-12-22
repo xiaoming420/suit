@@ -62,7 +62,7 @@ class CustomerController extends Controller
 
 
     /**
-     * 执行修改标记状态
+     * 添加推送人员
      * @param Request $request
      * @return mixed
      */
@@ -85,5 +85,22 @@ class CustomerController extends Controller
             return fun_error_view(0, '添加数据失败', '/adm/push/pushmeslist');
         }
         return fun_error_view(1, '添加数据成功', '/adm/push/pushmeslist');
+    }
+
+    /**
+     * 删除推送用户
+     * @param Request $request
+     */
+    public function del(Request $request)
+    {
+        $id = (int) $request->id;
+        if (empty($id)) {
+            ajax_respon(0, '缺少参数');
+        }
+        $info = push_msg::where(['id'=>$id])->update(['is_valid'=>0]);
+        if (empty($info)) {
+            ajax_respon(0, '删除失败');
+        }
+        ajax_respon(1, '删除成功');
     }
 }
