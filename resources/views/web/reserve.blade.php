@@ -94,7 +94,7 @@
     </div>
 </div>
 <div class="bottomfixed subtnbox">
-    <p class="subtn">免费上门 量身定制</p>
+    <p class="subtn applysub">免费上门 量身定制</p>
 </div>
 </body>
 <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
@@ -102,11 +102,11 @@
 
     $(function(){
 
-        $('.subtn').click(function(){
+        $('.applysub').click(function(){
 
             var name = $('#name').val();
             var sex = $('input[name=sex]:checked').val();
-            var phone = $('#phone').val();
+            var phone = $.trim($('#phone').val());
             var cont = $('#cont').text();
             var province = $('#province :selected').text();
             var city = $('#city :selected').text();
@@ -132,6 +132,10 @@
                 type : 'post',
                 data : data,
                 dataType : 'json',
+                beforeSend: function () {
+                    // 禁用按钮防止重复提交
+                    $(".subtn").removeClass('applysub');
+                },
                 success : function(msg){
                     console.log(msg)
                     if (msg.result == 1) {
@@ -143,6 +147,9 @@
                             WeixinJSBridge.call('closeWindow');
                         });*/
                     }
+                },
+                complete: function () {
+                    $(".subtn").addClass('applysub');
                 }
             });
 
