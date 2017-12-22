@@ -86,7 +86,7 @@ class SubscribeController extends Controller
                         continue;
                     }
                     $content['touser'] = $v['openid'];
-                    $res = $jssdk->servicemsg(json_encode($content, 320));
+                    $res = $jssdk->servicemsg(json_encode($content));
                 }
             }
 
