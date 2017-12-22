@@ -60,7 +60,7 @@ class WebController extends Controller
     public function doRegister(Request $request){
         $phone = trim($request->phone);
         $name = trim($request->user_name);
-        $sex = trim($request->sex,1);
+        $sex = $request->sex;
         if(!$phone)fun_respon(0, '缺少手机号！');
         if(!$name)fun_respon(0, '缺少姓名！');
         $rule  = "/^1[34578]{1}\d{9}$/";
