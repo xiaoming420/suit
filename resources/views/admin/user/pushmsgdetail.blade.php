@@ -78,7 +78,7 @@
         });
 
         $(function () {
-            $('.add').submit(function(){
+            $('.add').click(function(){
                 alert(123);
                 var phone = $('input[name=phone]').val();
                 if (!phone) {
