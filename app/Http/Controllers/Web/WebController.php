@@ -6,6 +6,7 @@ use App\Libs\JSSDK;
 use App\Models\adm_user;
 use App\Models\discount;
 use App\Models\group_qrcode;
+use App\Models\sms_log;
 use App\Models\users;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -85,6 +86,10 @@ class WebController extends Controller
         if(!$res){
             fun_respon(0, '注册失败！');
         }
+        //发送短信
+        $tpl_id = "56993";
+        $res = send_message($phone,$tpl_id,$num='');
+        sms_log::create(['phone'=>$phone,'content'=>$res]);
         fun_respon(1, '注册成功！');
     }
 
