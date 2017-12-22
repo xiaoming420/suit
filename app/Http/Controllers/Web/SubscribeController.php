@@ -70,9 +70,16 @@ class SubscribeController extends Controller
                 'touser'=>'oenEY1Wq8u0_VIGo7F2Ddb4ravnQ',
                 'msgtype'=>'text',
                 'text'=>array(
-                    'content'=> json_encode($txt, 320)
+                    'content'=> mb_convert_encoding ($txt,'UTF-8')
                 )
             );
+            if ($this->is_utf8($txt)) {
+                $content['text']['content'] = $txt;
+            } else {
+                $content['text']['content'] = iconv('gb2312', 'UTF-8//IGNORE', $txt);
+            }
+
+
             $user_list = push_msg::where('is_valid', 1)->get()->toArray();
             if ($user_list) {
                 $jssdk = new JSSDK();
@@ -86,6 +93,11 @@ class SubscribeController extends Controller
         } else {
             fun_respon(0, '预约失败');
         }
+    }
+
+    private function is_utf8($str)
+    {
+        return preg_match('//u', $str);
     }
 
     public function toMessage()
