@@ -4,9 +4,9 @@
     </style>
     <div class="layui-main">
         <fieldset class="layui-elem-field layui-field-title">
-            <legend>注册红包</legend>
+            <legend>推送消息管理</legend>
         </fieldset>
-        <blockquote class="layui-elem-quote">添加新的红包金额</blockquote>
+        <blockquote class="layui-elem-quote">添加新的推送人</blockquote>
         <form class="layui-form" method="post" action="{{url('/adm/discount/doeditdiscount')}}"  id="form_data">
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
             <fieldset class="layui-elem-field">
@@ -25,12 +25,12 @@
             </div>
         </form>
     </div>
-    <blockquote class="layui-elem-quote">红包添加记录</blockquote>
+    <blockquote class="layui-elem-quote">推送人员列表</blockquote>
     <table class="layui-table tab-ths">
         <thead>
         <tr>
             <th>编号</th>
-            <th>金额</th>
+            <th>手机号</th>
             <th>创建时间</th>
         </tr>
         </thead>
