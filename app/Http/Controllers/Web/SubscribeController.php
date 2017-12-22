@@ -68,14 +68,9 @@ class SubscribeController extends Controller
                 'touser'=>'oenEY1Wq8u0_VIGo7F2Ddb4ravnQ',
                 'msgtype'=>'text',
                 'text'=>array(
-                    'content'=> mb_convert_encoding ($txt,'UTF-8')
+                    'content'=> $txt
                 )
             );
-            if ($this->is_utf8($txt)) {
-                $content['text']['content'] = $txt;
-            } else {
-                $content['text']['content'] = iconv('gb2312', 'UTF-8//IGNORE', $txt);
-            }
 
 
             $user_list = push_msg::where('is_valid', 1)->get()->toArray();
@@ -83,7 +78,7 @@ class SubscribeController extends Controller
                 $jssdk = new JSSDK();
                 foreach ($user_list as $v) {
                     $content['touser'] = $v['openid'];
-                    $res = $jssdk->servicemsg($content);
+                    $res = $jssdk->servicemsg(json_encode($content, 320));
                 }
             }
 
