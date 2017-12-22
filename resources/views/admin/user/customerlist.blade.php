@@ -9,11 +9,11 @@
             <div class="customerdetail">
                 <form class="layui-form" method="get" action="{{url('/adm/user/customerlist')}}">
                     <div class="layui-form-item marbot0">
-                        <label class="layui-form-label">顾客昵称：</label>
+                        <label class="layui-form-label">按手机号搜索：</label>
                         <div class="layui-input-inline" style="width:250px;">
-                            <input type="text" name="nickname" placeholder="请输入顾客的昵称" class="layui-input">
+                            <input type="text" name="phone" placeholder="请输入机号" class="layui-input">
                         </div>
-                        <span class="layui-btn" data-type="reload">搜索</span>
+                        <span class="layui-btn">搜索</span>
                     </div>
                 </form>
             </div>
