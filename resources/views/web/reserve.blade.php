@@ -134,7 +134,8 @@
                 dataType : 'json',
                 beforeSend: function () {
                     // 禁用按钮防止重复提交
-                    $(".subtn").removeClass('applysub');
+                    $('.applysub').text('预约提交中...');
+                    $('.subtn').attr('onclick','javascript:void();');//改变提交按钮上的文字并将按钮设置为不可点击
                 },
                 success : function(msg){
                     console.log(msg)
@@ -149,7 +150,8 @@
                     }
                 },
                 complete: function () {
-                    $(".subtn").addClass('applysub');
+                    $('.applysub').text('免费上门 量身定制...').removeAttr('onclick');
+
                 }
             });
 
