@@ -31,6 +31,7 @@
         /*为下拉小箭头留出一点位置，避免被文字覆盖*/
 
         padding-right: 14px;
+        font-size: 14px
         width:30%
 
     }
@@ -85,11 +86,11 @@
         <select name="area" id="area" style="display: none;float:left;margin:5px 3px">
         </select>
         {{--<input type="text" placeholder="省市区" class="itemput borderbot addressicon" disabled="disabled"/>--}}
-        <input type="text" id="detail" placeholder="请输入详细地址" class="itemput" />
+        <input style="font-size: 14px" type="text" id="detail" placeholder="请输入详细地址" class="itemput" />
     </div>
     <p class="itemnav">备注</p>
     <div class="iteminfo">
-        <textarea placeholder="偏好样式或其他要求" id="cont" class="itemarea"></textarea>
+        <textarea style="font-size: 14px" placeholder="偏好样式或其他要求" id="cont" class="itemarea"></textarea>
     </div>
 </div>
 <div class="bottomfixed subtnbox">
