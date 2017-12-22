@@ -21,9 +21,14 @@ class CustomerController extends Controller
      * 预约列表
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function customerList()
+    public function customerList(Request $request)
     {
-        $list = users::select('users.*','sms_log.id as sl.id','sms_log.content')->leftJoin('sms_log','users.phone','=','sms_log.phone')->paginate(1);
+        $where =[];
+        $phone = $request->phone;
+        if($phone){
+            $where['users.phone'] =$phone;
+        }
+        $list = users::select('users.*','sms_log.id as sl.id','sms_log.content')->leftJoin('sms_log','users.phone','=','sms_log.phone')->where($where)->paginate(1);
         return view('admin/user/customerlist', ['list'=>$list]);
     }
 
