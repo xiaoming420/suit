@@ -70,9 +70,11 @@ class SubscribeController extends Controller
                 'touser'=>'oenEY1Wq8u0_VIGo7F2Ddb4ravnQ',
                 'msgtype'=>'text',
                 'text'=>array(
-                    'content'=> json_encode($txt, 320)
+                    'content'=> mb_convert_encoding ($txt,'UTF-8')
                 )
             );
+
+
             $user_list = push_msg::where('is_valid', 1)->get()->toArray();
             if ($user_list) {
                 $jssdk = new JSSDK();
