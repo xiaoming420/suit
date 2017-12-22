@@ -33,7 +33,7 @@ class CustomerController extends Controller
                 }
             })
             ->orderBy('id','DESC')->paginate(10);
-        return view('admin/user/customerlist', ['list'=>$list,'where'=>$keyword]);
+        return view('admin/user/customerlist', ['list'=>$list,'keyword'=>$keyword]);
     }
 
     /**
