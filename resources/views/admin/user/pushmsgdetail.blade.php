@@ -13,9 +13,9 @@
                 <legend>填写信息</legend>
                 <div class="layui-field-box">
                     <div class="layui-form-item">
-                        <label class="layui-form-label">金额：</label>
+                        <label class="layui-form-label">手机号：</label>
                         <div class="layui-input-block">
-                            <input type="number" name="money" placeholder="请填写金额" value="" class="layui-input" >
+                            <input type="number" name="phone" placeholder="请填写手机号" value="" class="layui-input" >
                         </div>
                     </div>
                 </div>
@@ -49,9 +49,9 @@
     <script>
         $(function () {
             $('#form_data').submit(function(){
-                var money = $('input[name=money]').val();
-                if (!money) {
-                    layer.msg('金额不能为空', {icon: 5, time:1500});
+                var phone = $('input[name=phone]').val();
+                if (!phone) {
+                    layer.msg('手机号不能为空', {icon: 5, time:1500});
                     return false;
                 }
                 /*$.ajax({
