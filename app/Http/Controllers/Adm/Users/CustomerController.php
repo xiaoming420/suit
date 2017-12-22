@@ -28,7 +28,7 @@ class CustomerController extends Controller
         if($phone){
             $where['users.phone'] =$phone;
         }
-        $list = users::select('users.*','sms_log.id as sl.id','sms_log.content')->leftJoin('sms_log','users.phone','=','sms_log.phone')->where($where)->paginate(1);
+        $list = users::select('users.*','sms_log.id as sl.id','sms_log.content')->leftJoin('sms_log','users.phone','=','sms_log.phone')->where($where)->orderBy('id','DESC')->paginate(10);
         return view('admin/user/customerlist', ['list'=>$list,'where'=>$where]);
     }
 
@@ -61,7 +61,7 @@ class CustomerController extends Controller
      */
     public function pushMesList()
     {
-        $list = push_msg::where(['is_valid'=>1])->paginate(15);
+        $list = push_msg::where(['is_valid'=>1])->orderBy('id','DESC')->paginate(15);
         return view('admin/user/pushmsgdetail', ['list'=>$list]);
     }
 

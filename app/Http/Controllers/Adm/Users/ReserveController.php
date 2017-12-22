@@ -21,7 +21,7 @@ class ReserveController extends Controller
      */
     public function reserveList()
     {
-        $list = reserve::where(['is_valid'=>1])->paginate(15);
+        $list = reserve::where(['is_valid'=>1])->orderBy('id','DESC')->paginate(15);
         return view('admin/reserve/reservelist', ['list'=>$list]);
     }
 
