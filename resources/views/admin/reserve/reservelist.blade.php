@@ -32,9 +32,9 @@
                     <tr>
                         <td class="text-center">{{$v['id']}}</td>
                         <td class="text-center">{{$v['name']}}</td>
-                        @if($v['sex'] == 1)
+                        @if($v['gender'] == 1)
                             <td class="text-center">男</td>
-                        @elseif($v['sex'] == 2)
+                        @elseif($v['gender'] == 2)
                             <td class="text-center">女</td>
                         @else
                             <td class="text-center">未知</td>
