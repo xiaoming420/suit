@@ -140,7 +140,7 @@ class JSSDK
         $url = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=$accessToken";
         $resp = Curl::to($url)
             ->withContentType('application/json')
-            ->withData($content)
+            ->withData(urlencode($content))
             ->asJsonRequest()
             ->post();
         $resp = json_decode($resp, true);
