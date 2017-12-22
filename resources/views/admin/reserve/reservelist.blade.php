@@ -34,8 +34,10 @@
                         <td class="text-center">{{$v['name']}}</td>
                         @if($v['sex'] == 1)
                             <td class="text-center">男</td>
-                        @else
+                        @elseif($v['sex'] == 2)
                             <td class="text-center">女</td>
+                        @else
+                            <td class="text-center">未知</td>
                         @endif
                         <td class="text-center">{{$v['phone']}}</td>
                         <td class="text-center">{{$v['province']}}</td>
