@@ -13,7 +13,6 @@
 
 Route::get('/', function () {
     //echo "Welcom McDonald's.";
-
      //return view('index');
 });
 
