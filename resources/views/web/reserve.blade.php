@@ -106,7 +106,7 @@
 
             var name = $('#name').val();
             var sex = $('input[name=sex]:checked').val();
-            var phone = $('#phone').val();
+            var phone = $.trim($('#phone').val());
             var cont = $('#cont').text();
             var province = $('#province :selected').text();
             var city = $('#city :selected').text();
