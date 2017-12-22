@@ -13,7 +13,8 @@
 
         /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
 
-        border: solid 1px #000;
+        /*border: solid 1px #000;*/
+        border: none;
 
         /*很关键：将默认的select选择框样式清除*/
 
