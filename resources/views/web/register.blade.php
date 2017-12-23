@@ -62,7 +62,7 @@
     <a class="regbtn" id="submit">立即注册</a>
 </div>
 <div class="bottomfixed">
-    <p class="notepros">温馨提示：注册完成后会有硕兰专业a 师主动与您联系，请保持手机通常</p>
+    <p class="notepros">温馨提示：注册完成后会有硕兰专业量体师主动与您联系，请保持手机通常</p>
 </div>
 </body>
 
@@ -73,8 +73,9 @@
 
         @if(isset($info['phone']) && !empty($info['phone']))
             setTimeout(function () {
-                alert('您已经注册过了！');
-                window.location.href = 'http://mp.weixin.qq.com/bizmall/mallshelf?id=&t=mall/list&biz=MzU3NTE0ODkyMg==&shelf_id=3&showwxpaytitle=1#wechat_redirect';
+                alert('您已经注册过了！只能领取一次优惠哦！');
+                WeixinJSBridge.call('closeWindow');
+                // window.location.href = 'http://mp.weixin.qq.com/bizmall/mallshelf?id=&t=mall/list&biz=MzU3NTE0ODkyMg==&shelf_id=3&showwxpaytitle=1#wechat_redirect';
             },1000)
         @endif
 
@@ -91,9 +92,9 @@
             dateType : 'json',
             success : function(msg){
                 if (msg.result == 1)
-                {   alert('注册成功！');
-                    WeixinJSBridge.call('closeWindow');
-                    //window.location.href = 'http://mp.weixin.qq.com/bizmall/mallshelf?id=&t=mall/list&biz=MzU3NTE0ODkyMg==&shelf_id=3&showwxpaytitle=1#wechat_redirect';
+                {   alert('注册成功！可凭手机号到店使用优惠');
+                    // WeixinJSBridge.call('closeWindow');
+                    window.location.href = 'http://mp.weixin.qq.com/bizmall/mallshelf?id=&t=mall/list&biz=MzU3NTE0ODkyMg==&shelf_id=3&showwxpaytitle=1#wechat_redirect';
                 } else {
                     alert(msg.msg);
                 }
