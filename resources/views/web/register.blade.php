@@ -71,13 +71,30 @@
     var state = {url:'/suit/register'};
     history.replaceState(state,'','/suit/register');
 
-        @if(isset($info['phone']) && !empty($info['phone']))
-            setTimeout(function () {
-                alert('您已经注册过了！只能领取一次优惠哦！');
-                WeixinJSBridge.call('closeWindow');
-                // window.location.href = 'http://mp.weixin.qq.com/bizmall/mallshelf?id=&t=mall/list&biz=MzU3NTE0ODkyMg==&shelf_id=3&showwxpaytitle=1#wechat_redirect';
-            },1000)
-        @endif
+    layui.use('layer', function () {
+        var layer = layui.layer;
+        layer.open({
+            type: 1
+            , title: '编辑回访记录'
+            , area: '450px;'
+            , content: "<div>我们此后的征途是星辰大海 ^_^</div>"
+            ,btn: ['确认', '取消']
+            , btnAlign: 'c' //按钮居中
+            , shade: 0 //不显示遮罩
+            , yes: function (index, layero) {
+            }
+        });
+    });
+
+    @if(isset($info['phone']) && !empty($info['phone']))
+        setTimeout(function () {
+            alert('您已经注册过了！只能领取一次优惠哦！');
+            WeixinJSBridge.call('closeWindow');
+            // window.location.href = 'http://mp.weixin.qq.com/bizmall/mallshelf?id=&t=mall/list&biz=MzU3NTE0ODkyMg==&shelf_id=3&showwxpaytitle=1#wechat_redirect';
+        },1000)
+    @endif
+
+
 
     $(document).on("touchend","#submit",function(){
         var phone = $("input[name='phone']").val();
