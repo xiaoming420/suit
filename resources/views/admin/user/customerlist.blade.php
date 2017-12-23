@@ -50,9 +50,9 @@
                             @if($v['is_used']==0&&$v['name'])
                                 <button class="layui-btn check" id="{{$v['id']}}">使用红包</button>
                             @elseif(!$v['name'])
-                                未注册
+                                点进来未注册
                             @else
-                                红包使用时间：{{$v['updated_at']}}
+                                使用时间：{{$v['updated_at']}}
                             @endif
                         </td>
                     </tr>
@@ -67,7 +67,7 @@
 <script>
     $('.check').click(function(){
         var id = $(this).attr('id');
-        if (confirm('确认红包已抵用么？') == false){
+        if (confirm('确认使用红包吗？') == false){
             return false;
         }else{
             $.ajax({
