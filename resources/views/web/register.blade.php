@@ -85,7 +85,7 @@
     img.src = img_url;
 
     img.onload = function(){
-        var Height=$(window).height();//取得浏览器页面可视区域的宽度
+        var Height=$(window).height();//取得浏览器页面可视区域的高度
         var Width=$(window).width();//取得浏览器页面可视区域的宽度
         console.log(Height);
         console.log(Width);
@@ -99,11 +99,13 @@
         });
     };*/
 
+
+    var Height=$(window).height();//取得浏览器页面可视区域的高度
     layer.open({
         type: 1
         ,title: false //不显示标题栏
         ,closeBtn: false
-        ,area: '300px;'
+        ,area: Height
         ,shade: 0.8
         ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
         ,moveType: 1 //拖拽模式，0或者1
