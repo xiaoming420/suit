@@ -73,8 +73,7 @@
     history.replaceState(state,'','/suit/register');
 
 
-    layui.use('layer', function () {
-        var layer = layui.layer;
+
         layer.open({
             type: 1
             , title: '编辑回访记录'
@@ -86,7 +85,7 @@
             , yes: function (index, layero) {
             }
         });
-    });
+
 
 
     @if(isset($info['phone']) && !empty($info['phone']))
