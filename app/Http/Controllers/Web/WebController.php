@@ -110,7 +110,7 @@ class WebController extends Controller
                 }
                 $content['touser'] = $v['openid'];
                 $res = $jssdk->servicemsg(json_encode($content, 320));
-                Storage::disk('local')->append('sendmsg.log', json_encode($res));
+                Storage::disk('local')->append('sendmsg.log', json_encode($res).date('Y-m-d H:i:s'));
             }
         }
 
