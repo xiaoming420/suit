@@ -1,5 +1,8 @@
 @extends('admin.index')
 @section('content')
+<style>
+        .layui-form-label{width: auto}
+    </style>
     <div class="layui-main">
         <fieldset class="layui-elem-field layui-field-title">
             <legend>预约列表</legend>
@@ -58,7 +61,11 @@
                         <td class="text-center">{{$v['feedback']}}</td>
                         <td class="text-center">{{$v['ct']}}</td>
                         <td class="text-center">
-                            <button class="layui-btn edit"  ids="{{$v['id']}}">编辑</button>
+                        @if($v['feedback'])
+                            <button class="layui-btn edit"  ids="{{$v['id']}}" content="{{$v['feedback']}}">修改回访信息</button>
+                        @else
+                            <button class="layui-btn edit"  ids="{{$v['id']}}" content="">添加回访记录</button>
+                        @endif
                             <button class="layui-btn dels" id="{{$v['id']}}">删除</button>
                         </td>
                     </tr>
@@ -85,6 +92,7 @@
     <script>
         $(".edit").click(function() {
             var ids = $(this).attr('ids');
+            var content = $(this).attr('content');
             layui.use('layer', function () {
                 var layer = layui.layer;
                 layer.open({

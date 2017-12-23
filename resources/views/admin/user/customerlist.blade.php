@@ -31,7 +31,7 @@
                 <th>红包是否使用</th>
                 <th>注册时间</th>
                 <th>短信下发结果</th>
-                <th>操作</th>
+                <th>红包操作</th>
             </tr>
             </thead>
             <tbody>
@@ -47,10 +47,12 @@
                         <td class="text-center">{{$v['created_at']}}</td>
                         <td class="text-center">{{json_decode($v['content'],true)['reason']}}</td>
                         <td class="text-center">
-                            @if($v['is_used']==0)
-                                <button class="layui-btn check" id="{{$v['id']}}">编辑红包使用状态</button>
+                            @if($v['is_used']==0&&$v['name'])
+                                <button class="layui-btn check" id="{{$v['id']}}">使用红包</button>
+                            @elseif(!$v['name'])
+                                点进来未注册
                             @else
-                                红包使用时间：{{$v['updated_at']}}
+                                使用时间：{{$v['updated_at']}}
                             @endif
                         </td>
                     </tr>
@@ -65,7 +67,7 @@
 <script>
     $('.check').click(function(){
         var id = $(this).attr('id');
-        if (confirm('确认红包已抵用么？') == false){
+        if (confirm('确认使用红包吗？') == false){
             return false;
         }else{
             $.ajax({
