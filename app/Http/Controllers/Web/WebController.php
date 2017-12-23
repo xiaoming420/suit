@@ -6,6 +6,7 @@ use App\Libs\JSSDK;
 use App\Models\adm_user;
 use App\Models\discount;
 use App\Models\group_qrcode;
+use App\Models\push_msg;
 use App\Models\sms_log;
 use App\Models\users;
 use Illuminate\Http\Request;
@@ -86,6 +87,33 @@ class WebController extends Controller
         if(!$res){
             fun_respon(0, '注册失败！');
         }
+
+        // 预约成功，推送消息给客服人员
+        $txt = "亲，有人预约了哦，赶快联系他吧! \n".
+            "预约人手机号：".$phone." \n".
+            '预约人姓名：'.$name."\n".
+            '性别：'.$sex==1?'男':"女";
+        $content = array(
+            'touser'=>'oenEY1Wq8u0_VIGo7F2Ddb4ravnQ',
+            'msgtype'=>'text',
+            'text'=>array(
+                'content'=> $txt
+            )
+        );
+
+        $user_list = push_msg::where('is_valid', 1)->get()->toArray();
+        if ($user_list) {
+            $jssdk = new JSSDK();
+            foreach ($user_list as $v) {
+                if (empty($v['openid'])) {
+                    continue;
+                }
+                $content['touser'] = $v['openid'];
+                $res = $jssdk->servicemsg(json_encode($content, 320));
+                Storage::disk('local')->append('sendmsg.log', json_encode($res));
+            }
+        }
+
         //发送短信
         $tpl_id = "56993";
         $res = send_message($phone,$tpl_id,$num='');
