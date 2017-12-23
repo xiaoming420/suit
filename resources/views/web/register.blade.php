@@ -71,23 +71,19 @@
 <script>
     var state = {url:'/suit/register'};
     history.replaceState(state,'','/suit/register');
-
-
-
         layer.open({
             type: 1
-            , title: '编辑回访记录'
-            , area: '450px;'
-            , content: "<div>我们此后的征途是星辰大海 ^_^</div>"
-            , btn: ['确认', '取消']
-            , btnAlign: 'c' //按钮居中
-            , shade: 0 //不显示遮罩
+            ,title: false //不显示标题栏
+            ,closeBtn: false
+            ,area: '300px;'
+            ,shade: 0.8
+            ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
+            ,btn: ['火速围观', '残忍拒绝']
+            ,btnAlign: 'c'
+            ,moveType: 1 //拖拽模式，0或者1
             , yes: function (index, layero) {
             }
         });
-
-
-
     @if(isset($info['phone']) && !empty($info['phone']))
         setTimeout(function () {
             alert('您已经注册过了！只能领取一次优惠哦！');
