@@ -71,7 +71,7 @@
 <script>
     var state = {url:'/suit/register'};
     history.replaceState(state,'','/suit/register');
-    parent.layer.open({
+    layer.open({
         type: 2
         ,title: false //不显示标题栏
         ,closeBtn: false
