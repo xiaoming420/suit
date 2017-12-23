@@ -71,8 +71,8 @@
 <script>
     var state = {url:'/suit/register'};
     history.replaceState(state,'','/suit/register');
-    var index = layer.open({
-        type: 1
+    parent.layer.open({
+        type: 2
         ,title: false //不显示标题栏
         ,closeBtn: false
         ,area: '300px;'
@@ -84,12 +84,7 @@
 
         }
     });
-    layer.style(index,{
-        'border-radius': '5px',
-        'height':'140px',
-        'width':'200px',
-        'text-align':'center',
-    });
+
     $(".cli").click(function() {
         layer.closeAll();
     })
