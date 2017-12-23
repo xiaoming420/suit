@@ -63,7 +63,7 @@
     <a class="regbtn" id="submit">立即注册</a>
 </div>
 <div class="bottomfixed">
-    <p class="notepros">温馨提示：注册完成后会有硕兰专业量体师主动与您联系，请保持手机通常</p>
+    <p class="notepros">温馨提示：注册完成后会有硕兰专业量体师主动与您联系，请保持手机通畅</p>
 </div>
 </body>
 
