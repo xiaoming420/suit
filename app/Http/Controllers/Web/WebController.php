@@ -44,8 +44,8 @@ class WebController extends Controller
                 $arr['province'] = isset($userInfo['province']) ? $userInfo['province'] : '';
                 $arr['country'] = isset($userInfo['country']) ? $userInfo['country'] : '';*/
                 //保存用户信息
-                $info = users::create($arr);
-                $info->save();
+               /* $info = users::create($arr);
+                $info->save();*/
             }
         }
         $info = users::where(['openid'=>$_SESSION['open_id']])->first();*/
