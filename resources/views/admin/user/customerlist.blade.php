@@ -49,8 +49,10 @@
                         <td class="text-center">
                             @if($v['is_used']==0&&$v['name'])
                                 <button class="layui-btn check" id="{{$v['id']}}">使用红包</button>
+                            @elseif(!$v['name'])
+                                未注册
                             @else
-                                {{$v['name']}}?红包使用时间：{{$v['updated_at']}}:'未注册'
+                                红包使用时间：{{$v['updated_at']}}
                             @endif
                         </td>
                     </tr>
