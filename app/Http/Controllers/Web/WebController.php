@@ -23,7 +23,7 @@ class WebController extends Controller
 
     public function register()
     {
-        $ali_or_wechat = fun_aliorwechat(); // 获取是在wechat打开还是ali打开
+        /*$ali_or_wechat = fun_aliorwechat(); // 获取是在wechat打开还是ali打开
         if ($ali_or_wechat != 1) return fun_error_page('请在微信客户端扫描打开');
         if( !isset($_SESSION['open_id']) || empty($_SESSION['open_id']) ) {
             $tools = new JSSDK();
@@ -48,8 +48,8 @@ class WebController extends Controller
                 $info->save();
             }
         }
-        $info = users::where(['openid'=>$_SESSION['open_id']])->first();
-        return view('web/register',['info'=>$info]);
+        $info = users::where(['openid'=>$_SESSION['open_id']])->first();*/
+        return view('web/register');
     }
 
     /**
