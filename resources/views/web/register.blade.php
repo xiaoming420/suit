@@ -100,7 +100,7 @@
     };*/
 
 
-    var Height=$(window).height();//取得浏览器页面可视区域的高度
+    /*var Height=$(window).height();//取得浏览器页面可视区域的高度
     var Width=$(window).width();
     layer.open({
         type: 1
@@ -118,7 +118,7 @@
 
     $(".cli").click(function() {
         layer.closeAll();
-    })
+    })*/
 
     {{--@if(isset($info['phone']) && !empty($info['phone']))
         setTimeout(function () {
