@@ -106,7 +106,7 @@
         type: 1
         ,title: false //不显示标题栏
         ,closeBtn: false
-        ,area: [Height+'px;',Width+'px;']
+        ,area: [Width+'px;',Height+'px;']
         ,shade: 0.8
         ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
         ,moveType: 1 //拖拽模式，0或者1
