@@ -1,5 +1,8 @@
 @extends('admin.index')
 @section('content')
+<style>
+        .layui-form-label{width: auto}
+    </style>
     <div class="layui-main">
         <fieldset class="layui-elem-field layui-field-title">
             <legend>预约列表</legend>
