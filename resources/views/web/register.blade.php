@@ -8,7 +8,6 @@
     <link href="/web/styles/style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/web/js/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="/admin/js/layer/layer.js"></script>
-    <script type="text/javascript" src="/admin/js/index.js"></script>
 </head>
 <script>
     $(function(){
