@@ -73,7 +73,7 @@
     history.replaceState(state,'','/suit/register');
 
 
-    var index = layer.open({
+    /*var index = layer.open({
         type: 1,
         title: false,
         shadeClose: true,
@@ -97,17 +97,17 @@
             left: newW,
             top: newH
         });
-    };
+    };*/
 
-    /*layer.open({
-        type: 2
+    layer.open({
+        type: 1
         ,title: false //不显示标题栏
         ,closeBtn: false
         ,area: '300px;'
         ,shade: 0.8
         ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
         ,moveType: 1 //拖拽模式，0或者1
-        ,content: '<div style="line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;"><img style="width: 100%" src="/web/images/discount.png"></div>'
+        ,content: '<div style="line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;"><img style="width: 100%" src="/web/images/pp.png"></div>'
         , yes: function (index, layero) {
 
         }
@@ -115,7 +115,7 @@
 
     $(".cli").click(function() {
         layer.closeAll();
-    })*/
+    })
 
     {{--@if(isset($info['phone']) && !empty($info['phone']))
         setTimeout(function () {
