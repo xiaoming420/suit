@@ -87,8 +87,8 @@
     img.src = img_url;
 
     img.onload = function(){
-        var Height=document.documentElement.clientHeight;//取得浏览器页面可视区域的宽度
-        var Width=document.documentElement.clientWidth;//取得浏览器页面可视区域的宽度
+        var Height=$(window).height();//取得浏览器页面可视区域的宽度
+        var Width=$(window).width();//取得浏览器页面可视区域的宽度
         console.log(Height);
         console.log(Width);
         console.log(img.height);
