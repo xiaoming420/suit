@@ -84,6 +84,12 @@
 
         }
     });
+    layer.style(index,{
+        'border-radius': '5px',
+        'height':'140px',
+        'width':'200px',
+        'text-align':'center',
+    });
     $(".cli").click(function() {
         layer.closeAll();
     })
