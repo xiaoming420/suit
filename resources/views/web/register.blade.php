@@ -98,7 +98,13 @@
             top: newH
         });
     };*/
-
+    @if(isset($info['phone']) && !empty($info['phone']))
+        setTimeout(function () {
+        alert('您已经注册过了！只能领取一次优惠哦！');
+        WeixinJSBridge.call('closeWindow');
+        // window.location.href = 'http://mp.weixin.qq.com/bizmall/mallshelf?id=&t=mall/list&biz=MzU3NTE0ODkyMg==&shelf_id=3&showwxpaytitle=1#wechat_redirect';
+        },1000)
+            @endif
 
     var Height=$(window).height();//取得浏览器页面可视区域的高度
     var Width=$(window).width();
@@ -120,13 +126,7 @@
         layer.closeAll();
     })
 
-    @if(isset($info['phone']) && !empty($info['phone']))
-        setTimeout(function () {
-            alert('您已经注册过了！只能领取一次优惠哦！');
-            WeixinJSBridge.call('closeWindow');
-            // window.location.href = 'http://mp.weixin.qq.com/bizmall/mallshelf?id=&t=mall/list&biz=MzU3NTE0ODkyMg==&shelf_id=3&showwxpaytitle=1#wechat_redirect';
-        },1000)
-    @endif
+
 
 
 
