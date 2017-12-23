@@ -62,9 +62,9 @@
                         <td class="text-center">{{$v['ct']}}</td>
                         <td class="text-center">
                         @if($v['feedback'])
-                            <button class="layui-btn edit"  ids="{{$v['id']}}" content="{{$v['feedback']}}">添加回访记录</button>
+                            <button class="layui-btn edit"  ids="{{$v['id']}}" content="{{$v['feedback']}}">修改回访信息</button>
                         @else
-                            <button class="layui-btn edit"  ids="{{$v['id']}}" content="">修改回访信息</button>
+                            <button class="layui-btn edit"  ids="{{$v['id']}}" content="">添加回访记录</button>
                         @endif
                             <button class="layui-btn dels" id="{{$v['id']}}">删除</button>
                         </td>
@@ -99,7 +99,7 @@
                     type: 1
                     , title: '编辑回访记录'
                     , area: '450px;'
-                    , content: content//$('#newplant')
+                    , content: $('#newplant')
                     ,btn: ['确认', '取消']
                     , btnAlign: 'c' //按钮居中
                     , shade: 0 //不显示遮罩
