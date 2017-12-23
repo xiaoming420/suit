@@ -49,7 +49,7 @@
 				>
 				<a href="{{url('/adm/index')}}" data-url="index.html">
 				    <i class="iconfont icon-home1" data-icon='icon-home1'></i>
-					<span>后台管理</span>
+					<span>首页</span>
 				</a>
 			</li>
 			<li class="layui-nav-item">
@@ -58,16 +58,7 @@
 				>
 					<a href="{{url('/adm/user/customerlist')}}">
 						<i class="iconfont icon-wenzhang1" ></i>
-						<span>客户管理</span>
-					</a>
-			</li>
-			<li class="layui-nav-item">
-				<dd class="
-					<?php if( in_array($current_url, ['/adm/push/pushmeslist'])){ echo 'layui-this';} ?>"
-				>
-					<a href="{{url('adm/push/pushmeslist')}}">
-						<i class="iconfont icon-wenzhang1" ></i>
-						<span>推送消息管理</span>
+						<span>注册用户</span>
 					</a>
 			</li>
 			<li class="layui-nav-item">
@@ -76,7 +67,16 @@
 				>
 					<a href="{{url('adm/reserve/reserveList')}}">
 						<i class="iconfont icon-wenzhang1" ></i>
-						<span>预约管理</span>
+						<span>预约记录</span>
+					</a>
+			</li>
+			<li class="layui-nav-item">
+				<dd class="
+					<?php if( in_array($current_url, ['/adm/push/pushmeslist'])){ echo 'layui-this';} ?>"
+				>
+					<a href="{{url('adm/push/pushmeslist')}}">
+						<i class="iconfont icon-wenzhang1" ></i>
+						<span>消息接收人列表</span>
 					</a>
 			</li>
 			<li class="layui-nav-item">
@@ -85,7 +85,7 @@
 				>
 					<a href="{{url('/adm/discount/discountdetail')}}">
 						<i class="iconfont icon-wenzhang1" ></i>
-						<span>红包设置</span>
+						<span>红包金额设置</span>
 					</a>
 			</li>
 		</ul>

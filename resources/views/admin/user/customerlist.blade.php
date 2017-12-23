@@ -31,7 +31,7 @@
                 <th>红包是否使用</th>
                 <th>注册时间</th>
                 <th>短信下发结果</th>
-                <th>操作</th>
+                <th>红包操作</th>
             </tr>
             </thead>
             <tbody>
