@@ -109,7 +109,7 @@
         ,shade: 0.8
         ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
         ,moveType: 1 //拖拽模式，0或者1
-        ,content: '<div style="line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;"><img style="width: 100%" src="/web/images/pp.png"></div>'
+        ,content: '<img style="width: 100%" src="/web/images/pp.png">'
         , yes: function (index, layero) {
 
         }
