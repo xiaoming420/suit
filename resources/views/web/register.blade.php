@@ -71,7 +71,32 @@
 <script>
     var state = {url:'/suit/register'};
     history.replaceState(state,'','/suit/register');
-    layer.open({
+
+
+    var index = layer.open({
+        type: 1,
+        title: false,
+        closeBtn:2,
+        shadeClose: true,
+        content: "<img src='/web/images/discount.png'>"
+    });
+
+    var img_url = '/web/images/discount.png';
+    var img = new Image();
+    img.src = img_url;
+
+    img.onload = function(){
+        var Height=document.documentElement.clientHeight;//取得浏览器页面可视区域的宽度
+        var Width=document.documentElement.clientWidth;//取得浏览器页面可视区域的宽度
+        var newH= (Height - img.height)/2+"px";
+        var newW= (Width - img.width)/2+"px";
+        layer.style(index, {
+            left: newW,
+            top: newH
+        });
+    };
+
+    /*layer.open({
         type: 2
         ,title: false //不显示标题栏
         ,closeBtn: false
@@ -87,7 +112,7 @@
 
     $(".cli").click(function() {
         layer.closeAll();
-    })
+    })*/
 
     {{--@if(isset($info['phone']) && !empty($info['phone']))
         setTimeout(function () {
