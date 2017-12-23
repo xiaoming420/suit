@@ -88,6 +88,8 @@
     img.onload = function(){
         var Height=document.documentElement.clientHeight;//取得浏览器页面可视区域的宽度
         var Width=document.documentElement.clientWidth;//取得浏览器页面可视区域的宽度
+        console.log(Height);
+        console.log(Width);
         var newH= (Height - img.height)/2+"px";
         var newW= (Width - img.width)/2+"px";
         layer.style(index, {
