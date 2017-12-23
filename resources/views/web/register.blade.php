@@ -72,18 +72,20 @@
     var state = {url:'/suit/register'};
     history.replaceState(state,'','/suit/register');
 
-    layui.use('layer', function () {
-        var layer = layui.layer;
-        layer.open({
-            type: 1
-            , title: '编辑回访记录'
-            , area: '450px;'
-            , content: "<div>我们此后的征途是星辰大海 ^_^</div>"
-            ,btn: ['确认', '取消']
-            , btnAlign: 'c' //按钮居中
-            , shade: 0 //不显示遮罩
-            , yes: function (index, layero) {
-            }
+    $(document).ready(function() {
+        layui.use('layer', function () {
+            var layer = layui.layer;
+            layer.open({
+                type: 1
+                , title: '编辑回访记录'
+                , area: '450px;'
+                , content: "<div>我们此后的征途是星辰大海 ^_^</div>"
+                , btn: ['确认', '取消']
+                , btnAlign: 'c' //按钮居中
+                , shade: 0 //不显示遮罩
+                , yes: function (index, layero) {
+                }
+            });
         });
     });
 
