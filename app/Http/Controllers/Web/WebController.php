@@ -89,7 +89,7 @@ class WebController extends Controller
         }
 
         // 预约成功，推送消息给客服人员
-        $txt = "亲，有人预约了哦，赶快联系他吧! \n".
+        $txt = "亲，有人注册了哦，赶快联系他吧! \n".
             "预约人手机号：".$phone." \n".
             '预约人姓名：'.$name."\n";
         $content = array(
