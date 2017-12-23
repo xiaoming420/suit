@@ -77,10 +77,10 @@
         type: 1,
         title: false,
         shadeClose: true,
-        content: "<img src='/web/images/discount.png'>"
+        content: "<img src='/web/images/pp.png'>"
     });
 
-    var img_url = '/web/images/discount.png';
+    var img_url = '/web/images/pp.png';
     var img = new Image();
     img.src = img_url;
 
