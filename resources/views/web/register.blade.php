@@ -77,6 +77,7 @@
         type: 1,
         title: false,
         closeBtn:2,
+        resize: false,
         shadeClose: true,
         content: "<img src='/web/images/discount.png'>"
     });
