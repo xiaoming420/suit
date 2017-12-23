@@ -41,7 +41,7 @@
                         <td class="text-center">{{$v['id']}}</td>
                         <td class="text-center">{{$v['name']?$v['name']:'未绑定'}}</td>
                         <td class="text-center">{{$v['phone']?$v['phone']:'未绑定'}}</td>
-                        <td class="text-center">{{$v['gender']==1?'男':($v['sex']==2)?'女':'未知'}}</td>
+                        <td class="text-center">{{$v['gender']==1?'男':($v['gender']==2)?'女':'未知'}}</td>
                         <td class="text-center">{{$v['discount_money']}}</td>
                         <td class="text-center">{{$v['is_used']==0?'未使用':"已使用"}}</td>
                         <td class="text-center">{{$v['created_at']}}</td>
