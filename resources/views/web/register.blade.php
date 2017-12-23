@@ -74,7 +74,7 @@
 
 
     var index = layer.open({
-        type: 1,
+        type: 2,
         title: false,
         closeBtn:2,
         shadeClose: true,
