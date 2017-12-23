@@ -80,7 +80,7 @@
         ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
         ,btnAlign: 'c'
         ,moveType: 1 //拖拽模式，0或者1
-        ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;" class="cli"><img src="/web/images/discount.png"></div>'
+        ,content: '<img src="/web/images/discount.png">'
         , yes: function (index, layero) {
 
         }
