@@ -83,7 +83,7 @@
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">回访备注</label>
                     <div class="layui-input-block">
-                        <textarea placeholder="请输入内容" class="layui-textarea" name="remarks"></textarea>
+                        <textarea placeholder="请输入内容" class="layui-textarea remarks" name="remarks"></textarea>
                     </div>
                 </div>
             </form>
@@ -93,6 +93,7 @@
         $(".edit").click(function() {
             var ids = $(this).attr('ids');
             var content = $(this).attr('content');
+            $('.remarks').val(content);
             layui.use('layer', function () {
                 var layer = layui.layer;
                 layer.open({
