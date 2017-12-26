@@ -94,7 +94,7 @@ class WebController extends Controller
             'first'=>array('value'=>'注册成功通知','color'=>"#7167ce"),
             'keyword1'=>array('value'=>$name,'color'=>'#7167ce'),
             'keyword2'=>array('value'=>$phone,'color'=>'#7167ce'),
-            'remark'=>array('value'=>'亲，有人注册了哦，赶快联系他吧!'.'银行卡','color'=>'#7167ce'),
+            'remark'=>array('value'=>'亲，有人注册了哦，赶快联系他吧!','color'=>'#7167ce'),
         );
         $template_id = 'p5Kz-aRe66Qjml57bWTlU4WgekbdnfnsRyFvG5SdYvQ';
 
