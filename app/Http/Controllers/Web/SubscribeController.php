@@ -82,8 +82,8 @@ class SubscribeController extends Controller
             $newdata=array(
                 'first'=>array('value'=>'预约成功通知','color'=>"#7167ce"),
                 'keyword1'=>array('value'=>date('Y-m-d H:i:s'),'color'=>'#7167ce'),
-                'keyword2'=>array('value'=>$data['phone'],'color'=>'#7167ce'),
-                'keyword3'=>array('value'=>$data['name'],'color'=>'#7167ce'),
+                'keyword2'=>array('value'=>$data['name'],'color'=>'#7167ce'),
+                'keyword3'=>array('value'=>$data['phone'],'color'=>'#7167ce'),
                 'remark'=>array('value'=>'地址:'.$data['address'],'color'=>'#7167ce'),
             );
             $template_id = 'kfpeS1KfOeXuS1-VqTKNRzjEMX3vb2jrCvGrtzgaaog';
