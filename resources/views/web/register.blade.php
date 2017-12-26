@@ -104,27 +104,29 @@
         WeixinJSBridge.call('closeWindow');
         // window.location.href = 'http://mp.weixin.qq.com/bizmall/mallshelf?id=&t=mall/list&biz=MzU3NTE0ODkyMg==&shelf_id=3&showwxpaytitle=1#wechat_redirect';
         },500)
+    @else
+        var Height=$(window).height();//取得浏览器页面可视区域的高度
+        var Width=$(window).width();
+        layer.open({
+            type: 1
+            ,title: false //不显示标题栏
+            ,closeBtn: false
+            ,area: [Width+'px;',Height+'px;']
+            ,shade: 0
+            ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
+            ,moveType: 1 //拖拽模式，0或者1
+            ,content: '<img class="cli" style="width: 100%;height: 100%" src="/web/images/pp.png">'
+            , yes: function (index, layero) {
+
+            }
+        });
+
+        $(".cli").click(function() {
+            layer.closeAll();
+        })
             @endif
 
-    var Height=$(window).height();//取得浏览器页面可视区域的高度
-    var Width=$(window).width();
-    layer.open({
-        type: 1
-        ,title: false //不显示标题栏
-        ,closeBtn: false
-        ,area: [Width+'px;',Height+'px;']
-        ,shade: 0
-        ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
-        ,moveType: 1 //拖拽模式，0或者1
-        ,content: '<img class="cli" style="width: 100%;height: 100%" src="/web/images/pp.png">'
-        , yes: function (index, layero) {
 
-        }
-    });
-
-    $(".cli").click(function() {
-        layer.closeAll();
-    })
 
 
 
