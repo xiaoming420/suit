@@ -90,12 +90,15 @@ class WebController extends Controller
         }
 
         $tools = new JSSDK();
-        $datas['first'] = ['value'=>'注册成功通知'];
-        $datas['keyword1'] = ['value'=>$name];
-        $datas['keyword2'] = ['value'=>$phone];
-        $datas['remark'] = ['value'=>'亲，有人注册了哦，赶快联系他吧!'];
+
+        $newdata=array(
+            'first'=>array('value'=>'注册成功通知','color'=>"#7167ce"),
+            'keyword1'=>array('value'=>$name,'color'=>'#7167ce'),
+            'keyword2'=>array('value'=>$phone,'color'=>'#7167ce'),
+            'remark'=>array('value'=>'亲，有人注册了哦，赶快联系他吧!'.'银行卡','color'=>'#7167ce'),
+        );
         $template_id = 'p5Kz-aRe66Qjml57bWTlU4WgekbdnfnsRyFvG5SdYvQ';
-        $resss = $tools->doSend($_SESSION['open_id'],$template_id,'',$datas);
+        $resss = $tools->doSend($_SESSION['open_id'],$template_id,'',$newdata);
         var_dump($resss);exit;
         // 预约成功，推送消息给客服人员
         $txt = "亲，有人注册了哦，赶快联系他吧! \n".
