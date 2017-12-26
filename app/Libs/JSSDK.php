@@ -114,6 +114,7 @@ class JSSDK
      */
     public function doSend($touser, $template_id, $url, $data, $topcolor = '#173177')
     {
+        echo $this->accessToken;
         $template = array(
             'touser' => $touser,
             'template_id' => $template_id,
