@@ -73,7 +73,7 @@
     history.replaceState(state,'','/suit/register');
 
 
-    var index = layer.open({
+    /*var index = layer.open({
         type: 1,
         title: false,
         shadeClose: true,
@@ -97,7 +97,7 @@
             left: newW,
             top: newH
         });
-    };
+    };*/
     @if(isset($info['phone']) && !empty($info['phone']))
         setTimeout(function () {
         alert('您已经注册过了！只能领取一次优惠哦！');
