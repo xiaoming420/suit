@@ -109,7 +109,6 @@ class WebController extends Controller
                 Storage::disk('local')->append('sendmsg.log', json_encode($result).date('Y-m-d H:i:s'));
             }
         }
-
         //发送短信
         $tpl_id = "56993";
         $res = send_message($phone,$tpl_id,$num='');
