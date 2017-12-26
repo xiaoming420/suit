@@ -124,6 +124,7 @@ class JSSDK
         $json_template = json_encode($template);
         $url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token= " . $this->accessToken;
         $dataRes = $this->httpRequest($url, urldecode($json_template));
+        var_dump($dataRes);exit;
         $dataRes = json_decode($dataRes, true);
         return $dataRes;
     }
