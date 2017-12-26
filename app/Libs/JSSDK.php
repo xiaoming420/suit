@@ -122,9 +122,9 @@ class JSSDK
             'data' => $data
         );
         $json_template = json_encode($template);
-        $url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token= " . $this->accessToken;
+        $url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=" . $this->accessToken;
         echo $url;
-        $dataRes = $this->httpRequest($url, urldecode($json_template));
+        $dataRes = fun_curl_header($url, urldecode($json_template));
         var_dump($dataRes);exit;
         $dataRes = json_decode($dataRes, true);
         return $dataRes;
