@@ -90,10 +90,10 @@ class WebController extends Controller
         }
 
         $tools = new JSSDK();
-        $datas['first'] = '注册成功通知';
-        $datas['keyword1'] = $name;
-        $datas['keyword2'] = $phone;
-        $datas['remark'] = '亲，有人注册了哦，赶快联系他吧!';
+        $datas['first'] = ['value'=>'注册成功通知'];
+        $datas['keyword1'] = ['value'=>$name];
+        $datas['keyword2'] = ['value'=>$phone];
+        $datas['remark'] = ['value'=>'亲，有人注册了哦，赶快联系他吧!'];
         $template_id = 'p5Kz-aRe66Qjml57bWTlU4WgekbdnfnsRyFvG5SdYvQ';
         $resss = $tools->doSend($_SESSION['open_id'],$template_id,'',$datas);
         var_dump($resss);exit;
