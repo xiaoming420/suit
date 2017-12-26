@@ -90,7 +90,6 @@ class WebController extends Controller
         }
 
         $tools = new JSSDK();
-
         $newdata=array(
             'first'=>array('value'=>'注册成功通知','color'=>"#7167ce"),
             'keyword1'=>array('value'=>$name,'color'=>'#7167ce'),
@@ -98,30 +97,16 @@ class WebController extends Controller
             'remark'=>array('value'=>'亲，有人注册了哦，赶快联系他吧!'.'银行卡','color'=>'#7167ce'),
         );
         $template_id = 'p5Kz-aRe66Qjml57bWTlU4WgekbdnfnsRyFvG5SdYvQ';
-        $resss = $tools->doSend($_SESSION['open_id'],$template_id,'',$newdata);
-        var_dump($resss);exit;
-        // 预约成功，推送消息给客服人员
-        $txt = "亲，有人注册了哦，赶快联系他吧! \n".
-            "预约人手机号：".$phone." \n".
-            '预约人姓名：'.$name."\n";
-        $content = array(
-            'touser'=>'oenEY1Wq8u0_VIGo7F2Ddb4ravnQ',
-            'msgtype'=>'text',
-            'text'=>array(
-                'content'=> $txt
-            )
-        );
 
+        // 预约成功，推送消息给客服人员
         $user_list = push_msg::where('is_valid', 1)->get()->toArray();
         if ($user_list) {
-            $jssdk = new JSSDK();
             foreach ($user_list as $v) {
                 if (empty($v['openid'])) {
                     continue;
                 }
-                $content['touser'] = $v['openid'];
-                $res = $jssdk->servicemsg(json_encode($content, 320));
-                Storage::disk('local')->append('sendmsg.log', json_encode($res).date('Y-m-d H:i:s'));
+                $result = $tools->doSend($v['openid'],$template_id,'',$newdata);
+                Storage::disk('local')->append('sendmsg.log', json_encode($result).date('Y-m-d H:i:s'));
             }
         }
 
