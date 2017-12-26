@@ -49,6 +49,7 @@ class WebController extends Controller
                 $info->save();
             }
         }
+
         $info = users::where(['openid'=>$_SESSION['open_id']])->first();
         return view('web/register',['info'=>$info]);
     }
@@ -88,6 +89,14 @@ class WebController extends Controller
             fun_respon(0, '注册失败！');
         }
 
+        $tools = new JSSDK();
+        $datas['first'] = '注册成功通知';
+        $datas['keyword1'] = $name;
+        $datas['keyword2'] = $phone;
+        $datas['remark'] = '亲，有人注册了哦，赶快联系他吧!';
+        $template_id = 'p5Kz-aRe66Qjml57bWTlU4WgekbdnfnsRyFvG5SdYvQ';
+        $resss = $tools->doSend($_SESSION['open_id'],$template_id,'',$datas);
+        var_dump($resss);exit;
         // 预约成功，推送消息给客服人员
         $txt = "亲，有人注册了哦，赶快联系他吧! \n".
             "预约人手机号：".$phone." \n".
