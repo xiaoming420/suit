@@ -11,6 +11,7 @@ class JSSDK
     private $appid = 'wx5dd4f5ae95592d61';
     private $secrect = 'abd091a9ff677acbd84821dbe26725ff';
     private $accessToken;
+    private $LMaccessToken;
 
     public $data = null;
     public $user = null;
@@ -121,7 +122,7 @@ class JSSDK
             'data' => $data
         );
         $json_template = json_encode($template);
-        $url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token= " . $this->LMaccessToken;
+        $url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token= " . $this->accessToken;
         $dataRes = $this->httpRequest($url, urldecode($json_template));
         $dataRes = json_decode($dataRes, true);
         return $dataRes;
