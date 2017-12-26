@@ -63,7 +63,7 @@ class SubscribeController extends Controller
         $res = reserve::insert($data);
         if ($res) {
 
-            // 预约成功，推送消息给客服人员
+            /*// 预约成功，推送消息给客服人员
             $txt = "亲，有人预约了哦，赶快联系他吧! \n".
                 "预约人手机号：".$data['phone']." \n".
                 '预约人姓名：'.$data['name']."\n".
@@ -76,19 +76,26 @@ class SubscribeController extends Controller
                 'text'=>array(
                     'content'=> $txt
                 )
-            );
+            );*/
 
+            $tools = new JSSDK();
+            $newdata=array(
+                'first'=>array('value'=>'预约成功通知','color'=>"#7167ce"),
+                'keyword1'=>array('value'=>date('Y-m-d H:i:s'),'color'=>'#7167ce'),
+                'keyword2'=>array('value'=>$data['phone'],'color'=>'#7167ce'),
+                'keyword3'=>array('value'=>$data['name'],'color'=>'#7167ce'),
+                'remark'=>array('value'=>'地址:'.$data['address'],'color'=>'#7167ce'),
+            );
+            $template_id = 'p5Kz-aRe66Qjml57bWTlU4WgekbdnfnsRyFvG5SdYvQ';
 
             $user_list = push_msg::where('is_valid', 1)->get()->toArray();
             if ($user_list) {
-                $jssdk = new JSSDK();
                 foreach ($user_list as $v) {
                     if (empty($v['openid'])) {
                         continue;
                     }
-                    $content['touser'] = $v['openid'];
-                    $res = $jssdk->servicemsg(json_encode($content, 320));
-                    Storage::disk('local')->append('sendmsg.log', json_encode($res));
+                    $result = $tools->doSend($v['openid'],$template_id,'',$newdata);
+                    Storage::disk('local')->append('sendmsg.log', json_encode($result));
                 }
             }
 
