@@ -116,7 +116,7 @@
         ,shade: 0
         ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
         ,moveType: 1 //拖拽模式，0或者1
-        ,content: '<img class="cli" style="width: 100%;height: 100%" src="/web/images/pp.png">'
+        ,content: '<img class="cli" style="width: 100%;height: 100%" src="/web/images/hongbao.png">'
         , yes: function (index, layero) {
 
         }
