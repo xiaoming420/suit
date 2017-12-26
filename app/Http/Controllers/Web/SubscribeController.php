@@ -86,7 +86,7 @@ class SubscribeController extends Controller
                 'keyword3'=>array('value'=>$data['name'],'color'=>'#7167ce'),
                 'remark'=>array('value'=>'地址:'.$data['address'],'color'=>'#7167ce'),
             );
-            $template_id = 'p5Kz-aRe66Qjml57bWTlU4WgekbdnfnsRyFvG5SdYvQ';
+            $template_id = 'kfpeS1KfOeXuS1-VqTKNRzjEMX3vb2jrCvGrtzgaaog';
 
             $user_list = push_msg::where('is_valid', 1)->get()->toArray();
             if ($user_list) {
