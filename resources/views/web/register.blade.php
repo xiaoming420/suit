@@ -121,7 +121,7 @@
             }
         });
 
-        $(".cli").tap(function() {
+        $(document).on("touchend",".cli",function() {
             layer.closeAll();
         })
     @endif
