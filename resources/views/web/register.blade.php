@@ -121,7 +121,7 @@
             }
         });
 
-        $(".cli").click(function() {
+        $(".cli").tap(function() {
             layer.closeAll();
         })
     @endif
