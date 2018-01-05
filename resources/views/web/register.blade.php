@@ -147,7 +147,7 @@
                 if (msg.result == 1)
                 {   alert('注册成功！可凭手机号到店使用优惠');
                     // WeixinJSBridge.call('closeWindow');
-                    window.location.href = 'http://mp.weixin.qq.com/bizmall/mallshelf?id=&t=mall/list&biz=MzU3NTE0ODkyMg==&shelf_id=3&showwxpaytitle=1#wechat_redirect';
+                    window.location.href = 'http://mp.weixin.qq.com/bizmall/mallshelf?id=&t=mall/list&biz=MzU3NTE0ODkyMg==&shelf_id=4&showwxpaytitle=1#wechat_redirect';
                 } else {
                     alert(msg.msg);
                 }
