@@ -17,6 +17,12 @@
                         </div>
                     </div>
                 </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">添加时间:</label>
+                    <div class="layui-input-inline">
+                        <input class="layui-input" placeholder="添加时间" name="add_time" id="LAY_demorange_s">
+                    </div>
+                </div>
             </fieldset>
             <div class="layui-form-item text-center" >
                 <button class="layui-btn add">确认添加</button>
@@ -48,6 +54,17 @@
         </tbody>
     </table>
     <script>
+        layui.use('laydate', function () {
+            var laydate = layui.laydate;
+
+            laydate.render({
+                elem: '#LAY_demorange_s'
+            });
+            laydate.render({
+                elem: '#LAY_demorange_e'
+            });
+        });
+
 
         $('.dels').click(function () {
             var id = $(this).attr('id');
