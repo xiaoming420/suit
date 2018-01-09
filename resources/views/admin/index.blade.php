@@ -17,7 +17,6 @@
 	<script type="text/javascript" src="/admin/js/jquery-1.10.1.min.js"></script>
 	<!-- 加载js文件-->
 	<script type="text/javascript" src="/admin/common/layui/layui.js"></script>
-	<script type="text/javascript" src="/admin/js/index.js"></script>
 </head>
 <body>
 <div class="layui-layout layui-layout-admin" id="layui_layout">
