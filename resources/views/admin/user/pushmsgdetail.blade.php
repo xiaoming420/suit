@@ -53,6 +53,7 @@
             @endif
         </tbody>
     </table>
+    <script type="text/javascript" src="/admin/common/layui/layui.js"></script>
     <script>
         layui.use('laydate', function () {
             var laydate = layui.laydate;
